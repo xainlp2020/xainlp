@@ -1,27 +1,26 @@
-# XaiWeb
+# dependencies
+1. Bootstrap UI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.2.
+```shell
+ng add @ng-bootstrap/ng-bootstrap
+```
 
-## Development server
+2. Angular material
+```shell
+ng add @angular/material
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# If deploy via angular-cli-ghpage
+need to first add localize package:
 
-## Code scaffolding
+```shell
+ng add @angular/localize
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+How to deploy an angular app
+1. use Angular CLI to create a new app (e.g., ng new my-app —routing)
+2. setup GitHub remote repo, for example, create a repo “xainlp” under username “xainlp2020”, 
+3. setup remote repo origin: git remote set-url “git@hostname:xainlp2020/xainlp”, check your ~/.ssh/config to figure out your hostname
+4. build angular project with: ng build --prod --base-href “/xainlp/“ (note, there is no need to add the https://xainlp2020.github.io prefix)
+5. deploy with ng build --prod --base-href "xainlp"
+6. go to your GitHub repo setting and choose gh-page branch as GitHub page
