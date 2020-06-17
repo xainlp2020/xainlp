@@ -179,7 +179,19 @@ export class TreeComponent {
     this.local_self_sorted = this.local_self.slice();
     this.global_posthoc_sorted = this.global_posthoc.slice();
     this.global_self_sorted = this.global_self.slice();
-
+    
+    this.local_posthoc_sorted = this.local_posthoc.sort((a, b) => {
+      return this.compare(a.year, b.year, false);
+    });
+    this.local_self_sorted = this.local_self.sort((a, b) => {
+      return this.compare(a.year, b.year, false);
+    });
+    this.global_posthoc_sorted = this.global_posthoc.sort((a, b) => {
+      return this.compare(a.year, b.year, false);
+    });
+    this.global_self_sorted = this.global_self.sort((a, b) => {
+      return this.compare(a.year, b.year, false);
+    });
 
     // for(let i = 0; i < local_posthoc_tmp.length; i++)
     // {
