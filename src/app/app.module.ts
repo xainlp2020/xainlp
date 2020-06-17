@@ -11,6 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule} from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
+import { PaperDialogComponent } from './paper-dialog/paper-dialog.component';
+import { DefinitionDialogComponent } from './definition-dialog/definition-dialog.component';
 
 
 @NgModule({
@@ -18,7 +21,9 @@ import {MatCardModule} from '@angular/material/card';
     AppComponent,
     HomeComponent,
     DefinitionsComponent,
-    TreeComponent
+    TreeComponent,
+    PaperDialogComponent,
+    DefinitionDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,13 @@ import {MatCardModule} from '@angular/material/card';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule,
+  ],
+  entryComponents:
+  [
+    PaperDialogComponent,
+    DefinitionDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
