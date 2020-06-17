@@ -8,7 +8,7 @@ import { DefinitionsComponent } from './definitions/definitions.component';
 import { TreeComponent } from './tree/tree.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule} from '@angular/material/button';
+import { MatButtonModule} from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
