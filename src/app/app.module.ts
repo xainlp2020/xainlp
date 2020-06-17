@@ -14,6 +14,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PaperDialogComponent } from './paper-dialog/paper-dialog.component';
 import { DefinitionDialogComponent } from './definition-dialog/definition-dialog.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
 
 
 @NgModule({
@@ -34,6 +36,8 @@ import { DefinitionDialogComponent } from './definition-dialog/definition-dialog
     MatButtonModule,
     MatCardModule,
     MatDialogModule,
+    MatTableModule,
+    MatSortModule,
   ],
   entryComponents:
   [
