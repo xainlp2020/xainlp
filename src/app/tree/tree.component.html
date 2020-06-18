@@ -26,8 +26,13 @@
                 </tr>
                 <tr class="w3-hover-grey" *ngFor="let paper of local_posthoc_sorted; index as i" style="cursor:pointer">
                   <td>{{ paper.year}}</td>
-                  <td  (click)="viewPaper(paper, 'Local Post-explaining')" >{{ paper.title | titlecase }}</td>
-                  <td class="w3-hover-text-white" (click)="viewDefinition(paper.main_explainability)">{{paper.main_explainability | titlecase }}</td>
+                  <td (click)="viewPaper(paper, 'Local Post-explaining')" >{{ paper.title | titlecase }}</td>
+                  <td (click)="viewDefinition(paper.main_explainability)">
+                        <span class="w3-hover-text-white" 
+                              ngbPopover="{{getPlainDefinition('explainability', paper.main_explainability | titlecase)}}" 
+                              triggers="mouseenter:mouseleave" 
+                              popoverTitle="{{paper.main_explainability | titlecase }}">{{paper.main_explainability | titlecase }}</span>
+                  </td>
                   <td class="w3-hover-text-white" >{{ paper.main_visualization | titlecase }}</td>
                   <td>{{ paper.citation}}</td>
                   <td>{{ paper.venue | uppercase}}</td>

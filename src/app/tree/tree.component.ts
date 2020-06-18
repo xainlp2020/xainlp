@@ -240,7 +240,26 @@ export class TreeComponent {
     
 
   }
-  
+
+  explainability_def = {
+    "Feature Importance": 'The main idea of which is to derive explanation by investigating the \
+                          importance scores of different features used in the NLP model to the final prediction.'
+  }
+  visualization_def = {
+    "Saliency": "Saliency has been primarily used to visualizethe importance scores of different types of elements in XAI learning systems."
+
+  }
+  getPlainDefinition(technique_type, name)
+  {
+    if (technique_type==="explainability")
+    {
+      return this.explainability_def[name];
+    }
+    else
+    {
+      return this.visualization_def[name]
+    }
+  }
 
 
   viewDefinition(technique) {
