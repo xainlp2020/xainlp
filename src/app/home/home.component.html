@@ -15,10 +15,64 @@
     </div>
 
     <div class="w3-border w3-margin-top">
-      <div class="w3-padding-small w3-grey w3-text-white">Scope of Literature Review</div>
-      <div class="w3-padding-small">
-        <p></p>
-      </div>
+      <div class="w3-padding-small w3-grey w3-text-white">Literature Review</div>
+      <div class="w3-padding">
+        <p><span><b>Goal:</b></span> This survey aims to demonstrate the recent  advances of XAI research in NLP, rather than to provide an exhaustive list of XAI papers in the NLP community. 
+          To this end, we identified relevant papers published in major NLP conferences (ACL, NAACL, EMNLP, and COLING) between 2013 and 2019 (papers after 2019 are also in our
+          pipeline).
+        </p>
+          
+        <p><span><b>Search criteria for XAI papers for NLP:</b></span>
+          We filtered for titles containing (lemma-tized) terms related to XAI, such as “explainability”, “interpretability”, “transparent”, etc.  
+          While this may ignore some related papers, we argue that representative papers are more likely to include such terms in their titles. In particular, 
+          we assume that if authors consider explainability to be a majorcomponent of their work, they are more likely touse related keywords in the title of their work.</p>
+        <p>Our search criteria yielded a set of 107 papers. During the paper review process we first verified whether each paper truly fell within the scope of the survey. 
+          This process excluded 56 papers, leaving us with a total of <b>51</b> papers (by the end of 2019). The following tables reveals the top 3 NLP topics that these papers
+        study and top 3 conference venues that they were published.</p>
+        
+        <div fxLayout="column" fxLayoutAlign="center">
+          <div class="w3-margin w3-border w3-small" style="width:50%">
+            <table class="w3-content w3-center table table-striped">
+              <thead>
+              <tr>
+                <th colspan="3" scope="col">Top 3 NLP Topics</th>
+              </tr>
+              </thead>
+              <tbody>
+                <td>Question Answering (9 papers)</td>
+                <td>Computational Social Science & Social Media (6 papers)</td>
+                <td>Syntax: Tagging, Chunking & Parsing (6 papers)</td>
+              </tbody>
+            </table>
+          </div>
+  
+          <div class="w3-margin w3-border w3-content w3-small" style="width:50%">
+            <table class="w3-content w3-center table table-striped">
+              <thead>
+              <tr>
+                <th colspan="3" scope="col">Top 3 Conferences</th>
+              </tr>
+              </thead>
+              <tbody>
+                <td>EMNLP (22 papers)</td>
+                <td>ACL (11 papers)</td>
+                <td>NAACL (9 papers)</td>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        
+          <p><span><b>Reviewing methodology:</b></span>
+          Each paper was then classified across four major aspects: <i>explainability</i>, <i>operations to enable explainability</i>, <i>visualization</i>, and <i>evaluation metrics</i>.
+          To ensure a consistent classification, each paper was individually reviewed by at least two reviewers, consulting additional reviewers in the case of disagreement. 
+          For simplicity of presentation, we labe leach paper with its main applicable category for each aspect. However, some papers may span multiple categories within an aspect, 
+          though usually with varying degrees of emphasis. We include all relevant categories for every paper in website, with the goal of enablingthe readers of this survey to discover 
+          interesting explainability techniques and ideas, even if they have not been fully developed in the respective publications. 
+        </p>
+        </div>
+
+
     </div>
 
 
