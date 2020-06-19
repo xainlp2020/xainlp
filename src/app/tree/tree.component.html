@@ -33,7 +33,9 @@
                               triggers="mouseenter:mouseleave" 
                               popoverTitle="{{paper.main_explainability | titlecase }}">{{paper.main_explainability | titlecase }}</span>
                   </td>
-                  <td class="w3-hover-text-white" >{{ paper.main_visualization | titlecase }}</td>
+                  <td class="w3-hover-text-white" >
+                    {{ paper.main_visualization | titlecase }}
+                  </td>
                   <td>{{ paper.citation}}</td>
                   <td>{{ paper.venue | uppercase}}</td>
                   <td><a class="w3-hover-text-white" href="{{paper.link}}" target="_blank">view</a></td>
