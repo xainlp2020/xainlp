@@ -1,6 +1,6 @@
-<div class="w3-margin-top w3-round w3-content w3-padding" style="width:75%">
+<div class="w3-margin-top w3-round w3-content w3-padding" style="width:80%">
   <div>
-    <span class="w3-large">Welcome, this is a companion website of the following the following survey paper submitted to AACL 2020</span>
+    <span class="w3-large">Welcome, this is a companion website of the following survey paper submitted to AACL 2020</span>
 
     <div class="w3-margin w3-padding">
       <i class="w3-large">"A Survey of the State of Explainable AI for Natural Language Processing."</i><br>
@@ -8,16 +8,16 @@
     </div>
 
     <div class="w3-border w3-margin-top">
-      <div class="w3-padding-small w3-grey w3-text-white">Structure of the website</div>
-      <div class="w3-margin w3-padding-small">
+      <div class="w3-padding-small w3-dark-grey w3-text-white">Structure of the website</div>
+      <div class="w3-padding">
         <p>Core concepts are introduced in <a routerLink="/definitions">Definitions</a> and XAI papers are listed <a routerLink="/tree">XAI Publications.</a></p>
       </div>
     </div>
 
     <div class="w3-border w3-margin-top">
-      <div class="w3-padding-small w3-grey w3-text-white">Literature Review</div>
+      <div class="w3-padding-small w3-dark-grey w3-text-white">Literature Review</div>
       <div class="w3-padding">
-        <p><span><b>Goal:</b></span> This survey aims to demonstrate the recent  advances of XAI research in NLP, rather than to provide an exhaustive list of XAI papers in the NLP community. 
+        <p><span><b>Goal:</b></span> This survey aims to demonstrate the recent advances of XAI research in NLP, rather than to provide an exhaustive list of XAI papers in the NLP community. 
           To this end, we identified relevant papers published in major NLP conferences (ACL, NAACL, EMNLP, and COLING) between 2013 and 2019 (papers after 2019 are also in our
           pipeline).
         </p>
@@ -30,23 +30,60 @@
           This process excluded 56 papers, leaving us with a total of <b>51</b> papers (by the end of 2019). The following tables reveals the top 3 NLP topics that these papers
         study and top 3 conference venues that they were published.</p>
         
-        <div fxLayout="column" fxLayoutAlign="center">
-          <div class="w3-margin w3-border w3-small" style="width:50%">
-            <table class="w3-content w3-center table table-striped">
-              <thead>
-              <tr>
-                <th colspan="3" scope="col">Top 3 NLP Topics</th>
-              </tr>
-              </thead>
-              <tbody>
-                <td>Question Answering (9 papers)</td>
-                <td>Computational Social Science & Social Media (6 papers)</td>
-                <td>Syntax: Tagging, Chunking & Parsing (6 papers)</td>
-              </tbody>
-            </table>
+        <div class="w3-row">
+          <div class="w3-col s6 w3-center">
+            <div class="w3-margin w3-content w3-border w3-small">
+              <table class="w3-content w3-center table table-striped">
+                <thead>
+                <tr>
+                  <th class="w3-grey" colspan="3" scope="col">Top 3 NLP Topics</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Question Answering</td>
+                    <td>Computational Social Science & Social Media</td>
+                    <td>Syntax: Tagging, Chunking & Parsing</td>
+                  </tr>
+                  <tr>
+                    <td>9 papers</td>
+                    <td>6 papers</td>
+                    <td>6 papers</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
           </div>
-  
-          <div class="w3-margin w3-border w3-content w3-small" style="width:50%">
+          <div class="w3-col s6 w3-center">
+            <div class="w3-margin w3-border w3-content w3-small">
+              <table class="w3-content w3-center table table-striped">
+                <thead>
+                <tr>
+                  <th class="w3-grey" colspan="3" scope="col">Top 3 Conferences</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>EMNLP</td>
+                    <td>ACL</td>
+                    <td>NAACL</td>
+                  </tr>
+                  <tr>
+                    <td>22 papers</td>
+                    <td>11 papers</td>
+                    <td>9 papers</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+        </div>
+          
+        
+          <!-- <div class="w3-margin w3-border w3-content w3-small" style="width:50%">
             <table class="w3-content w3-center table table-striped">
               <thead>
               <tr>
@@ -59,8 +96,7 @@
                 <td>NAACL (9 papers)</td>
               </tbody>
             </table>
-          </div>
-        </div>
+          </div> -->
         
         
           <p><span><b>Reviewing methodology:</b></span>
@@ -75,15 +111,20 @@
 
     </div>
 
-
-    <div class="w3-border w3-margin-top">
-      <div class="w3-padding-small w3-grey w3-text-white">Scope of Literature Review</div>
-      <div class="w3-padding-small">
-        <p></p>
-      </div>
-    </div>
   </div>
       
+  <div class="w3-border w3-margin-top">
+    <div class="w3-padding-small w3-dark-grey w3-text-white">Contact Us</div>
+    <div class="w3-padding">
+      <p>As we mentioned in our literature review, our goal is not to provide an exhaustive list of XAI papers in the NLP community, 
+        and our search criteria may ignore certain XAI papers in NLP.</p>
+      If you know papers that we missed but should be included in the survey and this website, please contact us at 
+      <address>
+        <a href="mailto:xainlp2020@gmail.com">xainlp2020@gmail.com</a>
+      </address>
+    </div>
+  </div>
+
 </div>
   
   
