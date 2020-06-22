@@ -167,17 +167,46 @@
                     <div class="w3-margin-top">&nbsp;</div> 
                 </div>
 
-                <div class="w3-content w3-center example-button-row w3-margin w3-padding">
-                    <button mat-raised-button 
-                            class="w3-margin-right" 
-                            color="primary"
-                            (click)="openSnackBar('Request submitted for review', 'OK')">Submit for Review</button>
+            </div>
 
-                    <!-- <button mat-raised-button 
-                            color="warn"
-                            (click)="openSnackBar('Request submitted for review')"
-                            >Submit for Without Review</button> -->
+            <div class="w3-margin-top" *ngIf="true">
+                <div class="w3-margin-top w3-card-2 w3-round w3-white">
+                    <div class="w3-blue-grey w3-padding w3-medium" style="border-top-left-radius: 4px; border-top-right-radius: 4px;">
+                        Contact Info
+                    </div>
+                    <div class="w3-margin-top w3-padding">
+                        <form>
+                            <table width="100%">
+                                <tr>
+                                    <td width="50%">
+                                        <label class="w3-margin-top">Your Name:</label>
+                                        <input class="w3-input" type='text'>
+                                    </td>
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                    <td>
+                                        <label class="w3-margin-top">Email:</label>
+                                        <input class="w3-input" type='text'>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
                 </div>
+                
+            </div>
+
+            <div class="w3-content w3-center example-button-row w3-margin w3-padding">
+                <button mat-raised-button 
+                        class="w3-margin-right" 
+                        color="primary"
+                        (click)="openSnackBar('Request submitted for review', 'OK')">Submit for Review</button>
+
+                <!-- <button mat-raised-button 
+                        color="warn"
+                        (click)="openSnackBar('Request submitted for review')"
+                        >Submit for Without Review</button> -->
             </div>
         <div>
     </div>
