@@ -16,6 +16,17 @@ import { PaperDialogComponent } from './paper-dialog/paper-dialog.component';
 import { DefinitionDialogComponent } from './definition-dialog/definition-dialog.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
+import { AddNewPapersComponent } from './add-new-papers/add-new-papers.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -25,7 +36,8 @@ import {MatSortModule} from '@angular/material/sort';
     DefinitionsComponent,
     TreeComponent,
     PaperDialogComponent,
-    DefinitionDialogComponent
+    DefinitionDialogComponent,
+    AddNewPapersComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +50,17 @@ import {MatSortModule} from '@angular/material/sort';
     MatDialogModule,
     MatTableModule,
     MatSortModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatInputModule,
+    MatDividerModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatChipsModule,
+    MatIconModule,
+    MatSnackBarModule
   ],
   entryComponents:
   [
