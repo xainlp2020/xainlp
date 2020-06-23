@@ -18,9 +18,11 @@ ng add @angular/localize
 ```
 
 How to deploy an angular app
-1. use Angular CLI to create a new app (e.g., ng new my-app —routing)
-2. setup GitHub remote repo, for example, create a repo “xainlp” under username “xainlp2020”, 
-3. setup remote repo origin: git remote set-url “git@hostname:xainlp2020/xainlp”, check your ~/.ssh/config to figure out your hostname
-4. build angular project with: ng build --prod --base-href “/xainlp/“ (note, there is no need to add the https://xainlp2020.github.io prefix)
-5. deploy with ng build --prod --base-href "xainlp"
-6. go to your GitHub repo setting and choose gh-page branch as GitHub page
+1. build angular project with: 
+```
+ng build --prod dist/xainlp --base-href "/xainlp/"
+```
+2. deploy with (possibly run the following with `sudo`)
+```
+ngh --dir=dist/xainlp
+```
