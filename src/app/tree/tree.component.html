@@ -1,16 +1,16 @@
 <div class="w3-margin w3-padding">
     <p class="w3-text-blue-grey"><b>Publications are grouped into four different tabs based on the type of their explanation</b>
     </p>
-  
+
     <p>
       <b>Remark</b>: the number of citations of each paper was obtained in May 2020.
     </p>
-  
+
     <!-- <button mat-button (click)="viewPaper()">OPEN</button> -->
     <div class="w3-small w3-margin-top">
       <ngb-tabset [destroyOnHide]="false">
         <ngb-tab>
-          <ng-template ngbTabTitle class="w3-blue"><b class="w3-text-indigo w3-hover-grayscale">Local Post-Hoc</b></ng-template>
+          <ng-template ngbTabTitle class="w3-blue"><b class="w3-text-indigo w3-hover-grayscale" style="font-size: 14px;">Local Post-Hoc</b></ng-template>
           <ng-template ngbTabContent>
             <div class="w3-padding w3-light-grey">
               <table class="w3-table table-striped" matSort (matSortChange)="sortData_local_posthoc($event)">
@@ -28,9 +28,9 @@
                   <td>{{ paper.year}}</td>
                   <td (click)="viewPaper(paper, 'Local Post-explaining')" >{{ paper.title | titlecase }}</td>
                   <td (click)="viewDefinition(paper.main_explainability)">
-                        <span class="w3-hover-text-white" 
-                              ngbPopover="{{getPlainDefinition('explainability', paper.main_explainability | titlecase)}}" 
-                              triggers="mouseenter:mouseleave" 
+                        <span class="w3-hover-text-white"
+                              ngbPopover="{{getPlainDefinition('explainability', paper.main_explainability | titlecase)}}"
+                              triggers="mouseenter:mouseleave"
                               popoverTitle="{{paper.main_explainability | titlecase }}">{{paper.main_explainability | titlecase }}</span>
                   </td>
                   <td class="w3-hover-text-white" >
@@ -72,9 +72,9 @@
               </div>
           </ng-template>
         </ngb-tab>
-  
+
         <ngb-tab>
-          <ng-template ngbTabTitle><b class="w3-text-indigo w3-hover-grayscale">Local Self-Explaining</b></ng-template>
+          <ng-template ngbTabTitle><b class="w3-text-indigo w3-hover-grayscale" style="font-size: 14px;">Local Self-Explaining</b></ng-template>
           <ng-template ngbTabContent>
             <div class="w3-padding w3-light-grey">
                 <div>
@@ -131,9 +131,9 @@
             </div>
           </ng-template>
         </ngb-tab>
-  
+
         <ngb-tab>
-          <ng-template ngbTabTitle><b class="w3-text-indigo w3-hover-grayscale">Global Post-Hoc</b></ng-template>
+          <ng-template ngbTabTitle><b class="w3-text-indigo w3-hover-grayscale" style="font-size: 14px;">Global Post-Hoc</b></ng-template>
           <ng-template ngbTabContent>
             <div class="w3-padding w3-light-grey">
                 <div>
@@ -191,9 +191,9 @@
             </div>
           </ng-template>
         </ngb-tab>
-  
+
         <ngb-tab>
-          <ng-template ngbTabTitle><b class="w3-text-indigo w3-hover-grayscale">Global Self-Explaining</b></ng-template>
+          <ng-template ngbTabTitle><b class="w3-text-indigo w3-hover-grayscale" style="font-size: 14px;">Global Self-Explaining</b></ng-template>
           <ng-template ngbTabContent>
             <div class="w3-padding w3-light-grey">
               <div>
@@ -219,7 +219,7 @@
                       <td (click)="viewPaper(paper, 'Local post-hoc')"><span class="w3-small w3-text-blue w3-hover-text-white">Details</span></td>
                     </tr>
                   </table>
-                
+
                 <!-- <table class="table table-striped">
                   <thead>
                     <tr>
@@ -247,12 +247,11 @@
                   </tbody>
                 </table> -->
               </div>
-  
+
             </div>
           </ng-template>
         </ngb-tab>
       </ngb-tabset>
     </div>
-  
+
   </div>
-  

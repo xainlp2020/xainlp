@@ -1,0 +1,10 @@
+.main{
+  font-size           : 14.0px;
+  font-family         : "Helvetica-Light", Helvetica, Arial, serif;
+  overflow: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 64px;
+}
