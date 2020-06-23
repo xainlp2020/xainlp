@@ -4,14 +4,16 @@
 }
 
 .def-section{
-  background-color: rgba(158, 175, 250, 0.25)
+  background-color: rgba(230, 230, 230, 1.0);
+  box-shadow: none !important;
 }
 
 .title{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
   color: black;
+  margin-left: -10px;
 }
 
 .def-card{
@@ -27,7 +29,7 @@
 .def-card .text{
   margin-left: 6px;
   margin-right: 6px;
-  font-size               : 18px;
+  font-size               : 16px;
   color               : rgba(109, 114, 120, 1.0);
 }
 

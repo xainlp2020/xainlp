@@ -1,5 +1,6 @@
 <!-- <div class="w3-content w3-margin-top" style="max-width:1500px;"></div> -->
-<div class="w3-content w3-margin-top w3-padding w3-light-grey def-container">
+<div class = w3-light-grey>
+<div class="w3-content w3-padding w3-light-grey def-container">
     <mat-card class="w3-margin def-section">
       <mat-card-title>
         Taxonomy
@@ -11,6 +12,9 @@
       </mat-card-content>
     </mat-card>
 
+    <!-------------------->
+    <!-- EXPLAINABILITY -->
+    <!-------------------->
 
     <mat-card class="w3-margin def-section">
       <mat-card-title>
@@ -90,10 +94,13 @@
 
     </mat-card>
 
+    <!------------------->
+    <!-- VISUALIZATION -->
+    <!------------------->
 
     <mat-card class="w3-margin def-section">
       <mat-card-title>
-        Visualization Techniques - NOT FINISHED
+        Visualization Techniques
       </mat-card-title>
       <mat-card-content>
 
@@ -105,7 +112,7 @@
             </mat-card-header>
             <mat-card-content fxLayout="column" style="display:flex;">
               <div>
-                <img width="230px" style="margin-right:50px; margin-left:8px;" src="assets/img/saliency-heatmap-word-alignment.png">
+                <img width="280px" style="margin-right:50px; margin-left:8px;" src="assets/img/saliency-heatmap-word-alignment.png">
                 <div class="cite">
                   <a target="_blank" rel="noopener noreferrer"
                   href="https://arxiv.org/pdf/1409.0473.pdf">
@@ -128,7 +135,7 @@
             </mat-card-header>
             <mat-card-content fxLayout="column" style="display:flex;">
               <div>
-                <img width="280px" style="margin:8px;" src="assets/img/saliency-highlighting.png">
+                <img width="320px" style="margin:8px;" src="assets/img/saliency-highlighting.png">
                 <div class="cite">
                   <a target="_blank" rel="noopener noreferrer"
                   href="https://www.aclweb.org/anthology/N18-1100/">
@@ -145,12 +152,105 @@
             </mat-card-content>
           </mat-card>
 
+          <mat-card class="def-card">
+            <mat-card-header class="title">
+              <mat-card-title>Raw Declarative Representation - Rules</mat-card-title>
+            </mat-card-header>
+            <mat-card-content fxLayout="column" style="display:flex;">
+              <div>
+                <img width="320px" style="margin:8px;" src="assets/img/raw-declarative-rules.png">
+                <div class="cite">
+                  <a target="_blank" rel="noopener noreferrer"
+                  href="https://arxiv.org/pdf/1905.00563">
+                  (Pezeshkpour et al., 2019)</a>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center;">
+              <span class="text">
+                This visualization technique directly presents the learned
+                declarative representations, such as logic rules.
+              </span>
+            </div>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="def-card">
+            <mat-card-header class="title">
+              <mat-card-title>Raw Declarative Representation - Programs</mat-card-title>
+            </mat-card-header>
+            <mat-card-content fxLayout="column" style="display:flex;">
+              <div>
+                <img width="320px" style="margin:8px;" src="assets/img/raw-declarative-program.png">
+                <div class="cite">
+                  <a target="_blank" rel="noopener noreferrer"
+                  href="https://doi.org/10.18653/v1/N19-1245">
+                  (Amini et al., 2019)</a>
+                </div>
+            </div>
+            <div style="display: flex; align-items: top;">
+              <span class="text">
+                This visualization technique directly presents the learned
+                declarative representations, such as programs.
+              </span>
+            </div>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="def-card">
+            <mat-card-header class="title">
+              <mat-card-title>Natural Language</mat-card-title>
+            </mat-card-header>
+            <mat-card-content fxLayout="column" style="display:flex;">
+              <div>
+                <img width="320px" style="margin:8px;" src="assets/img/natural-language-QUINT.png">
+                <div class="cite">
+                  <a target="_blank" rel="noopener noreferrer"
+                  href="https://www.aclweb.org/anthology/D17-2011">
+                  (Abujabal et al., 2017)</a>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center;">
+              <span class="text">
+                The explanation is verbalized in human-comprehensible
+                natural language, which can be generated, for example,
+                by using simple template-based approaches.
+              </span>
+            </div>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="def-card">
+            <mat-card-header class="title">
+              <mat-card-title>Raw Examples</mat-card-title>
+            </mat-card-header>
+            <mat-card-content fxLayout="column" style="display:flex;">
+              <div>
+                <img width="320px" style="margin:8px;" src="assets/img/raw-examples.png">
+                <div class="cite">
+                  <a target="_blank" rel="noopener noreferrer"
+                  href="https://doi.org/10.18653/v1/D19-1415">
+                  (Croce et al., 2019)</a>
+                </div>
+            </div>
+            <div style="display: flex; align-items: top;">
+              <span class="text">
+                This visualization technique presents raw examples, usually from
+                the training data, to motivate the explanation.
+              </span>
+            </div>
+            </mat-card-content>
+          </mat-card>
+
+
         </div>
 
       </mat-card-content>
 
     </mat-card>
 
+    <!---------------->
+    <!-- EVALUATION -->
+    <!---------------->
 
     <mat-card class="w3-margin def-section">
       <mat-card-title>
@@ -209,3 +309,4 @@
 
   </div>
 
+</div>
