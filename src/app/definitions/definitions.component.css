@@ -1,0 +1,40 @@
+.def-container{
+  width: 90%;
+  min-width: 730px;
+}
+
+.def-section{
+  background-color: rgba(158, 175, 250, 0.25)
+}
+
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.def-card{
+  /* width: 250px; */
+  /* height: 400px; */
+  padding: 6px;
+  margin: 6px;
+  margin: 1rem;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+
+.def-card .text{
+  margin-left: 6px;
+  margin-right: 6px;
+  font-size               : 18px;
+  color               : rgba(109, 114, 120, 1.0);
+}
+
+
+.def-card .cite{
+  font-size               : 14px;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+}
