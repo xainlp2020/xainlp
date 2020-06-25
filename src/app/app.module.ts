@@ -28,6 +28,10 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
+import * as echarts from 'echarts';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { VisualizationComponent } from './visualization/visualization.component';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +41,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     TreeComponent,
     PaperDialogComponent,
     DefinitionDialogComponent,
-    AddNewPapersComponent
+    AddNewPapersComponent,
+    VisualizationComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +65,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatSelectModule,
     MatChipsModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxEchartsModule.forRoot({
+      echarts
+    })
   ],
   entryComponents:
   [
