@@ -69,8 +69,13 @@ export class VisualizationComponent implements OnInit {
     var operations = data[13]
     var evaluation_metrics = data[14]
     var xai_type = exp_type;
+    var abstract = data[15]
+    var id = data[16]
+    var num_preview_img = data[17]
     
     var selectedPaper = {
+      "id": id,
+      "abstract": abstract,
       "main_explainability": explainability,
       "main_visualization": visualization,
       "title": title,
@@ -81,7 +86,8 @@ export class VisualizationComponent implements OnInit {
       "type": type,
       "nlp_task_1": nlp_taks,
       "operations": operations,
-      "evaluation_metrics": evaluation_metrics
+      "evaluation_metrics": evaluation_metrics,
+      "num_preview_img": num_preview_img
     }
     this.viewPaper(selectedPaper, xai_type);
   }
@@ -94,7 +100,7 @@ export class VisualizationComponent implements OnInit {
   }
 
   symbol_size = 12;
-
+  random_step_size = 2
   
   render_scatter()
   {
@@ -127,6 +133,9 @@ export class VisualizationComponent implements OnInit {
       {name: "nlp_task_1",        index: 12, text: "NLP TOPIC"},
       {name: "operations",        index: 13, text: "Explainability Operations"},
       {name: "Evaluation_metrics",        index: 14, text: "Evaluation Metrics"},
+      {name: "abstract",          index: 15, text: "Abstract"},
+      {name: "id",                index: 16, text: "id"},
+      {name: "num_preview_img",   index: 17, text: "num_preview_img"}
     ]
     
     
@@ -172,8 +181,7 @@ export class VisualizationComponent implements OnInit {
     var y2viz = {}
     var viz2y = {
       "OTHER": 5,
-      "RAW\nSYMBOLIC": 10,
-      "SYMBOLIC\nREP": 10,
+      "RAW\nDECLARATIVE": 10,
       "SALIENCY": 15,
       "RAW\nEXAMPLES": 20,
       "NATURAL\nLANGUAGE": 25
@@ -183,7 +191,7 @@ export class VisualizationComponent implements OnInit {
       y2viz[value] = key
     });
 
-    var random_step_size = 2
+
 
     var local_post_data = []
     for(var i = 0; i < this.local_post.length; i++)
@@ -200,8 +208,8 @@ export class VisualizationComponent implements OnInit {
       var exp_tech_index = exp2x[exp_technique]
       example.unshift(exp_tech_index)
 
-      var rand_viz_perturbation = Math.random()*random_step_size
-      var rand_exp_perturbation = Math.random()*random_step_size
+      var rand_viz_perturbation = Math.random()*this.random_step_size
+      var rand_exp_perturbation = Math.random()*this.random_step_size
       
       var random_sign = Math.random()
       if (random_sign >= 0.5)
@@ -243,8 +251,8 @@ export class VisualizationComponent implements OnInit {
       var exp_tech_index = exp2x[exp_technique]
       example.unshift(exp_tech_index)
 
-      var rand_viz_perturbation = Math.random()*random_step_size
-      var rand_exp_perturbation = Math.random()*random_step_size
+      var rand_viz_perturbation = Math.random()*this.random_step_size
+      var rand_exp_perturbation = Math.random()*this.random_step_size
       
       var random_sign = Math.random()
       if (random_sign >= 0.5)
@@ -286,8 +294,8 @@ export class VisualizationComponent implements OnInit {
       var exp_tech_index = exp2x[exp_technique]
       example.unshift(exp_tech_index)
 
-      var rand_viz_perturbation = Math.random()*random_step_size
-      var rand_exp_perturbation = Math.random()*random_step_size
+      var rand_viz_perturbation = Math.random()*this.random_step_size
+      var rand_exp_perturbation = Math.random()*this.random_step_size
       
       var random_sign = Math.random()
       if (random_sign >= 0.5)
@@ -328,8 +336,8 @@ export class VisualizationComponent implements OnInit {
       var exp_tech_index = exp2x[exp_technique]
       example.unshift(exp_tech_index)
 
-      var rand_viz_perturbation = Math.random()*random_step_size
-      var rand_exp_perturbation = Math.random()*random_step_size
+      var rand_viz_perturbation = Math.random()*this.random_step_size
+      var rand_exp_perturbation = Math.random()*this.random_step_size
       
       var random_sign = Math.random()
       if (random_sign >= 0.5)
@@ -384,27 +392,38 @@ export class VisualizationComponent implements OnInit {
             borderWidth: 1,
             formatter: function (obj) {
                 var value = obj.value;
-                return   paper_schema[4].text + '：' + value[4] + '<br>'
-                    + paper_schema[5].text + '：' + value[5] + '<br>'
-                    + paper_schema[6].text + '：' + value[6] + '<br>'
-                    + paper_schema[7].text + '：' + value[7] + '<br>'
-                    + paper_schema[8].text + '：' + value[8] + '<br>'
-                    + paper_schema[9].text + '：' + value[9] + '<br>'
-                    + paper_schema[10].text + '：' + value[10] + '<br>'
-                    + paper_schema[11].text + '：' + value[11] + '<br>'
-                    + paper_schema[12].text + '：' + value[12] + '<br>'
-                    + paper_schema[13].text + '：' + value[13] + '<br>'
-                    + paper_schema[14].text + '：' + value[14] + '<br>'
-                // return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
-                //     + obj.seriesName + ' ' + value[0] + '日：'
-                //     + value[7]
-                //     + '</div>'
-                //     + paper_schema[1].text + '：' + value[1] + '<br>'
-                //     + schema[2].text + '：' + value[2] + '<br>'
-                //     + schema[3].text + '：' + value[3] + '<br>'
-                //     + schema[4].text + '：' + value[4] + '<br>'
-                //     + schema[5].text + '：' + value[5] + '<br>'
-                //     + schema[6].text + '：' + value[6] + '<br>';
+                return  "<div class='w3-conten w3-center'>" + 
+                    "<b class='w3-text-yellow w3-padding-small'>" + paper_schema[6].text  + "</b>" + '：' + value[6] + '<br>' // title
+                    + "<b class='w3-text-yellow w3-padding-small'>" + paper_schema[7].text  + "</b>" + '：' + value[7] + '<br>' // authors
+                    // + "<b class='w3-text-yellow w3-padding-small'>" + paper_schema[4].text  + "</b>" + '：' + value[4] + '<br>' // exp
+                    // + "<b class='w3-text-yellow w3-padding-small'>" + paper_schema[5].text  + "</b>" + '：' + value[5] + '<br>' // viz
+                    + "</div>"
+                    // + paper_schema[8].text + '：' + value[8] + '<br>'
+                    // + paper_schema[9].text + '：' + value[9] + '<br>'
+                    // + paper_schema[10].text + '：' + value[10] + '<br>'
+                    // + paper_schema[11].text + '：' + value[11] + '<br>'
+                    // + paper_schema[12].text + '：' + value[12] + '<br>' // nlp
+                    // + paper_schema[13].text + '：' + value[13] + '<br>' // operations
+                    // + paper_schema[14].text + '：' + value[14] + '<br>' // evaluation
+                /**
+                 * var paper_schema = [
+                  {name: "rand_exp",    index: 0, text: "Random Exp Index"},
+                  {name: "rand_viz",    index: 1, text: "Random Viz Index"},
+                  {name: "exp_index",   index: 2, text: "Exp Index"},
+                  {name: "viz_index",   index: 3, text: "Viz Index"},
+                  {name: "exp",         index: 4, text: "Explainability"},
+                  {name: "viz",         index: 5, text: "visualization"},
+                  {name: "title",       index: 6, text: "Title"},
+                  {name: "authors",     index: 7, text: "Authors"},
+                  {name: "year",        index: 8, text: "Year"},
+                  {name: "link",        index: 9, text: "Link"},
+                  {name: "venue",       index: 10, text: "Venue"},
+                  {name: "type",        index: 11, text: "Type"},
+                  {name: "nlp_task_1",        index: 12, text: "NLP TOPIC"},
+                  {name: "operations",        index: 13, text: "Explainability Operations"},
+                  {name: "Evaluation_metrics",        index: 14, text: "Evaluation Metrics"},
+                ]
+                 */
             }
         },
         xAxis: {
@@ -417,11 +436,17 @@ export class VisualizationComponent implements OnInit {
             },
             
             splitLine: {
-                show: false
+                show: true,
+                lineStyle:
+                {
+                  type: "dashed"
+                }
+                
             },
             axisLine: {
                 lineStyle: {
-                    color: '#eee'
+                    color: '#eee',
+                    
                 }
             },
             interval: 5,
@@ -451,7 +476,11 @@ export class VisualizationComponent implements OnInit {
                 }
             },
             splitLine: {
-                show: false
+                show: true,
+                lineStyle:
+                {
+                  type: "dashed"
+                }
             },
             interval: 5,
             axisLabel:{
@@ -498,7 +527,14 @@ export class VisualizationComponent implements OnInit {
               name: 'global self-explaining',
               type: 'scatter',
               symbolSize: this.symbol_size,
-              itemStyle: itemStyle,
+              itemStyle: {
+                color: "white",
+                opacity: 0.8,
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowOffsetY: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+              },
               data: global_self_data,
             }
         ]
@@ -559,6 +595,9 @@ export class VisualizationComponent implements OnInit {
         paper["nlp_task_1"],
         paper["operations"],
         paper["evaluation_metrics"],
+        paper['abstract'],
+        paper['id'],
+        paper["num_preview_img"]
       ]
       this.all_exp_values[paper["main_explainability"].toUpperCase().replace(" ", "\n")] = 0
       this.all_viz_values[paper["main_visualization"].toUpperCase().replace(" ", "\n")] = 0
@@ -583,6 +622,9 @@ export class VisualizationComponent implements OnInit {
         paper["nlp_task_1"],
         paper["operations"],
         paper["evaluation_metrics"],
+        paper['abstract'],
+        paper['id'],
+        paper["num_preview_img"]
       ]
       this.all_exp_values[paper["main_explainability"].toUpperCase().replace(" ", "\n")] = 0
       this.all_viz_values[paper["main_visualization"].toUpperCase().replace(" ", "\n")] = 0
@@ -606,6 +648,9 @@ export class VisualizationComponent implements OnInit {
         paper["nlp_task_1"],
         paper["operations"],
         paper["evaluation_metrics"],
+        paper['abstract'],
+        paper['id'],
+        paper["num_preview_img"]
       ]
       this.all_exp_values[paper["main_explainability"].toUpperCase().replace(" ", "\n")] = 0
       this.all_viz_values[paper["main_visualization"].toUpperCase().replace(" ", "\n")] = 0
@@ -629,6 +674,9 @@ export class VisualizationComponent implements OnInit {
         paper["nlp_task_1"],
         paper["operations"],
         paper["evaluation_metrics"],
+        paper['abstract'],
+        paper['id'],
+        paper["num_preview_img"]
       ]
       this.all_exp_values[paper["main_explainability"].toUpperCase().replace(" ", "\n")] = 0
       this.all_viz_values[paper["main_visualization"].toUpperCase().replace(" ", "\n")] = 0

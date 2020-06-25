@@ -1,7 +1,7 @@
 <h5 mat-dialog-title>Paper Details</h5>
-<div class="w3-small  w3-margin-top" mat-dialog-content>
+<div class="w3-medium  w3-margin-top" mat-dialog-content>
   <table>
-    <tbody>
+    <tbody style="max-width:600px">
       <tr class="w3-margin-top w3-margin-bottom">
         <td>Explanation Type:</td>
         <td><b><span class="w3-margin-left">{{data.xai_type | titlecase}}</span></b></td>
@@ -41,13 +41,33 @@
       </tr>
       <tr class="w3-margin-top w3-margin-bottom">
         <td style="min-width:100px">Operations:</td>
-        <td><b><span class="w3-margin-left">{{data.operations}}</span></b></td>
+        <td><b><span class="w3-margin-left">{{data.operations | titlecase}}</span></b></td>
       </tr>
 
       <tr class="w3-margin-top w3-margin-bottom">
-        <td style="min-width:100px" class="w3-text-red">Evaluation Metrics:</td>
+        <td style="min-width:100px">Evaluation Metrics:</td>
         <td><b><span class="w3-margin-left">{{data.evaluation_metrics}}</span></b></td>
+      </tr>
+
+      <tr *ngIf="data.abstract != undefined" class="w3-margin-top w3-margin-bottom">
+        <td style="min-width:100px">Abstract:</td>
+        <td style="max-width:700px"><p class="w3-margin-left">{{data.abstract}}</p></td>
       </tr>
     </tbody>
   </table>
+  <div class="w3-margin-top w3-padding-large w3-dark-grey w3-content" style="min-height:200px">
+    <p>Preview</p>
+    <ngb-carousel *ngIf="images">
+      <ng-template *ngFor="let img of images; let imgIdx=index" ngbSlide class="w3-black" alt="No preview available">
+        <div class="picsum-img-wrapper w3-center w3-content" style="min-height:300px">
+          <img [src]="images[imgIdx]"  style="height:250px">
+        </div>
+      </ng-template>
+      <!-- <ng-template ngbSlide>
+        <div class="picsum-img-wrapper w3-center w3-content" style="height:250px">
+          <img [src]="images[1]"  style="height:250px">
+        </div>
+      </ng-template> -->
+    </ngb-carousel>
+  </div>
 </div>
