@@ -1,6 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import xaipapers from "../../assets/data/xaipapers.json";
+import {PaperDialogComponent} from "../paper-dialog/paper-dialog.component";
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
+
+export interface paperData{
+  title: string,
+  authors: string,
+  year: number,
+  venue: string,
+  main_explainability: string,
+  main_visualization: string,
+  citation: number,
+  link: string,
+  placement: string,
+  xai_type: string,
+  nlp_task_1: string,
+  parts_covered: string,
+  type: string,
+  evaluation_metrics: string,
+  operations: string
+}
 
 @Component({
   selector: 'app-visualization',
@@ -9,39 +29,88 @@ import xaipapers from "../../assets/data/xaipapers.json";
 })
 export class VisualizationComponent implements OnInit {
 
-  constructor() { }
+  // update(event)
+  // {
+  //   this.render_scatter()
+  // }
+
+
+  constructor(public dialog: MatDialog) { }
   options: any; 
 
   go2paper(event) 
   {
-    console.log(event)
-    console.log("GOING TO PAPER");
+    /**
+     * 
+     *{name: "exp",         index: 4, text: "Explainability"},
+      {name: "viz",         index: 5, text: "visualization"},
+      {name: "title",       index: 6, text: "Title"},
+      {name: "authors",     index: 7, text: "Authors"},
+      {name: "year",        index: 8, text: "Year"},
+      {name: "link",        index: 9, text: "Link"},
+      {name: "venue",       index: 10, text: "Venue"},
+      {name: "type",        index: 11, text: "Type"},
+      {name: "nlp_task_1",        index: 12, text: "NLP TOPIC"},
+      {name: "operations",        index: 13, text: "Explainability Operations"},
+      {name: "Evaluation_metrics",        index: 14, text: "Evaluation Metrics"},
+     */
+    var exp_type = event.seriesName;
+    var data = event.data
+
+    var explainability = data[4];
+    var visualization  = data[5];
+    var title = data[6]
+    var authors = data[7]
+    var year = data[8]
+    var link = data[9]
+    var venue = data[10]
+    var type = data[11]
+    var nlp_taks = data[12]
+    var operations = data[13]
+    var evaluation_metrics = data[14]
+    var xai_type = exp_type;
+    
+    var selectedPaper = {
+      "main_explainability": explainability,
+      "main_visualization": visualization,
+      "title": title,
+      "authors": authors,
+      "year": year,
+      "link": link,
+      "venue": venue,
+      "type": type,
+      "nlp_task_1": nlp_taks,
+      "operations": operations,
+      "evaluation_metrics": evaluation_metrics
+    }
+    this.viewPaper(selectedPaper, xai_type);
+  }
+  viewPaper(selectedPaper, xai_type) {
+    selectedPaper["xai_type"] = xai_type
+    console.log("xai_type "+ xai_type);
+    this.dialog.open(PaperDialogComponent, {
+      data: selectedPaper
+    });
   }
 
+  symbol_size = 12;
 
   
   render_scatter()
   {
-
-    
-    var dataBJ = [
-      [1,55,9,56,0.46,18,6,"良"],
-      [2,25,11,21,0.65,34,9,"优"],
-      [3,56,7,63,0.3,14,5,"良"],
-      [4,33,7,29,0.33,16,6,"优"],
-      [4.6,33.5,7,29,0.33,16,6,"优"],
-      [4.5,33.4,7,29,0.33,16,6,"优"],
-    ];
-    var schema = [
-        {name: 'date', index: 0, text: '日'},
-        {name: 'AQIindex', index: 1, text: 'AQI指数'},
-        {name: 'PM25', index: 2, text: 'PM2.5'},
-        {name: 'PM10', index: 3, text: 'PM10'},
-        {name: 'CO', index: 4, text: '一氧化碳（CO）'},
-        {name: 'NO2', index: 5, text: '二氧化氮（NO2）'},
-        {name: 'SO2', index: 6, text: '二氧化硫（SO2）'}
-    ];
-
+    /**
+     *  paper["main_explainability"].toUpperCase().replace(" ", "\n"),
+        paper["main_visualization"].toUpperCase().replace(" ", "\n"),
+        paper["title"],
+        paper["authors"],
+        paper["year"],
+        paper["link"],
+        paper["venue"],
+        paper["type"],
+        paper["nlp_task_1"],
+        paper["operations"],
+        paper["evaluation_metrics"],
+     */
     var paper_schema = [
       {name: "rand_exp",    index: 0, text: "Random Exp Index"},
       {name: "rand_viz",    index: 1, text: "Random Viz Index"},
@@ -50,8 +119,14 @@ export class VisualizationComponent implements OnInit {
       {name: "exp",         index: 4, text: "Explainability"},
       {name: "viz",         index: 5, text: "visualization"},
       {name: "title",       index: 6, text: "Title"},
-      {name: "type",        index: 7, text: "Type of Explanation"},
-      {name: "authors",     index: 8, text: "Authors"}
+      {name: "authors",     index: 7, text: "Authors"},
+      {name: "year",        index: 8, text: "Year"},
+      {name: "link",        index: 9, text: "Link"},
+      {name: "venue",       index: 10, text: "Venue"},
+      {name: "type",        index: 11, text: "Type"},
+      {name: "nlp_task_1",        index: 12, text: "NLP TOPIC"},
+      {name: "operations",        index: 13, text: "Explainability Operations"},
+      {name: "Evaluation_metrics",        index: 14, text: "Evaluation Metrics"},
     ]
     
     
@@ -309,14 +384,17 @@ export class VisualizationComponent implements OnInit {
             borderWidth: 1,
             formatter: function (obj) {
                 var value = obj.value;
-                return   paper_schema[0].text + '：' + value[0] + '<br>'
-                    + paper_schema[1].text + '：' + value[1] + '<br>'
-                    + paper_schema[2].text + '：' + value[2] + '<br>'
-                    + paper_schema[3].text + '：' + value[3] + '<br>'
-                    + paper_schema[4].text + '：' + value[4] + '<br>'
+                return   paper_schema[4].text + '：' + value[4] + '<br>'
                     + paper_schema[5].text + '：' + value[5] + '<br>'
                     + paper_schema[6].text + '：' + value[6] + '<br>'
                     + paper_schema[7].text + '：' + value[7] + '<br>'
+                    + paper_schema[8].text + '：' + value[8] + '<br>'
+                    + paper_schema[9].text + '：' + value[9] + '<br>'
+                    + paper_schema[10].text + '：' + value[10] + '<br>'
+                    + paper_schema[11].text + '：' + value[11] + '<br>'
+                    + paper_schema[12].text + '：' + value[12] + '<br>'
+                    + paper_schema[13].text + '：' + value[13] + '<br>'
+                    + paper_schema[14].text + '：' + value[14] + '<br>'
                 // return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
                 //     + obj.seriesName + ' ' + value[0] + '日：'
                 //     + value[7]
@@ -392,7 +470,7 @@ export class VisualizationComponent implements OnInit {
             {
                 name: 'local post-hoc',
                 type: 'scatter',
-                symbolSize: 15,
+                symbolSize: this.symbol_size,
                 itemStyle: itemStyle,
                 data: local_post_data,
                 // xAxisIndex: 2,
@@ -401,7 +479,7 @@ export class VisualizationComponent implements OnInit {
             {
               name: 'local self-explaining',
               type: 'scatter',
-              symbolSize: 15,
+              symbolSize: this.symbol_size,
               itemStyle: itemStyle,
               data: local_self_data,
               // xAxisIndex: 2,
@@ -410,7 +488,7 @@ export class VisualizationComponent implements OnInit {
             {
               name: 'global post-hoc',
               type: 'scatter',
-              symbolSize: 15,
+              symbolSize: this.symbol_size,
               itemStyle: itemStyle,
               data: global_post_data,
               // xAxisIndex: 2,
@@ -419,7 +497,7 @@ export class VisualizationComponent implements OnInit {
             {
               name: 'global self-explaining',
               type: 'scatter',
-              symbolSize: 15,
+              symbolSize: this.symbol_size,
               itemStyle: itemStyle,
               data: global_self_data,
             }

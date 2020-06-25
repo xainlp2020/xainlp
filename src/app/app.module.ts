@@ -31,6 +31,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { VisualizationComponent } from './visualization/visualization.component';
+import {MatSliderModule} from '@angular/material/slider';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { VisualizationComponent } from './visualization/visualization.component'
     MatChipsModule,
     MatIconModule,
     MatSnackBarModule,
+    MatSliderModule,
     NgxEchartsModule.forRoot({
       echarts
     })
