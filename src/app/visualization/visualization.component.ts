@@ -457,8 +457,8 @@ export class VisualizationComponent implements OnInit {
     });
   }
 
-  symbol_size = 12;
-  random_step_size = 2
+  symbol_size = 14;
+  random_step_size = 2.5
   
   render_scatter()
   {
@@ -712,23 +712,25 @@ export class VisualizationComponent implements OnInit {
     
 
     this.options = {
-        backgroundColor: '#404a59',
+        backgroundColor: '#f1f1f1',
         color: [
-            '#dd4444', '#fec42c', '#80F1BE'
+            "blue", '#dd4444', "#45b300", "#ffd300"
         ],
         legend: {
+            backgroundColor: "transparent",
             top: 10,
             data: ["local post-hoc", "local self-explaining", "global post-hoc", "global self-explaining"],
             textStyle: {
-                color: '#fff',
-                fontSize: 16
+                color: 'black',
+                fontSize: 16,
             }
         },
         grid: {
             left: '10%',
             right: 150,
             top: '18%',
-            bottom: '10%'
+            bottom: '10%',
+
         },
         tooltip: {
             padding: 10,
@@ -743,32 +745,6 @@ export class VisualizationComponent implements OnInit {
                     // + "<b class='w3-text-yellow w3-padding-small'>" + paper_schema[4].text  + "</b>" + '：' + value[4] + '<br>' // exp
                     // + "<b class='w3-text-yellow w3-padding-small'>" + paper_schema[5].text  + "</b>" + '：' + value[5] + '<br>' // viz
                     + "</div>"
-                    // + paper_schema[8].text + '：' + value[8] + '<br>'
-                    // + paper_schema[9].text + '：' + value[9] + '<br>'
-                    // + paper_schema[10].text + '：' + value[10] + '<br>'
-                    // + paper_schema[11].text + '：' + value[11] + '<br>'
-                    // + paper_schema[12].text + '：' + value[12] + '<br>' // nlp
-                    // + paper_schema[13].text + '：' + value[13] + '<br>' // operations
-                    // + paper_schema[14].text + '：' + value[14] + '<br>' // evaluation
-                /**
-                 * var paper_schema = [
-                  {name: "rand_exp",    index: 0, text: "Random Exp Index"},
-                  {name: "rand_viz",    index: 1, text: "Random Viz Index"},
-                  {name: "exp_index",   index: 2, text: "Exp Index"},
-                  {name: "viz_index",   index: 3, text: "Viz Index"},
-                  {name: "exp",         index: 4, text: "Explainability"},
-                  {name: "viz",         index: 5, text: "visualization"},
-                  {name: "title",       index: 6, text: "Title"},
-                  {name: "authors",     index: 7, text: "Authors"},
-                  {name: "year",        index: 8, text: "Year"},
-                  {name: "link",        index: 9, text: "Link"},
-                  {name: "venue",       index: 10, text: "Venue"},
-                  {name: "type",        index: 11, text: "Type"},
-                  {name: "nlp_task_1",        index: 12, text: "NLP TOPIC"},
-                  {name: "operations",        index: 13, text: "Explainability Operations"},
-                  {name: "Evaluation_metrics",        index: 14, text: "Evaluation Metrics"},
-                ]
-                 */
             }
         },
         xAxis: {
@@ -784,14 +760,14 @@ export class VisualizationComponent implements OnInit {
                 show: true,
                 lineStyle:
                 {
+                  color: "grey",
                   type: "dashed"
                 }
                 
             },
             axisLine: {
                 lineStyle: {
-                    color: '#eee',
-                    
+                    color: 'black',
                 }
             },
             interval: 5,
@@ -817,13 +793,14 @@ export class VisualizationComponent implements OnInit {
             },
             axisLine: {
                 lineStyle: {
-                    color: '#eee'
+                    color: 'black'
                 }
             },
             splitLine: {
                 show: true,
                 lineStyle:
                 {
+                  color: "grey",
                   type: "dashed"
                 }
             },
@@ -873,7 +850,6 @@ export class VisualizationComponent implements OnInit {
               type: 'scatter',
               symbolSize: this.symbol_size,
               itemStyle: {
-                color: "white",
                 opacity: 0.8,
                 shadowBlur: 10,
                 shadowOffsetX: 0,
