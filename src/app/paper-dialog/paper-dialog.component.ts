@@ -40,7 +40,7 @@ export class PaperDialogComponent{
     var n = 10;
     for(var i = 1; i < num_preview_img+1; i++)
     {
-      var img_file = "./../../assets/paper_preview_img/id";
+      var img_file = "assets/paper_preview_img/id";
       img_file = img_file.concat(id, "_", i.toString(), ".png")
       this.images.push(img_file)
     
