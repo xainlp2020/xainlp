@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import xaipapers from "../../assets/data/xaipapers.json";
 import {PaperDialogComponent} from "../paper-dialog/paper-dialog.component";
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -28,11 +28,369 @@ export interface paperData{
   styleUrls: ['./visualization.component.css']
 })
 export class VisualizationComponent implements OnInit {
+  all_papers = []
+  ngOnInit(): void {
 
-  // update(event)
-  // {
-  //   this.render_scatter()
-  // }
+    this.init_exp_viz_selection();
+
+    console.log(xaipapers)
+
+    this.process_papers_local_post();
+    this.process_papers_local_self();
+    this.process_papers_global_post();
+    this.process_papers_global_self();
+
+    console.log("CHECKING DATA")
+    console.log(this.local_post)
+    console.log(this.local_self)
+    console.log(this.global_post)
+    console.log(this.global_self)
+
+    console.log("All exp values")
+    console.log(this.all_exp_values)
+
+    console.log("All viz values")
+    console.log(this.all_viz_values)
+
+    this.render_scatter()
+    this.render_paper_dist_overall()
+    this.render_exp_dist_overall()
+    this.render_viz_dist_overall()
+    this.render_venue_dist_overall()
+  }
+
+  /**
+   * Visualization for venues
+   */
+  venue_dist_overall_options;
+  render_venue_dist_overall()
+  {
+    var venue_set = {}
+    var dist_data = []
+    // prepare data
+    for(var i = 0; i < this.all_papers.length; i++)
+    {
+      console.log("checking " + this.all_papers[i])
+      var venue = this.all_papers[i]["venue"].toUpperCase();
+      if (venue in venue_set)
+      {
+        venue_set[venue] = venue_set[venue] + 1
+      }
+      else{
+        venue_set[venue] = 0
+      }
+    }
+    for(var key in venue_set)
+    {
+      dist_data.push({
+        name: key + " (" + venue_set[key] + ")",
+        value: venue_set[key]
+      })
+    }
+
+    this.venue_dist_overall_options = {
+      title:
+      {
+        text: "Venue distribution",
+        left: "center",
+        textStyle:
+        {
+          fontSize: 15
+        }
+      },
+      tooltip: {
+          trigger: 'item',
+          formatter: '{a} <br/>{b} : {c} ({d}%)'
+      },
+      series: [
+        {
+            name: 'Visualization Technique',
+            type: 'pie',
+            radius: [10, 50],
+            center: ['50%', '50%'],
+            data: dist_data,
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+      ]
+    }
+  }
+
+  /**
+   * Visualization for viz techniques
+   */
+  viz_dist_overall_options;
+  render_viz_dist_overall()
+  {
+    var viz_set = {}
+    var dist_data = []
+    // prepare data
+    for(var i = 0; i < this.all_papers.length; i++)
+    {
+      console.log("checking " + this.all_papers[i])
+      var exp = this.all_papers[i]["main_visualization"].toUpperCase();
+      if (exp in viz_set)
+      {
+        viz_set[exp] = viz_set[exp] + 1
+      }
+      else{
+        viz_set[exp] = 0
+      }
+    }
+    for(var key in viz_set)
+    {
+      dist_data.push({
+        name: key + " (" + viz_set[key] + ")",
+        value: viz_set[key]
+      })
+    }
+
+    this.viz_dist_overall_options = {
+
+      title:
+      {
+        text: "Visualization techniques distribution",
+        left: "center",
+        textStyle:
+        {
+          fontSize: 15
+        }
+      },
+      tooltip: {
+          trigger: 'item',
+          formatter: '{a} <br/>{b} : {c} ({d}%)'
+      },
+      series: [
+        {
+            name: 'Visualization Technique',
+            type: 'pie',
+            radius: [10, 50],
+            center: ['50%', '50%'],
+            data: dist_data,
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+      ]
+    }
+  }
+  /**
+   * Visualization for explainability techniques
+   */
+  exp_dist_overall_options;
+  render_exp_dist_overall()
+  {
+    var exp_set = {}
+    var dist_data = []
+    // prepare data
+    for(var i = 0; i < this.all_papers.length; i++)
+    {
+      console.log("checking " + this.all_papers[i])
+      var exp = this.all_papers[i]["main_explainability"].toUpperCase();
+      if (exp in exp_set)
+      {
+        exp_set[exp] = exp_set[exp] + 1
+      }
+      else{
+        exp_set[exp] = 0
+      }
+    }
+    for(var key in exp_set)
+    {
+      dist_data.push({
+        name: key + " (" + exp_set[key] + ")",
+        value: exp_set[key]
+      })
+    }
+
+    this.exp_dist_overall_options = {
+
+      title:
+      {
+        text: "Explainability techniques distribution",
+        left: "center",
+        textStyle:
+        {
+          fontSize: 15
+        }
+      },
+      tooltip: {
+          trigger: 'item',
+          formatter: '{a} <br/>{b} : {c} ({d}%)'
+      },
+      series: [
+        {
+            name: 'Explainability Technique',
+            type: 'pie',
+            radius: [10, 50],
+            center: ['50%', '50%'],
+            data: dist_data,
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+      ]
+    }
+  }
+
+  /**
+   * Visualization for paper_dist_overall_options
+   */
+  paper_dist_overall_options;
+  render_paper_dist_overall()
+  {
+    var seriesLabel = {
+      normal: {
+          show: true,
+          textBorderColor: '#333',
+          textBorderWidth: 2
+      }
+    }
+
+    this.paper_dist_overall_options = {
+        title:
+        {
+          text: "Paper distribution wrt type of explanation",
+          left: "center",
+          textStyle:
+          {
+            fontSize: 15
+          }
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        // legend: {
+        //     type: 'scroll',
+        //     orient: 'horizontal',
+        //     right: 10,
+        //     data: ['Local Post-hoc', 'Local Self-explaining', 'Global Post-hoc', "Global Self-explaining"],
+        // },
+        series: [
+            {
+                name: 'Type of Explanation',
+                type: 'pie',
+                radius: [0, 50],
+                center: ['50%', '50%'],
+                data: [
+                  {
+                    name : "Local Post-hoc" + " (" +  this.local_post.length + ")",
+                    value : this.local_post.length
+                  },
+                  {
+                    name: "Local Self-explaining" + " (" +  this.local_self.length + ")",
+                    value: this.local_self.length
+                  },
+                  {
+                    name: "Global Post-hoc" + " (" +  this.global_post.length + ")",
+                    value: this.global_post.length
+                  },
+                  {
+                    name: "Global Self-explaining" + " (" +  this.global_self.length + ")",
+                    value: this.global_self.length
+                  },
+
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+
+  }
+
+  /**
+   * 
+   * Two way bindings of exp selection
+   */
+  ex_driven_checked  = true;
+  provenance_checked = true;
+  feature_importance_checked = true;
+  induction_checked  = true;
+  surrogate_checked  = true;
+
+  raw_example_checked = true;
+  saliency_checked = true;
+  raw_declarative_checked = true;
+  natural_language_checked = true;
+  other_checked = true;
+
+
+  exp_selected = new Set();
+  viz_selected = new Set();
+  init_exp_viz_selection()
+  {
+    this.exp_selected.add("example-driven").add("provenance").add("feature importance").add("induction").add("surrogate model");
+    this.viz_selected.add("raw examples").add("saliency").add("raw declarative").add("natural language").add("other");
+  }
+
+  update_exp_selection(exp, checkStatus)
+  {
+    if(checkStatus)
+    {
+      this.exp_selected.add(exp)
+    }
+    else{
+      console.log("deleting " + exp)
+      this.exp_selected.delete(exp)
+    }
+    console.log("current selection exp: " )
+    console.log(this.exp_selected)
+    this.update_cluster()
+  }
+  update_viz_selection(viz, checkStatus)
+  {
+    if(checkStatus)
+    {
+      this.viz_selected.add(viz)
+    }
+    else{
+      console.log("deleting " + viz)
+      this.viz_selected.delete(viz)
+    }
+    console.log("current selection exp: " )
+    console.log(this.viz_selected)
+    this.update_cluster()
+  }
+
+
+  clusterViewInstance;
+  onChartInit(event)
+  {
+    console.log("chart initilization")
+    console.log(event)
+    this.clusterViewInstance = event
+  }
+  update_cluster()
+  {
+    console.log("updating cluster")
+    this.process_papers_local_post();
+    this.process_papers_local_self();
+    this.process_papers_global_post();
+    this.process_papers_global_self();
+    this.render_scatter()
+    this.clusterViewInstance.setOption(this.options)
+  }
+
 
 
   constructor(public dialog: MatDialog) { }
@@ -104,19 +462,6 @@ export class VisualizationComponent implements OnInit {
   
   render_scatter()
   {
-    /**
-     *  paper["main_explainability"].toUpperCase().replace(" ", "\n"),
-        paper["main_visualization"].toUpperCase().replace(" ", "\n"),
-        paper["title"],
-        paper["authors"],
-        paper["year"],
-        paper["link"],
-        paper["venue"],
-        paper["type"],
-        paper["nlp_task_1"],
-        paper["operations"],
-        paper["evaluation_metrics"],
-     */
     var paper_schema = [
       {name: "rand_exp",    index: 0, text: "Random Exp Index"},
       {name: "rand_viz",    index: 1, text: "Random Viz Index"},
@@ -583,6 +928,12 @@ export class VisualizationComponent implements OnInit {
     for(var i = 0; i < xaipapers["local-self"].length; i++)
     {
       var paper = xaipapers["local-self"][i]
+      this.all_papers.push(paper);
+      if(!this.exp_selected.has(paper["main_explainability"].toLowerCase()) || !this.viz_selected.has(paper["main_visualization"].toLowerCase()))
+      {
+        // console.log(paper["main_explainability"] + " not in selected exp, so skip")
+        continue
+      }
       var new_paper = [
         paper["main_explainability"].toUpperCase().replace(" ", "\n"),
         paper["main_visualization"].toUpperCase().replace(" ", "\n"),
@@ -610,6 +961,12 @@ export class VisualizationComponent implements OnInit {
     for(var i = 0; i < xaipapers["local-post-hoc"].length; i++)
     {
       var paper = xaipapers["local-post-hoc"][i]
+      this.all_papers.push(paper);
+      if(!this.exp_selected.has(paper["main_explainability"].toLowerCase()) || !this.viz_selected.has(paper["main_visualization"].toLowerCase()))
+      {
+        console.log(paper["main_explainability"] + " not in selected exp, so skip")
+        continue
+      }
       var new_paper = [
         paper["main_explainability"].toUpperCase().replace(" ", "\n"),
         paper["main_visualization"].toUpperCase().replace(" ", "\n"),
@@ -636,6 +993,12 @@ export class VisualizationComponent implements OnInit {
     for(var i = 0; i < xaipapers["global-self"].length; i++)
     {
       var paper = xaipapers["global-self"][i]
+      this.all_papers.push(paper);
+      if(!this.exp_selected.has(paper["main_explainability"].toLowerCase()) || !this.viz_selected.has(paper["main_visualization"].toLowerCase()))
+      {
+        console.log(paper["main_explainability"] + " not in selected exp, so skip")
+        continue
+      }
       var new_paper = [
         paper["main_explainability"].toUpperCase().replace(" ", "\n"),
         paper["main_visualization"].toUpperCase().replace(" ", "\n"),
@@ -662,6 +1025,12 @@ export class VisualizationComponent implements OnInit {
     for(var i = 0; i < xaipapers["global-post-hoc"].length; i++)
     {
       var paper = xaipapers["global-post-hoc"][i]
+      this.all_papers.push(paper);
+      if(!this.exp_selected.has(paper["main_explainability"].toLowerCase()) || !this.viz_selected.has(paper["main_visualization"].toLowerCase()))
+      {
+        console.log(paper["main_explainability"] + " not in selected exp, so skip")
+        continue
+      }
       var new_paper = [
         paper["main_explainability"].toUpperCase().replace(" ", "\n"),
         paper["main_visualization"].toUpperCase().replace(" ", "\n"),
@@ -684,28 +1053,5 @@ export class VisualizationComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-
-    console.log(xaipapers)
-
-    this.process_papers_local_post();
-    this.process_papers_local_self();
-    this.process_papers_global_post();
-    this.process_papers_global_self();
-
-    console.log("CHECKING DATA")
-    console.log(this.local_post)
-    console.log(this.local_self)
-    console.log(this.global_post)
-    console.log(this.global_self)
-
-    console.log("All exp values")
-    console.log(this.all_exp_values)
-
-    console.log("All viz values")
-    console.log(this.all_viz_values)
-
-    this.render_scatter()
-  }
-
+  
 }

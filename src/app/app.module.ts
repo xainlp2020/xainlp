@@ -27,6 +27,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatCheckboxModule} from '@angular/material';
 
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -70,7 +71,8 @@ import {MatSliderModule} from '@angular/material/slider';
     MatSliderModule,
     NgxEchartsModule.forRoot({
       echarts
-    })
+    }),
+    MatCheckboxModule
   ],
   entryComponents:
   [
