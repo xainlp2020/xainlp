@@ -1,0 +1,39 @@
+<div class="w3-small w3-light-grey">
+    <div class="w3-margin w3-content w3-padding-large">
+        <div class="w3-row">
+            <div class="w3-twothird"><input class="w3-input w3-border w3-border-dark-grey w3-round" [(ngModel)]="query" type="text"></div>
+            <div class="w3-third">
+                <button class="w3-margin-left w3-padding w3-border w3-border-black w3-round w3-button w3-white"
+                        (click)="search(query)">SEARCH</button>
+            </div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="w3-margin-left w3-padding-large" *ngFor="let attr of attr_order; let attr_index=index">
+        <div class="w3-margin-top w3-round w3-card-2" *ngIf="final_results[attr_index]!=undefined">
+            <div *ngIf="attr_natural_language[attr_index]!='All Results'" class="w3-padding-small w3-dark-grey">
+                Found "{{query}}" in "<span class="w3-text-white"><b>{{attr_natural_language[attr_index] | uppercase}} ({{final_results[attr_index].length}} hits)</b></span>"
+            </div>
+            <div *ngIf="attr_natural_language[attr_index]==='All Results'" class="w3-padding-small w3-dark-grey">
+                <span class="w3-text-white"><b>{{attr_natural_language[attr_index] | uppercase}} ({{final_results[attr_index].length}} hits)</b></span>
+            </div>
+            <table class="w3-table w3-striped">
+                <tr class="w3-blue-grey">
+                    <td><b>Year</b></td>
+                    <td><b>Title</b></td>
+                    <td><b>Authors</b></td>
+                    <td><b>Venue</b></td>
+
+                </tr>
+                <tr class="w3-hover-grey" style="cursor:pointer" (click)="viewPaper(paper)" *ngFor="let paper of final_results[attr_index]">
+                    <td>{{paper['year']}}</td>
+                    <td>{{paper['title']   | titlecase}}</td>
+                    <td>{{paper['authors'] | titlecase}}</td>
+                    <td>{{paper['venue']   | uppercase}}</td>
+                </tr>
+            </table>
+            <div>{{final_results[attr_index][attr_order[attr_index]]}}</div>
+        </div>
+        
+    </div>
+</div>
