@@ -31,6 +31,16 @@ export interface paperData{
 })
 export class SearchComponent implements OnInit {
   
+  keyDownFunction(event)
+  {
+    if (event.keyCode === 13)
+    {
+      this.search(this.query)
+    }
+  }
+
+  page = 1;
+  pageSize = 5;
   ngOnInit(): void {
     console.log("core attrs: ");
     console.log(this.core_attr)
@@ -114,20 +124,20 @@ export class SearchComponent implements OnInit {
     // return indices;
 }
   
-  active_tab = "All Results"
+  active_tab = "All"
 
   query = "question";
-  attr_order = ["any", "title", "abstract", "nlp_task_1", "venue",
+  attr_order = ["any", "title", "abstract", "nlp_task_1",
   "authors", "explainability", "visualization", 
-  "operations", "evaluation_metrics", "main_explainability", "main_visualization"]
+  "operations", "evaluation_metrics"]
 
-  attr_natural_language = ["All Results", "title", "abstract", "nlp topic",  "venue", 
-  "authors", "Explainability techniques", "Visualization techniques", 
-  "explainability operations", "evaluation metrics", "main explainability", "main visualization"]
-
-  core_attr = new Set(["title", "abstract", "nlp_task_1",  "venue",
+  attr_natural_language = ["All", "title", "abstract", "nlp topic",
   "authors", "explainability", "visualization", 
-  "operations", "evaluation_metrics", "main_explainability", "main_visualization"]);
+  "operations", "evaluation metrics"]
+
+  core_attr = new Set(["title", "abstract", "nlp_task_1",
+  "authors", "explainability", "visualization", 
+  "operations", "evaluation_metrics"]);
   
   query_results = {}
   final_results = []
