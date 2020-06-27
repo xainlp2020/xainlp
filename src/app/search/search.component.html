@@ -1,4 +1,4 @@
-<div class="w3-small w3-light-grey">
+<div class="w3-small">
     <div class="w3-margin w3-content w3-padding-large">
         <div class="w3-row">
             <div class="w3-twothird"><input class="w3-input w3-border w3-border-dark-grey w3-round" [(ngModel)]="query" type="text"></div>
@@ -9,6 +9,94 @@
         </div>
     </div>
     <mat-divider></mat-divider>
+
+
+    <div class="w3-margin d-flex w3-padding">
+        <ul ngbNav #nav="ngbNav" activeId={{active_tab}} class="nav-pills" orientation="vertical">
+            <li *ngFor="let result of final_results; let attr_index=index" 
+                ngbNavItem="{{attr_natural_language[attr_index]}}"  
+                [disabled]="result == undefined" style="width:100%">
+                <a *ngIf="final_results[attr_index]!=undefined" ngbNavLink>{{attr_natural_language[attr_index] | uppercase}} ({{final_results[attr_index].length}} hits)</a>
+                <ng-template ngbNavContent>
+
+                    <!-- All results -->
+                    <div *ngIf="attr_natural_language[attr_index]==='All Results'" class="w3-white" style="width:100%">
+                        <table class="w3-table w3-striped">
+                            <tr class="w3-text-dark-grey">
+                                <td><b>Year</b></td>
+                                <td><b>Title</b></td>
+                                <td><b>Authors</b></td>
+                                <td><b>Venue</b></td>
+                            </tr>
+                            <tr class="w3-hover-grey" style="cursor:pointer" (click)="viewPaper(paper)" *ngFor="let paper of final_results[attr_index]">
+                                <td>{{paper['year']}}</td>
+                                <td><span [innerHTML]="getHighlights(query, paper['title'] | titlecase)"></span></td>
+                                <td><span [innerHTML]="getHighlights(query, paper['authors'] | titlecase)"></span></td>
+                                <td><span [innerHTML]="getHighlights(query, paper['venue'] | uppercase)"></span></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Title -->
+                    <div *ngIf="attr_natural_language[attr_index]==='title'" class="w3-white" style="width:100%">
+                        <table class="w3-table table-striped">
+                            <tr class="w3-text-dark-grey">
+                                <td><b>Year</b></td>
+                                <td><b>Title</b></td>
+                                <td><b>Authors</b></td>
+                                <td><b>Venue</b></td>
+                            </tr>
+                            <tr class="w3-hover-grey" style="cursor:pointer" (click)="viewPaper(paper)" *ngFor="let paper of final_results[attr_index]">
+                                <td>{{paper['year']}}</td>
+                                <td><span [innerHTML]="getHighlights(query, paper['title'] | titlecase)"></span></td>
+                                <td>{{paper['authors'] | titlecase}}</td>
+                                <td>{{paper['venue']   | uppercase}}</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Authors -->
+                    <div *ngIf="attr_natural_language[attr_index]==='authors'" class="w3-white" style="width:100%">
+                        <table class="w3-table table-striped">
+                            <tr class="w3-text-dark-grey">
+                                <td><b>Year</b></td>
+                                <td><b>Title</b></td>
+                                <td><b>Authors</b></td>
+                                <td><b>Venue</b></td>
+                            </tr>
+                            <tr class="w3-hover-grey" style="cursor:pointer" (click)="viewPaper(paper)" *ngFor="let paper of final_results[attr_index]">
+                                <td>{{paper['year']}}</td>
+                                <td>{{paper['title'] | titlecase}}</td>
+                                <td><span [innerHTML]="getHighlights(query, paper['authors'] | titlecase)"></span></td>
+                                <td>{{paper['venue']  | uppercase}}</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Venue -->
+                    <div *ngIf="attr_natural_language[attr_index]==='venue'" class="w3-white" style="width:100%">
+                        <table class="w3-table table-striped">
+                            <tr class="w3-text-dark-grey">
+                                <td><b>Year</b></td>
+                                <td><b>Title</b></td>
+                                <td><b>Authors</b></td>
+                                <td><b>Venue</b></td>
+                            </tr>
+                            <tr class="w3-hover-grey" style="cursor:pointer" (click)="viewPaper(paper)" *ngFor="let paper of final_results[attr_index]">
+                                <td>{{paper['year']}}</td>
+                                <td>{{paper['title'] | titlecase}}</td>
+                                <td>{{paper['authors'] | titlecase}}</td>
+                                <td><span [innerHTML]="getHighlights(query, paper['venue'] | uppercase)"></span></td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </ng-template>
+            </li>
+        </ul>
+       <div [ngbNavOutlet]="nav" class="ml-4"></div>
+      </div>
+<!--        
     <div class="w3-margin-left w3-padding-large" *ngFor="let attr of attr_order; let attr_index=index">
         <div class="w3-margin-top w3-round w3-card-2" *ngIf="final_results[attr_index]!=undefined">
             <div *ngIf="attr_natural_language[attr_index]!='All Results'" class="w3-padding-small w3-dark-grey">
@@ -35,5 +123,5 @@
             <div>{{final_results[attr_index][attr_order[attr_index]]}}</div>
         </div>
         
-    </div>
+    </div> -->
 </div>

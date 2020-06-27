@@ -61,7 +61,59 @@ export class SearchComponent implements OnInit {
     var tmp = JSON.stringify(this.all_papers).toLowerCase()
     this.all_papers = JSON.parse(tmp)
   }
+  /**
+   * Function for getting all occurrence of search term
+   */
+  helper(searchStr, str, indices)
+  {
+    var startIdex = 0;
+    console.log(startIdex + " " +  str.length)
+
+    var highlighted = "";
+    for(var i = 0; i < indices.length; i++)
+    {
+      console.log(startIdex + "\t" + i)
+      var curr_index = indices[i]
+      var temp = str.substring(startIdex, curr_index)
+      highlighted = highlighted.concat(temp)
+      var highlight_part = "<b class='w3-text-red'>" + str.substring(curr_index, curr_index + searchStr.length) + "</b>"
+      highlighted = highlighted.concat(highlight_part)
+      
+      startIdex = curr_index + searchStr.length
+    }
+    if(startIdex < str.length)
+    {
+      highlighted = highlighted.concat(str.substring(startIdex))
+    }
+    return highlighted
+  }
+  search_caseSensitive = false;
+  getHighlights(searchStr, str) {
+    var searchStrLen = searchStr.length;
+    var massaged_str = str.slice(0);
+    if(!this.search_caseSensitive)
+    {
+      massaged_str = massaged_str.toLowerCase()
+    }
+
+    if (searchStrLen == 0) {
+        return str;
+    }
+    var startIndex = 0, index, indices = [];
+    if (true) {
+        searchStr = searchStr.toLowerCase();
+    }
+    while ((index = massaged_str.indexOf(searchStr, startIndex)) > -1) {
+        indices.push(index);
+        startIndex = index + searchStrLen;
+    }
+    console.log("indices")
+    console.log(indices)
+    return this.helper(searchStr, str, indices);
+    // return indices;
+}
   
+  active_tab = "All Results"
 
   query = "question";
   attr_order = ["any", "title", "abstract", "nlp_task_1", "venue",
@@ -69,8 +121,8 @@ export class SearchComponent implements OnInit {
   "operations", "evaluation_metrics", "main_explainability", "main_visualization"]
 
   attr_natural_language = ["All Results", "title", "abstract", "nlp topic",  "venue", 
-  "authors", "list of explainability techniques", "list of visualization techniques", 
-  "explainability operations", "evaluation metrics", "main explainability technique", "main visualization technique"]
+  "authors", "Explainability techniques", "Visualization techniques", 
+  "explainability operations", "evaluation metrics", "main explainability", "main visualization"]
 
   core_attr = new Set(["title", "abstract", "nlp_task_1",  "venue",
   "authors", "explainability", "visualization", 
@@ -134,7 +186,7 @@ export class SearchComponent implements OnInit {
        }
     }
 
-    // console.log("search query: " + q)
+    console.log("final results")
     console.log(this.final_results)
   }
   /**
