@@ -380,7 +380,8 @@
       "placement": "2",
       "operations": "none",
       "evaluation_metrics": "none",
-      "parts_covered": "medium (could be good if someone else reviews it)"
+      "parts_covered": "medium (could be good if someone else reviews it)",
+      "abstract":"This paper seeks to model human language by the mathematical framework of quantum physics. With the well-designed mathematical formulations in quantum physics, this framework unifies different linguistic units in a single complex-valued vector space, e.g. words as particles in quantum states and sentences as mixed systems. A complex-valued network is built to implement this framework for semantic matching. With well-constrained complex-valued components, the network admits interpretations to explicit physical meanings. The proposed complex-valued network for matching (CNM) achieves comparable performances to strong CNN and RNN baselines on two benchmarking question answering (QA) datasets."
      },
      {
       "id": "54",
@@ -399,7 +400,8 @@
       "placement": "2",
       "operations": "(a) multiple instance learning (uses thresholded attention to make token-level predictions)\n(b) input perturbation (LIME and Anchor Explanations)",
       "evaluation_metrics": "Comparison to ground truth",
-      "parts_covered": ""
+      "parts_covered": "",
+      "abstract":"The task of Natural Language Inference (NLI) is widely modeled as supervised sentence pair classification. While there has been a lot of work recently on generating explanations of the predictions of classifiers on a single piece of text, there have been no attempts to generate explanations of classifiers operating on pairs of sentences. In this paper, we show that it is possible to generate token-level explanations for NLI without the need for training data explicitly annotated for this purpose. We use a simple LSTM architecture and evaluate both LIME and Anchor explanations for this task. We compare these to a Multiple Instance Learning (MIL) method that uses thresholded attention make token-level predictions. The approach we present in this paper is a novel extension of zero-shot single-sentence tagging to sentence pairs for NLI. We conduct our experiments on the well-studied SNLI dataset that was recently augmented with manually annotation of the tokens that explain the entailment relation. We find that our white-box MIL-based method, while orders of magnitude faster, does not reach the same accuracy as the black-box methods."
      },
      {
       "id": "9",
@@ -418,7 +420,8 @@
       "placement": "2",
       "operations": "adversarial layer on top of attention",
       "evaluation_metrics": "Comparison to ground truth",
-      "parts_covered": ""
+      "parts_covered": "",
+      "abstract":"We introduce an adversarial method for producing high-recall explanations of neural text classifier decisions. Building on an existing architecture for extractive explanations via hard attention, we add an adversarial layer which scans the residual of the attention for remaining predictive signal. Motivated by the important domain of detecting personal attacks in social media comments, we additionally demonstrate the importance of manually setting a semantically appropriate “default” behavior for the model by explicitly manipulating its bias term. We develop a validation set of human-annotated personal attacks to evaluate the impact of these changes."
      },
      {
       "id": "32",
@@ -437,7 +440,8 @@
       "placement": "2",
       "operations": "query-driven attention mechanism, \n\nhierarchical query-driven attention",
       "evaluation_metrics": "Informal Examination",
-      "parts_covered": "medium"
+      "parts_covered": "medium",
+      "abstract":"Sentiment analysis has played a significant role in financial applications in recent years. The informational and emotive aspects of news texts may affect the prices, volatilities, volume of trades, and even potential risks of financial subjects. Previous studies in this field mainly focused on identifying polarity~(e.g. positive or negative). However, as financial decisions broadly require justifications, only plausible polarity cannot provide enough evidence during the decision making processes of humanity. Hence an explainable solution is in urgent demand. In this paper, we present an interpretable neural net framework for financial sentiment analysis. First, we design a hierarchical model to learn the representation of a document from multiple granularities. In addition, we propose a query-driven attention mechanism to satisfy the unique characteristics of financial documents. With the domain specified questions provided by the financial analysts, we can discover different spotlights for queries from different aspects. We conduct extensive experiments on a real-world dataset. The results demonstrate that our framework can learn better representation of the document and unearth meaningful clues on replying different users? preferences. It also outperforms the state-of-the-art methods on sentiment prediction of financial documents. "
      },
      {
       "id": "8",
@@ -456,7 +460,8 @@
       "placement": "2",
       "operations": "attention mechanisms",
       "evaluation_metrics": "Informal Examination",
-      "parts_covered": "medium"
+      "parts_covered": "medium",
+      "abstract":"Human language has evolved towards newer forms of communication such as social media, where emojis (i.e., ideograms bearing a visual meaning) play a key role. While there is an increasing body of work aimed at the computational modeling of emoji semantics, there is currently little understanding about what makes a computational model represent or predict a given emoji in a certain way. In this paper we propose a label-wise attention mechanism with which we attempt to better understand the nuances underlying emoji prediction. In addition to advantages in terms of interpretability, we show that our proposed architecture improves over standard baselines in emoji prediction, and does particularly well when predicting infrequent emojis."
      },
      {
       "id": "97",
@@ -475,7 +480,8 @@
       "placement": "2",
       "operations": "Attention, NN-based Controller, Neural Modular Networks",
       "evaluation_metrics": "Informal Examination",
-      "parts_covered": "medium-high"
+      "parts_covered": "medium-high",
+      "abstract":"Multi-hop QA requires a model to connect multiple pieces of evidence scattered in a long context to answer the question. The recently proposed HotpotQA (Yang et al., 2018) dataset is comprised of questions embodying four different multi-hop reasoning paradigms (two bridge entity setups, checking multiple properties, and comparing two entities), making it challenging for a single neural network to handle all four. In this work, we present an interpretable, controller-based Self-Assembling Neural Modular Network (Hu et al., 2017, 2018) for multi-hop reasoning, where we design four novel modules (Find, Relocate, Compare, NoOp) to perform unique types of language reasoning. Based on a question, our layout controller RNN dynamically infers a series of reasoning modules to construct the entire network. Empirically, we show that our dynamic, multi-hop modular network achieves significant improvements over the static, single-hop baseline (on both regular and adversarial evaluation). We further demonstrate the interpretability of our model via three analyses. First, the controller can softly decompose the multi-hop question into multiple single-hop sub-questions to promote compositional reasoning behavior of the main network. Second, the controller can predict layouts that conform to the layouts designed by human experts. Finally, the intermediate module can infer the entity that connects two distantly-located supporting facts by addressing the sub-question from the controller."
      },
      {
       "id": "17",
@@ -494,7 +500,8 @@
       "placement": "2",
       "operations": "Encoder for vector representations and used for reward generation as feedback/labels for a semi-supervised approach to rationale generation and selection.Â",
       "evaluation_metrics": "none",
-      "parts_covered": "medium"
+      "parts_covered": "medium",
+      "abstract":"We propose a generative adversarial neural network model for relation classification that attempts to emulate the way in which human analysts might process sentences. Our approach provides two unique benefits over existing capabilities: (1) we make predictions by finding and exploiting supportive rationales to improve interpretability (i.e. words or phrases extracted from a sentence that a person can reason upon), and (2) we allow predictions to be easily corrected by adjusting the rationales.Our model consists of three stages: Generator, Selector, and Encoder. The Generator identifies candidate text fragments; the Selector decides which fragments can be used as rationales depending on the goal; and finally, the Encoder performs relation reasoning on the rationales. While the Encoder is trained in a supervised manner to classify relations, the Generator and Selector are designed as unsupervised models to identify rationales without prior knowledge, although they can be semi-supervised through human annotations. We evaluate our model on data from SemEval 2010 that provides 19 relation-classes. Experiments demonstrate that our approach outperforms state-of-the-art models, and that our model is capable of extracting good rationales on its own as well as benefiting from labeled rationales if provided."
      },
      {
       "id": "93",
@@ -513,7 +520,8 @@
       "placement": "2",
       "operations": "Corpus-level and Document-level  Event-Driven attention, \n\nVector products and Matrix Multiplication, SoftmaxÂ  -- various attention mechanisms",
       "evaluation_metrics": "Informal Examination",
-      "parts_covered": "medium"
+      "parts_covered": "medium",
+      "abstract":"Multiple emotions with different intensities are often evoked by events described in documents. Oftentimes, such event information is hidden and needs to be discovered from texts. Unveiling the hidden event information can help to understand how the emotions are evoked and provide explainable results. However, existing studies often ignore the latent event information. In this paper, we proposed a novel interpretable relevant emotion ranking model with the event information incorporated into a deep learning architecture using the event-driven attentions. Moreover, corpus-level event embeddings and document-level event distributions are introduced respectively to consider the global events in corpus and the document-specific events simultaneously. Experimental results on three real-world corpora show that the proposed approach performs remarkably better than the state-of-the-art emotion detection approaches and multi-label approaches. Moreover, interpretable results can be obtained to shed light on the events which trigger certain emotions."
      },
      {
       "id": "6",
@@ -532,7 +540,8 @@
       "placement": "2",
       "operations": "Feature importance where the features are the variables modeling the pair-wise interactions between modalities",
       "evaluation_metrics": "Informal Examination",
-      "parts_covered": ""
+      "parts_covered": "",
+      "abstract":"Analyzing human multimodal language is an emerging area of research in NLP. Intrinsically this language is multimodal (heterogeneous), sequential and asynchronous; it consists of the language (words), visual (expressions) and acoustic (paralinguistic) modalities all in the form of asynchronous coordinated sequences. From a resource perspective, there is a genuine need for large scale datasets that allow for in-depth studies of this form of language. In this paper we introduce CMU Multimodal Opinion Sentiment and Emotion Intensity (CMU-MOSEI), the largest dataset of sentiment analysis and emotion recognition to date. Using data from CMU-MOSEI and a novel multimodal fusion technique called the Dynamic Fusion Graph (DFG), we conduct experimentation to exploit how modalities interact with each other in human multimodal language. Unlike previously proposed fusion techniques, DFG is highly interpretable and achieves competative performance when compared to the previous state of the art."
      },
      {
       "id": "37",
@@ -551,7 +560,8 @@
       "placement": "2",
       "operations": "none",
       "evaluation_metrics": "none",
-      "parts_covered": "small"
+      "parts_covered": "small",
+      "abstract":"This paper introduces a model of multipleinstance learning applied to the prediction of aspect ratings or judgments of specific properties of an item from usercontributed texts such as product reviews. Each variable-length text is represented by several independent feature vectors; one word vector per sentence or paragraph. For learning from texts with known aspect ratings, the model performs multipleinstance regression (MIR) and assigns importance weights to each of the sentences or paragraphs of a text, uncovering their contribution to the aspect ratings. Next, the model is used to predict aspect ratings in previously unseen texts, demonstrating interpretability and explanatory power for its predictions. We evaluate the model on seven multi-aspect sentiment analysis data sets, improving over four MIR baselines and two strong bag-of-words linear models, namely SVR and Lasso, by more than 10% relative in terms of MSE."
      },
      {
       "id": "20",
@@ -570,7 +580,8 @@
       "placement": "2",
       "operations": "attention",
       "evaluation_metrics": "Human Evaluation",
-      "parts_covered": "medium"
+      "parts_covered": "medium",
+      "abstract":"Explaining underlying causes or effects about events is a challenging but valuable task. We define a novel problem of generating explanations of a time series event by (1) searching cause and effect relationships of the time series with textual data and (2) constructing a connecting chain between them to generate an explanation. To detect causal features from text, we propose a novel method based on the Granger causality of time series between features extracted from text such as N-grams, topics, sentiments, and their composition. The generation of the sequence of causal entities requires a commonsense causative knowledge base with efficient reasoning. To ensure good interpretability and appropriate lexical usage we combine symbolic and neural representations, using a neural reasoning algorithm trained on commonsense causal tuples to predict the next cause step. Our quantitative and human analysis show empirical evidence that our method successfully extracts meaningful causality relationships between time series with textual features and generates appropriate explanation between them."
      },
      {
       "id": "62",
@@ -589,7 +600,8 @@
       "placement": "2",
       "operations": "provenance derivation",
       "evaluation_metrics": "none",
-      "parts_covered": "small (last mile, exactly the same as MathQA)"
+      "parts_covered": "small (last mile, exactly the same as MathQA)",
+      "abstract":"Multi-relation Question Answering is a challenging task, due to the requirement of elaborated analysis on questions and reasoning over multiple fact triples in knowledge base. In this paper, we present a novel model called Interpretable Reasoning Network that employs an interpretable, hop-by-hop reasoning process for question answering. The model dynamically decides which part of an input question should be analyzed at each hop; predicts a relation that corresponds to the current parsed results; utilizes the predicted relation to update the question representation and the state of the reasoning process; and then drives the next-hop reasoning. Experiments show that our model yields state-of-the-art results on two datasets. More interestingly, the model can offer traceable and observable intermediate predictions for reasoning analysis and failure diagnosis, thereby allowing manual manipulation in predicting the final answer."
      },
      {
       "id": "56",
@@ -608,7 +620,8 @@
       "placement": "2",
       "operations": "attention",
       "evaluation_metrics": "none",
-      "parts_covered": "medium-high"
+      "parts_covered": "medium-high",
+      "abstract":"Natural language processing has greatly benefited from the introduction of the attention mechanism. However, standard attention models are of limited interpretability for tasks that involve a series of inference steps. We describe an iterative recursive attention model, which constructs incremental representations of input data through reusing results of previously computed queries. We train our model on sentiment classification datasets and demonstrate its capacity to identify and combine different aspects of the input in an easily interpretable manner, while obtaining performance close to the state of the art."
      },
      {
       "id": "12",
@@ -627,7 +640,8 @@
       "placement": "2",
       "operations": "attention (on words)",
       "evaluation_metrics": "none",
-      "parts_covered": ""
+      "parts_covered": "",
+      "abstract":"We propose a novel way to handle out of vocabulary (OOV) words in downstream natural language processing (NLP) tasks. We implement a network that predicts useful embeddings for OOV words based on their morphology and on the context in which they appear. Our model also incorporates an attention mechanism indicating the focus allocated to the left context words, the right context words or the word’s characters, hence making the prediction more interpretable. The model is a “drop-in” module that is jointly trained with the downstream task’s neural network, thus producing embeddings specialized for the task at hand. When the task is mostly syntactical, we observe that our model aims most of its attention on surface form characters. On the other hand, for tasks more semantical, the network allocates more attention to the surrounding words. In all our tests, the module helps the network to achieve better performances in comparison to the use of simple random embeddings."
      },
      {
       "id": "22",
@@ -646,7 +660,8 @@
       "placement": "2",
       "operations": "explainability-aware architecture",
       "evaluation_metrics": "none",
-      "parts_covered": "medium"
+      "parts_covered": "medium",
+      "abstract":"Developing a method for understanding the inner workings of black-box neural methods is an important research endeavor. Conventionally, many studies have used an attention matrix to interpret how Encoder-Decoder-based models translate a given source sentence to the corresponding target sentence. However, recent studies have empirically revealed that an attention matrix is not optimal for token-wise translation analyses. We propose a method that explicitly models the token-wise alignment between the source and target sequences to provide a better analysis. Experiments show that our method can acquire token-wise alignments that are superior to those of an attention mechanism."
      },
      {
       "id": "66",
@@ -665,7 +680,8 @@
       "placement": "2",
       "operations": "attention",
       "evaluation_metrics": "none",
-      "parts_covered": "medium"
+      "parts_covered": "medium",
+      "abstract":"Response selection plays an important role in fully automated dialogue systems. Given the dialogue context, the goal of response selection is to identify the best-matched next utterance (i.e., response) from multiple candidates. Despite the efforts of many previous useful models, this task remains challenging due to the huge semantic gap and also the large size of candidate set. To address these issues, we propose a Spatio-Temporal Matching network (STM) for response selection. In detail, soft alignment is first used to obtain the local relevance between the context and the response. And then, we construct spatio-temporal features by aggregating attention images in time dimension and make use of 3D convolution and pooling operations to extract matching information. Evaluation on two large-scale multi-turn response selection tasks has demonstrated that our proposed model significantly outperforms the state-of-the-art model. Particularly, visualization analysis shows that the spatio-temporal features enables matching information in segment pairs and time sequences, and have good interpretability for multi-turn text matching."
      },
      {
       "id": "65",
@@ -684,7 +700,8 @@
       "placement": "2",
       "operations": "explainability-aware architecture (??)",
       "evaluation_metrics": "comparison to ground truth, human evaluation",
-      "parts_covered": "generates prediction from generated explanation"
+      "parts_covered": "generates prediction from generated explanation",
+      "abstract":"Building explainable systems is a critical problem in the field of Natural Language Processing (NLP), since most machine learning models provide no explanations for the predictions. Existing approaches for explainable machine learning systems tend to focus on interpreting the outputs or the connections between inputs and outputs. However, the fine-grained information (e.g. textual explanations for the labels) is often ignored, and the systems do not explicitly generate the human-readable explanations. To solve this problem, we propose a novel generative explanation framework that learns to make classification decisions and generate fine-grained explanations at the same time. More specifically, we introduce the explainable factor and the minimum risk training approach that learn to generate more reasonable explanations. We construct two new datasets that contain summaries, rating scores, and fine-grained reasons. We conduct experiments on both datasets, comparing with several strong neural network baseline systems. Experimental results show that our method surpasses all baselines on both datasets, and is able to generate concise explanations at the same time."
      },
      {
       "id": "69",
@@ -703,7 +720,8 @@
       "placement": "2",
       "operations": "explainability-aware architecture",
       "evaluation_metrics": "Human Evaluation",
-      "parts_covered": "generates an explanation and produces prediction from it"
+      "parts_covered": "generates an explanation and produces prediction from it",
+      "abstract":"We present the first sentence simplification model that learns explicit edit operations (ADD, DELETE, and KEEP) via a neural programmer-interpreter approach. Most current neural sentence simplification systems are variants of sequence-to-sequence models adopted from machine translation. These methods learn to simplify sentences as a byproduct of the fact that they are trained on complex-simple sentence pairs. By contrast, our neural programmer-interpreter is directly trained to predict explicit edit operations on targeted parts of the input sentence, resembling the way that humans perform simplification and revision. Our model outperforms previous state-of-the-art neural sentence simplification models (without external knowledge) by large margins on three benchmark text simplification corpora in terms of SARI (+0.95 WikiLarge, +1.89 WikiSmall, +1.41 Newsela), and is judged by humans to produce overall better and simpler output sentences."
      },
      {
       "id": "4",
@@ -722,7 +740,8 @@
       "placement": "2",
       "operations": "provenance, \"explainability-aware architecture\"",
       "evaluation_metrics": "Informal Examination",
-      "parts_covered": "small (\"last mile\")"
+      "parts_covered": "small (\"last mile\")",
+      "abstract":"We introduce a large-scale dataset of math word problems and an interpretable neural math problem solver by learning to map problems to their operation programs. Due to annotation challenges, current datasets in this domain have been either relatively small in scale or did not offer precise operational annotations over diverse problem types. We introduce a new representation language to model operation programs corresponding to each math problem that aim to improve both the performance and the interpretability of the learned models. Using this representation language, we significantly enhance the AQUA-RAT dataset with fully-specified operational programs. We additionally introduce a neural sequence-to-program model with automatic problem categorization. Our experiments show improvements over competitive baselines in our dataset as well as the AQUA-RAT dataset. The results are still lower than human performance indicating that the dataset poses new challenges for future research. Our dataset is available at https://math-qa.github.io/math-QA/"
      },
      {
       "id": "40",
@@ -741,7 +760,8 @@
       "placement": "2",
       "operations": "adversarial modification (identifies the fact that when removed from the KG changes the prediction for a target fact)",
       "evaluation_metrics": "Informal Examination",
-      "parts_covered": "medium"
+      "parts_covered": "medium",
+      "abstract":"Representing entities and relations in an embedding space is a well-studied approach for machine learning on relational data. Existing approaches, however, primarily focus on improving accuracy and overlook other aspects such as robustness and interpretability. In this paper, we propose adversarial modifications for link prediction models: identifying the fact to add into or remove from the knowledge graph that changes the prediction for a target fact after the model is retrained. Using these single modifications of the graph, we identify the most influential fact for a predicted link and evaluate the sensitivity of the model to the addition of fake facts. We introduce an efficient approach to estimate the effect of such modifications by approximating the change in the embeddings when the knowledge graph changes. To avoid the combinatorial search over all possible facts, we train a network to decode embeddings to their corresponding graph components, allowing the use of gradient-based optimization to identify the adversarial modification. We use these techniques to evaluate the robustness of link prediction models (by measuring sensitivity to additional facts), study interpretability through the facts most responsible for predictions (by identifying the most influential neighbors), and detect incorrect facts in the knowledge base."
      },
      {
       "id": "61",
@@ -760,7 +780,8 @@
       "placement": "2",
       "operations": "",
       "evaluation_metrics": "",
-      "parts_covered": ""
+      "parts_covered": "",
+      "abstract":"The encoder-decoder dialog model is one of the most prominent methods used to build dialog systems in complex domains. Yet it is limited because it cannot output interpretable actions as in traditional systems, which hinders humans from understanding its generation process. We present an unsupervised discrete sentence representation learning method that can integrate with any existing encoder-decoder dialog models for interpretable response generation. Building upon variational autoencoders (VAEs), we present two novel models, DI-VAE and DI-VST that improve VAEs and can discover interpretable semantics via either auto encoding or context predicting. Our methods have been validated on real-world dialog datasets to discover semantic representations and enhance encoder-decoder models with interpretable generation."
      },
      {
       "id": "26",
@@ -779,7 +800,8 @@
       "placement": "2",
       "operations": "annotates with POS tags",
       "evaluation_metrics": "none",
-      "parts_covered": "builds AST"
+      "parts_covered": "builds AST",
+      "abstract":"This paper presents a meaning-based statistical math word problem (MWP) solver with understanding, reasoning and explanation. It comprises a web user interface and pipelined modules for analysing the text, transforming both body and question parts into their logic forms, and then performing inference on them. The associated context of each quantity is represented with proposed role-tags (e.g., nsubj, verb, etc.), which provides the flexibility for annotating the extracted math quantity with its associated syntactic and semantic information (which specifies the physical meaning of that quantity). Those role-tags are then used to identify the desired operands and filter out irrelevant quantities (so that the answer can be obtained precisely). Since the physical meaning of each quantity is explicitly represented with those role-tags and used in the inference process, the proposed approach could explain how the answer is obtained in a human comprehensible way."
      },
      {
       "id": "67",
@@ -798,7 +820,8 @@
       "placement": "2",
       "operations": "explainability-aware architecture (??)",
       "evaluation_metrics": "none",
-      "parts_covered": "small (last mile?)"
+      "parts_covered": "small (last mile?)",
+      "abstract":"Multi-hop reading comprehension requires the model to explore and connect relevant information from multiple sentences/documents in order to answer the question about the context. To achieve this, we propose an interpretable 3-module system called Explore-Propose-Assemble reader (EPAr). First, the Document Explorer iteratively selects relevant documents and represents divergent reasoning chains in a tree structure so as to allow assimilating information from all chains. The Answer Proposer then proposes an answer from every root-to-leaf path in the reasoning tree. Finally, the Evidence Assembler extracts a key sentence containing the proposed answer from every path and combines them to predict the final answer. Intuitively, EPAr approximates the coarse-to-fine-grained comprehension behavior of human readers when facing multiple long documents. We jointly optimize our 3 modules by minimizing the sum of losses from each stage conditioned on the previous stage’s output. On two multi-hop reading comprehension datasets WikiHop and MedHop, our EPAr model achieves significant improvements over the baseline and competitive results compared to the state-of-the-art model. We also present multiple reasoning-chain-recovery tests and ablation studies to demonstrate our system’s ability to perform interpretable and accurate reasoning."
      },
      {
       "id": "2",
@@ -838,7 +861,8 @@
       "placement": "2",
       "operations": "provenance, \"explainability-aware architecture\"",
       "evaluation_metrics": "Human Evaluation",
-      "parts_covered": "entire process"
+      "parts_covered": "entire process",
+      "abstract":"Assessing the veracity of claims made on the Internet is an important, challenging, and timely problem. While automated fact-checking models have potential to help people better assess what they read, we argue such models must be explainable, accurate, and fast to be useful in practice; while prediction accuracy is clearly important, model transparency is critical in order for users to trust the system and integrate their own knowledge with model predictions. To achieve this, we propose a novel probabilistic graphical model (PGM) which combines machine learning with crowd annotations. Nodes in our model correspond to claim veracity, article stance regarding claims, reputation of news sources, and annotator reliabilities. We introduce a fast variational method for parameter estimation. Evaluation across two real-world datasets and three scenarios shows that: (1) joint modeling of sources, claims and crowd annotators in a PGM improves the predictive performance and interpretability for predicting claim veracity; and (2) our variational inference method achieves scalably fast parameter estimation, with only modest degradation in performance compared to Gibbs sampling. Regarding model transparency, we designed and deployed a prototype fact-checker Web tool, including a visual interface for explaining model predictions. Results of a small user study indicate that model explanations improve user satisfaction and trust in model predictions. We share our web demo, model source code, and the 13K crowd labels we collected.1"
      },
      {
       "id": "63",
@@ -857,7 +881,8 @@
       "placement": "2",
       "operations": "attention",
       "evaluation_metrics": "Human Evaluation + Comparison to ground truth",
-      "parts_covered": "small"
+      "parts_covered": "small",
+      "abstract":"We study a conversational reasoning model that strategically traverses through a large-scale common fact knowledge graph (KG) to introduce engaging and contextually diverse entities and attributes. For this study, we collect a new Open-ended Dialog <-> KG parallel corpus called OpenDialKG, where each utterance from 15K human-to-human role-playing dialogs is manually annotated with ground-truth reference to corresponding entities and paths from a large-scale KG with 1M+ facts. We then propose the DialKG Walker model that learns the symbolic transitions of dialog contexts as structured traversals over KG, and predicts natural entities to introduce given previous dialog contexts via a novel domain-agnostic, attention-based graph path decoder. Automatic and human evaluations show that our model can retrieve more natural and human-like responses than the state-of-the-art baselines or rule-based models, in both in-domain and cross-domain tasks. The proposed model also generates a KG walk path for each entity retrieved, providing a natural way to explain conversational reasoning."
      },
      {
       "id": "64",
@@ -876,7 +901,8 @@
       "placement": "2",
       "operations": "Use pretrained language model  that is finetuned on human-provided explanations",
       "evaluation_metrics": "Human Evaluation + Comparison to ground truth",
-      "parts_covered": ""
+      "parts_covered": "",
+      "abstract":"Deep learning models perform poorly on tasks that require commonsense reasoning, which often necessitates some form of world-knowledge or reasoning over information not immediately present in the input. We collect human explanations for commonsense reasoning in the form of natural language sequences and highlighted annotations in a new dataset called Common Sense Explanations (CoS-E). We use CoS-E to train language models to automatically generate explanations that can be used during training and inference in a novel Commonsense Auto-Generated Explanation (CAGE) framework. CAGE improves the state-of-the-art by 10% on the challenging CommonsenseQA task. We further study commonsense reasoning in DNNs using both human and auto-generated explanations including transfer to out-of-domain tasks. Empirical results indicate that we can effectively leverage language models for commonsense reasoning."
      },
      {
       "id": "84",
@@ -895,7 +921,8 @@
       "placement": "2",
       "operations": "layer-wise relevance propagation, surrogate model",
       "evaluation_metrics": "human evaluation",
-      "parts_covered": "saliency via layer-wise relevance propagation"
+      "parts_covered": "saliency via layer-wise relevance propagation",
+      "abstract":"While NLP systems become more pervasive, their accountability gains value as a focal point of effort. Epistemological opaqueness of nonlinear learning methods, such as deep learning models, can be a major drawback for their adoptions. In this paper, we discuss the application of Layerwise Relevance Propagation over a linguistically motivated neural architecture, the Kernel-based Deep Architecture, in order to trace back connections between linguistic properties of input instances and system decisions. Such connections then guide the construction of argumentations on network’s inferences, i.e., explanations based on real examples, semantically related to the input. We propose here a methodology to evaluate the transparency and coherence of analogy-based explanations modeling an audit stage for the system. Quantitative analysis on two semantic tasks, i.e., question classification and semantic role labeling, show that the explanatory capabilities (native in KDAs) are effective and they pave the way to more complex argumentation methods."
      },
      {
       "id": "70",
@@ -914,7 +941,8 @@
       "placement": "2",
       "operations": "attention, input perturbation",
       "evaluation_metrics": "Human Evaluation",
-      "parts_covered": "medium"
+      "parts_covered": "medium",
+      "abstract":"Interpretability of machine learning (ML) models becomes more relevant with their increasing adoption. In this work, we address the interpretability of ML based question answering (QA) models on a combination of knowledge bases (KB) and text documents. We adapt post hoc explanation methods such as LIME and input perturbation (IP) and compare them with the self-explanatory attention mechanism of the model. For this purpose, we propose an automatic evaluation paradigm for explanation methods in the context of QA. We also conduct a study with human annotators to evaluate whether explanations help them identify better QA models. Our results suggest that IP provides better explanations than LIME or attention, according to both automatic and human evaluation. We obtain the same ranking of methods in both experiments, which supports the validity of our automatic evaluation paradigm."
      }
     ],
     "global-post-hoc": [
@@ -935,7 +963,8 @@
       "placement": "3",
       "operations": "class activation mapping + select top k n-grams",
       "evaluation_metrics": "Informal examination",
-      "parts_covered": "medium"
+      "parts_covered": "medium",
+      "abstract":"How much does “free shipping!” help an advertisement’s ability to persuade? This paper presents two methods for performance attribution: finding the degree to which an outcome can be attributed to parts of a text while controlling for potential confounders. Both algorithms are based on interpreting the behaviors and parameters of trained neural networks. One method uses a CNN to encode the text, an adversarial objective function to control for confounders, and projects its weights onto its activations to interpret the importance of each phrase towards each output class. The other method leverages residualization to control for confounds and performs interpretation by aggregating over learned word vectors. We demonstrate these algorithms’ efficacy on 118,000 internet search advertisements and outcomes, finding language indicative of high and low click through rate (CTR) regardless of who the ad is by or what it is for. Our results suggest the proposed algorithms are high performance and data efficient, able to glean actionable insights from fewer than 10,000 data points. We find that quick, easy, and authoritative language is associated with success, while lackluster embellishment is related to failure. These findings agree with the advertising industry’s emperical wisdom, automatically revealing insights which previously required manual A/B testing to discover."
      },
      {
       "id": "43",
@@ -954,7 +983,8 @@
       "placement": "3",
       "operations": "attention",
       "evaluation_metrics": "none",
-      "parts_covered": "medium-high"
+      "parts_covered": "medium-high",
+      "abstract":"NLP algorithms are increasingly used in computational social science to take linguistic observations and predict outcomes like human preferences or actions. Making these social models transparent and interpretable often requires identifying features in the input that predict outcomes while also controlling for potential confounds. We formalize this need as a new task: inducing a lexicon that is predictive of a set of target variables yet uncorrelated to a set of confounding variables. We introduce two deep learning algorithms for the task. The first uses a bifurcated architecture to separate the explanatory power of the text and confounds. The second uses an adversarial discriminator to force confound-invariant text encodings. Both elicit lexicons from learned weights and attentional scores. We use them to induce lexicons that are predictive of timely responses to consumer complaints (controlling for product), enrollment from course descriptions (controlling for subject), and sales from product descriptions (controlling for seller). In each domain our algorithms pick words that are associated with narrative persuasion; more predictive and less confound-related than those of standard feature weighting and lexicon induction techniques like regression and log odds"
      },
      {
       "id": "30",
@@ -973,7 +1003,8 @@
       "placement": "3",
       "operations": "hierarchical clustering on embeddings to infer taxonomy",
       "evaluation_metrics": "Comparison to ground truth",
-      "parts_covered": ""
+      "parts_covered": "",
+      "abstract":"Network embedding has been increasingly used in many network analytics applications to generate low-dimensional vector representations, so that many off-the-shelf models can be applied to solve a wide variety of data mining tasks. However, similar to many other machine learning methods, network embedding results remain hard to be understood by users. Each dimension in the embedding space usually does not have any specific meaning, thus it is difficult to comprehend how the embedding instances are distributed in the reconstructed space. In addition, heterogeneous content information may be incorporated into network embedding, so it is challenging to specify which source of information is effective in generating the embedding results. In this paper, we investigate the interpretation of network embedding, aiming to understand how instances are distributed in embedding space, as well as explore the factors that lead to the embedding results. We resort to the posthoc interpretation scheme, so that our approach can be applied to different types of embedding methods. Specifically, the interpretation of network embedding is presented in the form of a taxonomy. Effective objectives and corresponding algorithms are developed towards building the taxonomy. We also design several metrics to evaluate interpretation results. Experiments on real-world datasets from different domains demonstrate that, by comparing with the state-of-the-art alternatives, our approach produces effective and meaningful interpretation to embedding results."
      }
     ],
     "global-self": [
@@ -994,7 +1025,8 @@
       "placement": "4",
       "operations": "none",
       "evaluation_metrics": "Human evaluation",
-      "parts_covered": "learns DFA rules"
+      "parts_covered": "learns DFA rules",
+      "abstract": "Negation scope detection is widely performed as a supervised learning task which relies upon negation labels at word level. This suffers from two key drawbacks: (1) such granular annotations are costly and (2) highly subjective, since, due to the absence of explicit linguistic resolution rules, human annotators often disagree in the perceived negation scopes. To the best of our knowledge, our work presents the first approach that eliminates the need for world-level negation labels, replacing it instead with document-level sentiment annotations. For this, we present a novel strategy for learning fully interpretable negation rules via weak supervision: we apply reinforcement learning to find a policy that reconstructs negation rules from sentiment predictions at document level. Our experiments demonstrate that our approach for weak supervision can effectively learn negation rules. Furthermore, an out-of-sample evaluation via sentiment analysis reveals consistent improvements (of up to 4.66%) over both a sentiment analysis with (i) no negation handling and (ii) the use of word-level annotations from humans. Moreover, the inferred negation rules are fully interpretable."
      }
     ]
    }
