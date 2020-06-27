@@ -17,7 +17,8 @@
       "placement": "1",
       "operations": "Layerwise Relevance Propagation",
       "evaluation_metrics": "Human Evaluation",
-      "parts_covered": ""
+      "parts_covered": "",
+      "abstract": "Nonlinear methods such as deep neural networks achieve state-of-the-art performances in several semantic NLP tasks. However epistemologically transparent decisions are not provided as for the limited interpretability of the underlying acquired neural models. In neural-based semantic inference tasks epistemological transparency corresponds to the ability of tracing back causal connections between the linguistic properties of a input instance and the produced classification output. In this paper, we propose the use of a methodology, called Layerwise Relevance Propagation, over linguistically motivated neural architectures, namely Kernel-based Deep Architectures (KDA), to guide argumentations and explanation inferences. In such a way, each decision provided by a KDA can be linked to real examples, linguistically related to the input instance: these can be used to motivate the network output. Quantitative analysis shows that richer explanations about the semantic and syntagmatic structures of the examples characterize more convincing arguments in two tasks, i.e. question classification and semantic role labeling."
      },
      {
       "id": "58",
@@ -36,7 +37,8 @@
       "placement": "1",
       "operations": "first derivative saliency",
       "evaluation_metrics": "none",
-      "parts_covered": "medium"
+      "parts_covered": "medium",
+      "abstract": "Local model interpretation methods explain individual predictions by assigning an importance value to each input feature. This value is often determined by measuring the change in confidence when a feature is removed. However, the confidence of neural networks is not a robust measure of model uncertainty. This issue makes reliably judging the importance of the input features difficult. We address this by changing the test-time behavior of neural networks using Deep k-Nearest Neighbors. Without harming text classification accuracy, this algorithm provides a more robust uncertainty metric which we use to generate feature importance values. The resulting interpretations better align with human perception than baseline methods. Finally, we use our interpretation method to analyze model predictions on dataset annotation artifacts."
      },
      {
       "id": "46",
@@ -55,7 +57,8 @@
       "placement": "1",
       "operations": "Input gradient explanations",
       "evaluation_metrics": "Informal Examination",
-      "parts_covered": ""
+      "parts_covered": "",
+      "abstract": "Neural networks are among the most accurate supervised learning methods in use today, but their opacity makes them difficult to trust in critical applications, especially when conditions in training differ from those in test. Recent work on explanations for black-box models has produced tools (e.g. LIME) to show the implicit rules behind predictions, which can help us identify when models are right for the wrong reasons. However, these methods do not scale to explaining entire datasets and cannot correct the problems they reveal. We introduce a method for efficiently explaining and regularizing differentiable models by examining and selectively penalizing their input gradients, which provide a normal to the decision boundary. We apply these penalties both based on expert annotation and in an unsupervised fashion that encourages diverse models with qualitatively different decision boundaries for the same classification problem. On multiple datasets, we show our approach generates faithful explanations and models that generalize much better when conditions differ between training and test."
      },
      {
       "id": "15",
@@ -74,7 +77,8 @@
       "placement": "1",
       "operations": "Layerwise Semantic Accumulation",
       "evaluation_metrics": "none",
-      "parts_covered": "medium-high"
+      "parts_covered": "medium-high",
+      "abstract": "Recurrent neural networks (RNNs) are temporal networks and cumulative in nature that have shown promising results in various natural language processing tasks. Despite their success, it still remains a challenge to understand their hidden behavior. In this work, we analyze and interpret the cumulative nature of RNN via a proposed technique named as Layer-wIse-Semantic-Accumulation (LISA) for explaining decisions and detecting the most likely (i.e., saliency) patterns that the network relies on while decision making. We demonstrate (1) LISA: “How an RNN accumulates or builds semantics during its sequential processing for a given text example and expected response” (2) Example2pattern: “How the saliency patterns look like for each category in the data according to the network in decision making”. We analyse the sensitiveness of RNNs about different inputs to check the increase or decrease in prediction scores and further extract the saliency patterns learned by the network. We employ two relation classification datasets: SemEval 10 Task 8 and TAC KBP Slot Filling to explain RNN predictions via the LISA and example2pattern."
      },
      {
       "id": "49",
@@ -93,7 +97,8 @@
       "placement": "1",
       "operations": "neuron activation",
       "evaluation_metrics": "Informal Examination",
-      "parts_covered": "medium"
+      "parts_covered": "medium",
+      "abstract":"Evaluating translation models is a trade-off between effort and detail. On the one end of the spectrum there are automatic count-based methods such as BLEU, on the other end linguistic evaluations by humans, which arguably are more informative but also require a disproportionately high effort. To narrow the spectrum, we propose a general approach on how to automatically expose systematic differences between human and machine translations to human experts. Inspired by adversarial settings, we train a neural text classifier to distinguish human from machine translations. A classifier that performs and generalizes well after training should recognize systematic differences between the two classes, which we uncover with neural explainability methods. Our proof-of-concept implementation, DiaMaT, is open source. Applied to a dataset translated by a state-of-the-art neural Transformer model, DiaMaT achieves a classification accuracy of 75% and exposes meaningful differences between humans and the Transformer, amidst the current discussion about human parity."
      },
      {
       "id": "16",
@@ -112,7 +117,8 @@
       "placement": "1",
       "operations": "computes saliency but with new metrics borrowed from vision",
       "evaluation_metrics": "none",
-      "parts_covered": "applies feature saliency using untested metrics from vision (largely untested for NLP)"
+      "parts_covered": "applies feature saliency using untested metrics from vision (largely untested for NLP)",
+      "abstract": "PatternAttribution is a recent method, introduced in the vision domain, that explains classifications of deep neural networks. We demonstrate that it also generates meaningful interpretations in the language domain."
      },
      {
       "id": "3",
@@ -131,7 +137,8 @@
       "placement": "1",
       "operations": "input perturbation",
       "evaluation_metrics": "none",
-      "parts_covered": "medium-high"
+      "parts_covered": "medium-high",
+      "abstract": "We interpret the predictions of any black-box structured input-structured output model around a specific input-output pair. Our method returns an “explanation” consisting of groups of input-output tokens that are causally related. These dependencies are inferred by querying the model with perturbed inputs, generating a graph over tokens from the responses, and solving a partitioning problem to select the most relevant components. We focus the general approach on sequence-to-sequence problems, adopting a variational autoencoder to yield meaningful input perturbations. We test our method across several NLP sequence generation tasks."
      },
      {
       "id": "41",
@@ -171,7 +178,8 @@
       "placement": "1",
       "operations": "Sampling, Word-level Feature Importance and Saliency,",
       "evaluation_metrics": "Human Evaluation",
-      "parts_covered": "Very High"
+      "parts_covered": "Very High",
+      "abstract": "Despite widespread adoption, machine learning models remain mostly black boxes. Understanding the reasons behind predictions is, however, quite important in assessing trust, which is fundamental if one plans to take action based on a prediction, or when choosing whether to deploy a new model. Such understanding also provides insights into the model, which can be used to transform an untrustworthy model or prediction into a trustworthy one. In this work, we propose LIME, a novel explanation technique that explains the predictions of any classifier in an interpretable and faithful manner, by learning an interpretable model locally around the prediction. We also propose a method to explain models by presenting representative individual predictions and their explanations in a non-redundant way, framing the task as a submodular optimization problem. We demonstrate the flexibility of these methods by explaining different models for text (e.g. random forests) and image classification (e.g. neural networks). We show the utility of explanations via novel experiments, both simulated and with human subjects, on various scenarios that require trust: deciding if one should trust a prediction, choosing between models, improving an untrustworthy classifier, and identifying why a classifier should not be trusted."
      },
      {
       "id": "57",
@@ -190,7 +198,8 @@
       "placement": "1",
       "operations": "Information Retrieval-base, it cast the problem as a ranking problem. Given two entities, they search for sentences that mention the two entities, then rank the sentences using some features.",
       "evaluation_metrics": "none",
-      "parts_covered": "high"
+      "parts_covered": "high",
+      "abstract":"We study the problem of explaining relationships between pairs of knowledge graph entities with human-readable descriptions. Our method extracts and enriches sentences that refer to an entity pair from a corpus and ranks the sentences according to how well they describe the relationship between the entities. We model this task as a learning to rank problem for sentences and employ a rich set of features. When evaluated on a large set of manually annotated sentences, we find that our method significantly improves over state-of-the-art baseline models"
      },
      {
       "id": "36",
@@ -209,7 +218,8 @@
       "placement": "1",
       "operations": "Clustering based on several word features (embeddings, common hypernyms, distributional similarity scores, â¦)\n\nWord-based Saliency",
       "evaluation_metrics": "none",
-      "parts_covered": "argues that a user-interface that provides visualization and supporting word sense disambiguation with additional word features (e.g. hypernyms, related sense, ..)"
+      "parts_covered": "argues that a user-interface that provides visualization and supporting word sense disambiguation with additional word features (e.g. hypernyms, related sense, ..)",
+      "abstract": "Interpretability of a predictive model is a powerful feature that gains the trust of users in the correctness of the predictions. In word sense disambiguation (WSD), knowledge-based systems tend to be much more interpretable than knowledge-free counterparts as they rely on the wealth of manually-encoded elements representing word senses, such as hypernyms, usage examples, and images. We present a WSD system that bridges the gap between these two so far disconnected groups of methods. Namely, our system, providing access to several state-of-the-art WSD models, aims to be interpretable as a knowledge-based system while it remains completely unsupervised and knowledge-free. The presented tool features a Web interface for all-word disambiguation of texts that makes the sense predictions human readable by providing interpretable word sense inventories, sense representations, and disambiguation results. We provide a public API, enabling seamless integration."
      }
     ],
     "local-self": [
@@ -230,7 +240,8 @@
       "placement": "2",
       "operations": "explainability-aware architecture (??)",
       "evaluation_metrics": "Comparison to ground truth",
-      "parts_covered": "generates natural language explanations"
+      "parts_covered": "generates natural language explanations",
+      "abstract": "Solving algebraic word problems requires executing a series of arithmetic operations—a program—to obtain a final answer. However, since programs can be arbitrarily complicated, inducing them directly from question-answer pairs is a formidable challenge. To make this task more feasible, we solve these problems by generating answer rationales, sequences of natural language and human-readable mathematical expressions that derive the final answer through a series of small steps. Although rationales do not explicitly specify programs, they provide a scaffolding for their structure via intermediate milestones. To evaluate our approach, we have created a new 100,000-sample dataset of questions, answers and rationales. Experimental results show that indirect supervision of program learning via answer rationales is a promising strategy for inducing arithmetic programs."
      },
      {
       "id": "34",
@@ -269,7 +280,8 @@
       "placement": "2",
       "operations": "attention",
       "evaluation_metrics": "Informal Examination",
-      "parts_covered": "medium"
+      "parts_covered": "medium",
+      "abstract":"Knowledge bases are important resources for a variety of natural language processing tasks but suffer from incompleteness. We propose a novel embedding model, ITransF, to perform knowledge base completion. Equipped with a sparse attention mechanism, ITransF discovers hidden concepts of relations and transfer statistical strength through the sharing of concepts. Moreover, the learned associations between relations and concepts, which are represented by sparse attention vectors, can be interpreted easily. We evaluate ITransF on two benchmark datasets—WN18 and FB15k for knowledge base completion and obtains improvements on both the mean rank and Hits@10 metrics, over all baselines that do not use additional information."
      },
      {
       "id": "91",
@@ -288,7 +300,8 @@
       "placement": "2",
       "operations": "attention",
       "evaluation_metrics": "Comparison to ground truth",
-      "parts_covered": "medium-high"
+      "parts_covered": "medium-high",
+      "abstract": "Character-level features are currently used in different neural network-based natural language processing algorithms. However, little is known about the character-level patterns those models learn. Moreover, models are often compared only quantitatively while a qualitative analysis is missing. In this paper, we investigate which character-level patterns neural networks learn and if those patterns coincide with manually-defined word segmentations and annotations. To that end, we extend the contextual decomposition technique (Murdoch et al. 2018) to convolutional neural networks which allows us to compare convolutional neural networks and bidirectional long short-term memory networks. We evaluate and compare these models for the task of morphological tagging on three morphologically different languages and show that these models implicitly discover understandable linguistic rules."
      },
      {
       "id": "5",
@@ -307,7 +320,8 @@
       "placement": "2",
       "operations": "first derivative saliency (plus maybe, though leaning towards not adding activation cluster as an operation)",
       "evaluation_metrics": "none",
-      "parts_covered": "small (heatmap on important words)"
+      "parts_covered": "small (heatmap on important words)",
+      "abstract":"We present an interpretable neural network approach to predicting and understanding politeness in natural language requests. Our models are based on simple convolutional neural networks directly on raw text, avoiding any manual identification of complex sentiment or syntactic features, while performing better than such feature-based models from previous work. More importantly, we use the challenging task of politeness prediction as a testbed to next present a much-needed understanding of what these successful networks are actually learning. For this, we present several network visualizations based on activation clusters, first derivative saliency, and embedding space transformations, helping us automatically identify several subtle linguistics markers of politeness theories. Further, this analysis reveals multiple novel, high-scoring politeness strategies which, when added back as new features, reduce the accuracy gap between the original featurized system and the neural model, thus providing a clear quantitative interpretation of the success of these neural networks"
      },
      {
       "id": "13",
@@ -326,7 +340,8 @@
       "placement": "2",
       "operations": "(a) attention saliency\n(b) LSTM gating signals",
       "evaluation_metrics": "Informal Examination",
-      "parts_covered": ""
+      "parts_covered": "",
+      "abstract": "Deep learning models have achieved remarkable success in natural language inference (NLI) tasks. While these models are widely explored, they are hard to interpret and it is often unclear how and why they actually work. In this paper, we take a step toward explaining such deep learning based models through a case study on a popular neural model for NLI. In particular, we propose to interpret the intermediate layers of NLI models by visualizing the saliency of attention and LSTM gating signals. We present several examples for which our methods are able to reveal interesting insights and identify the critical information contributing to the model decisions."
      },
      {
       "id": "21",
@@ -345,6 +360,7 @@
       "placement": "2",
       "operations": "first derivative saliency",
       "evaluation_metrics": "Informal Examination",
+      "abstract": "Alzheimer’s disease (AD) is an irreversible and progressive brain disease that can be stopped or slowed down with medical treatment. Language changes serve as a sign that a patient’s cognitive functions have been impacted, potentially leading to early diagnosis. In this work, we use NLP techniques to classify and analyze the linguistic characteristics of AD patients using the DementiaBank dataset. We apply three neural models based on CNNs, LSTM-RNNs, and their combination, to distinguish between language samples from AD and control patients. We achieve a new independent benchmark accuracy for the AD classification task. More importantly, we next interpret what these neural models have learned about the linguistic characteristics of AD patients, via analysis based on activation clustering and first-derivative saliency techniques. We then perform novel automatic pattern discovery inside activation clusters, and consolidate AD patients’ distinctive grammar patterns. Additionally, we show that first derivative saliency can not only rediscover previous language patterns of AD patients, but also shed light on the limitations of neural models. Lastly, we also include analysis of gender-separated AD data.",
       "parts_covered": "medium"
      },
      {

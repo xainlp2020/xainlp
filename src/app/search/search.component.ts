@@ -90,15 +90,16 @@ export class SearchComponent implements OnInit {
   search_caseSensitive = false;
   getHighlights(searchStr, str) {
     var searchStrLen = searchStr.length;
+    if (searchStrLen == 0 || str == undefined) {
+      return str;
+    }
     var massaged_str = str.slice(0);
     if(!this.search_caseSensitive)
     {
       massaged_str = massaged_str.toLowerCase()
     }
 
-    if (searchStrLen == 0) {
-        return str;
-    }
+    
     var startIndex = 0, index, indices = [];
     if (true) {
         searchStr = searchStr.toLowerCase();
