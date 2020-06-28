@@ -126,7 +126,7 @@ export class SearchComponent implements OnInit {
   
   active_tab = "All"
 
-  query = "question";
+  query = "";
   attr_order = ["any", "title", "abstract", "nlp_task_1",
   "authors", "explainability", "visualization", 
   "operations", "evaluation_metrics"]

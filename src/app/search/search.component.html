@@ -2,7 +2,7 @@
     <div class="w3-margin w3-content w3-padding-large">
         <div class="w3-row">
             <div class="w3-twothird">
-                <input class="w3-input w3-border w3-border-dark-grey w3-round" (keydown)="keyDownFunction($event)" [(ngModel)]="query" type="text">
+                <input class="w3-input w3-border w3-border-dark-grey w3-round" placeholder="Enter your query terms..." (keydown)="keyDownFunction($event)" [(ngModel)]="query" type="text">
             </div>
             <div class="w3-third">
                 <!-- <input class="w3-margin-left" type="checkbox" checked="search_caseSensitive" 
