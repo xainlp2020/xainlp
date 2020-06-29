@@ -15,569 +15,239 @@
             </div>
         </div>
     </div>
-    <mat-divider></mat-divider>
 
 
-    <div class="w3-margin d-flex w3-padding">
-        <ul ngbNav #nav="ngbNav" activeId={{active_tab}} class="nav-pills" orientation="vertical">
-            <li *ngFor="let result of final_results; let attr_index=index" 
-                ngbNavItem="{{attr_natural_language[attr_index]}}"  
-                [disabled]="result == undefined" style="width:100%">
-                <a *ngIf="final_results[attr_index]!=undefined" ngbNavLink>{{attr_natural_language[attr_index] | uppercase}} ({{final_results[attr_index].length}})</a>
-                <ng-template ngbNavContent>
-                    <p>Found in {{final_results[attr_index].length}} publication(s)</p>
-                    
-                    <!-- All results *ngIf="attr_natural_language[attr_index]==='All'" -->
-                    <div class="w3-white" style="width:80%">
-                        <ngb-pagination class="w3-small d-flex justify-content-center"
-                            [(page)]="page"
-                            [pageSize]="pageSize"
-                            [collectionSize]="final_results[attr_index].length"
-                            [boundaryLinks]="true">
-                        </ngb-pagination>
-                        <div *ngFor="let paper of final_results[attr_index] | slice: (page-1) * pageSize: (page-1) * pageSize + pageSize" style="margin-top:40px;">    
-                            <table class="w3-margin-bottom">
-                                <tr>
-                                    <td class="w3-right">Title:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <b style="cursor:pointer">
-                                            <span style="text-decoration: underline;" class="w3-text-indigo" [innerHTML]="getHighlights(query, paper['title'] | titlecase)"></span>
-                                        </b>
-                                    </td>    
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Authors:</td> 
-                                    <td>&nbsp;</td>
-                                    <td class="w3-text-black">
-                                        <span [innerHTML]="getHighlights(query, paper['authors'] | titlecase)"></span>
-                                    </td>    
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Abstract:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['abstract'])"></span>
-                                    </td> 
-                                </tr>
-                                <tr *ngIf="attr_natural_language[attr_index]==='nlp topic'">
-                                    <td class="w3-right">Operations:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['nlp_task_1'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr *ngIf="attr_natural_language[attr_index]==='operations'">
-                                    <td class="w3-right">Operations:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['operations'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Explainability:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['explainability'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Visualization:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['visualization'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right"></td> 
-                                    <td>&nbsp;</td>
-                                    <td class="w3-text-indigo">
-                                        <span [innerHTML]="getHighlights(query, paper['venue'] | uppercase)"></span>
-                                        <span>&nbsp;</span>
-                                        <span [innerHTML]="getHighlights(query, paper['year'])"></span>
-                                        <span>&nbsp;</span>
-                                        Cited by <span [innerHTML]="getHighlights(query, paper['citation'])"></span>
-                                    </td> 
-                                </tr>                            
-                            </table>
-                            <mat-divider></mat-divider>
-                        </div>
-                        <ngb-pagination class="w3-margin-top w3-small d-flex justify-content-center"
-                            [(page)]="page"
-                            [pageSize]="pageSize"
-                            [collectionSize]="final_results[attr_index].length"
-                            [boundaryLinks]="true">
-                        </ngb-pagination>
+    <div class="w3-row">
+        <div class="w3-col s6">
+            <div class="w3-margin d-flex w3-padding">
+                <ul ngbNav #nav="ngbNav" activeId={{active_tab}} class="nav-pills" orientation="vertical">
+                    <li *ngFor="let result of final_results; let attr_index=index" 
+                        ngbNavItem="{{attr_natural_language[attr_index]}}"  
+                        [disabled]="result == undefined" style="width:100%">
+                        <a *ngIf="final_results[attr_index]!=undefined" ngbNavLink>{{attr_natural_language[attr_index] | uppercase}} ({{final_results[attr_index].length}})</a>
+                        <ng-template ngbNavContent>
+                            <p>Found in {{final_results[attr_index].length}} publication(s)</p>
+                            
+                            <!-- All results *ngIf="attr_natural_language[attr_index]==='All'" -->
+                            <div class="w3-white" style="width:100%">
+                                <ngb-pagination class="w3-small d-flex justify-content-center"
+                                    [(page)]="page"
+                                    [pageSize]="pageSize"
+                                    [collectionSize]="final_results[attr_index].length"
+                                    [boundaryLinks]="true">
+                                </ngb-pagination>
+                                <div *ngFor="let paper of final_results[attr_index] | slice: (page-1) * pageSize: (page-1) * pageSize + pageSize" style="margin-top:40px;">    
+                                    <table class="w3-margin-bottom">
+                                        <tr>
+                                            <td class="w3-right">Title:</td> 
+                                            <td>&nbsp;</td>
+                                            <td>
+                                                <b style="cursor:pointer">
+                                                    <span style="text-decoration: underline;" class="w3-text-indigo" [innerHTML]="getHighlights(query, paper['title'] | titlecase)"></span>
+                                                </b>
+                                            </td>    
+                                        </tr>
+                                        <tr>
+                                            <td class="w3-right">Authors:</td> 
+                                            <td>&nbsp;</td>
+                                            <td class="w3-text-black">
+                                                <span [innerHTML]="getHighlights(query, paper['authors'] | titlecase)"></span>
+                                            </td>    
+                                        </tr>
+                                        <tr>
+                                            <td class="w3-right">Abstract:</td> 
+                                            <td>&nbsp;</td>
+                                            <td>
+                                                <span [innerHTML]="getHighlights(query, paper['abstract'])"></span>
+                                            </td> 
+                                        </tr>
+                                        <tr *ngIf="attr_natural_language[attr_index]==='nlp topic'">
+                                            <td class="w3-right">Operations:</td> 
+                                            <td>&nbsp;</td>
+                                            <td>
+                                                <span [innerHTML]="getHighlights(query, paper['nlp_task_1'] | titlecase)"></span>
+                                            </td> 
+                                        </tr>
+                                        <tr *ngIf="attr_natural_language[attr_index]==='operations'">
+                                            <td class="w3-right">Operations:</td> 
+                                            <td>&nbsp;</td>
+                                            <td>
+                                                <span [innerHTML]="getHighlights(query, paper['operations'] | titlecase)"></span>
+                                            </td> 
+                                        </tr>
+                                        <tr>
+                                            <td class="w3-right">Explainability:</td> 
+                                            <td>&nbsp;</td>
+                                            <td>
+                                                <span [innerHTML]="getHighlights(query, paper['explainability'] | titlecase)"></span>
+                                            </td> 
+                                        </tr>
+                                        <tr>
+                                            <td class="w3-right">Visualization:</td> 
+                                            <td>&nbsp;</td>
+                                            <td>
+                                                <span [innerHTML]="getHighlights(query, paper['visualization'] | titlecase)"></span>
+                                            </td> 
+                                        </tr>
+                                        <tr>
+                                            <td class="w3-right"></td> 
+                                            <td>&nbsp;</td>
+                                            <td class="w3-text-indigo">
+                                                <span [innerHTML]="getHighlights(query, paper['venue'] | uppercase)"></span>
+                                                <span>&nbsp;</span>
+                                                <span [innerHTML]="getHighlights(query, paper['year'])"></span>
+                                                <span>&nbsp;</span>
+                                                Cited by <span [innerHTML]="getHighlights(query, paper['citation'])"></span>
+                                            </td> 
+                                        </tr>    
+                                        <tr>
+                                            <td class="w3-right"></td> 
+                                            <td>&nbsp;</td>
+                                            <td>
+                                                <button class="w3-button w3-hover-pink w3-round w3-indigo" 
+                                                    style="cursor:pointer; padding: 3px 5px;"
+                                                    (click)="findSimilar(paper)"> Find Similar Papers </button>
+                                            </td> 
+                                        </tr>                        
+                                    </table>
+                                    <mat-divider></mat-divider>
+                                </div>
+                                <ngb-pagination class="w3-margin-top w3-small d-flex justify-content-center"
+                                    [(page)]="page"
+                                    [pageSize]="pageSize"
+                                    [collectionSize]="final_results[attr_index].length"
+                                    [boundaryLinks]="true">
+                                </ngb-pagination>
+                            </div>
+                        </ng-template>
+                    </li>
+                </ul>
+                <div [ngbNavOutlet]="nav" class="ml-4"></div>
+            </div>
+        </div>
+
+        <div style="font-size: 13px!important;height:750px; overflow: scroll;" *ngIf="seedpaper!=undefined" 
+                class="fixed w3-border w3-margin-top w3-col s6 w3-padding w3-dark-grey">
+            <mat-card>
+                <mat-card-content>
+                    <div>Found {{similarPapers.length}} paper(s) similar to <br>
+                        <b style="cursor:pointer">
+                            <span class="w3-text-indigo">{{seedpaper.title | titlecase}}</span>
+                        </b>
+                        <hr>
                     </div>
 
-
-
-
-                    <!-- abstract -->
-                    <!-- <div *ngIf="attr_natural_language[attr_index]==='abstract'" class="w3-margin-top w3-white" style="width:80%">
-                        <ngb-pagination class="w3-margin-top w3-small d-flex justify-content-center"
-                            [(page)]="page"
+                    <div class="w3-margin-top w3-grey w3-padding" >
+                        <ngb-pagination class="d-flex justify-content-center"
+                            [(page)]="sim_page"
                             [pageSize]="pageSize"
-                            [collectionSize]="final_results[attr_index].length"
+                            [collectionSize]="similarPapers.length"
                             [boundaryLinks]="true">
                         </ngb-pagination>
-                        <div *ngFor="let paper of final_results[attr_index]  | slice: (page-1) * pageSize: (page-1) * pageSize + pageSize" style="margin-top:40px;">
-                            <table class="w3-margin-bottom">
-                                <tr>
-                                    <td class="w3-right">Title:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <b style="cursor:pointer">
-                                            <span style="text-decoration: underline;" class="w3-text-indigo" [innerHTML]="getHighlights(query, paper['title'] | titlecase)"></span>
-                                        </b>
-                                    </td>    
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Authors:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['authors'] | titlecase)"></span>
-                                    </td>    
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Abstract:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['abstract'])"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Explainability:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['explainability'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Visualization:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['visualization'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right"></td> 
-                                    <td>&nbsp;</td>
-                                    <td class="w3-text-indigo">
-                                        <span [innerHTML]="getHighlights(query, paper['venue'] | uppercase)"></span>
-                                        <span>&nbsp;</span>
-                                        <span [innerHTML]="getHighlights(query, paper['year'])"></span>
-                                        <span>&nbsp;</span>
-                                        Cited by <span [innerHTML]="getHighlights(query, paper['citation'])"></span>
-                                    </td> 
-                                </tr>                            
-                            </table>
-                            <mat-divider></mat-divider>
+                        <div *ngFor="let paper of similarPapers | slice: (sim_page-1) * pageSize: (sim_page-1) * pageSize + pageSize" style="margin-top:10px;">    
+                            <mat-card class="w3-small w3-margin-top">
+                                <table>
+                                    <tr class="w3-margin-bottom">
+                                        <td class="w3-right">Why:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <span style="cursor:pointer">
+                                                <span [innerHTML]="paper['similarity_explanation']"></span>
+                                            </span>
+                                        </td>    
+                                    </tr>
+                                    <tr class="w3-margin-bottom">
+                                        <td class="w3-right">Similarity:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <span style="cursor:pointer">
+                                                <span>{{paper.similarity}}</span>
+                                            </span>
+                                        </td>    
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr style="margin-top:10px">
+                                        <td class="w3-right">Title:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <b style="cursor:pointer">
+                                                <!-- <span style="text-decoration: underline;" class="w3-text-indigo" [innerHTML]="getHighlights(query, paper['title'] | titlecase)"></span> -->
+                                                <span style="text-decoration: underline;" class="w3-text-indigo">{{paper.title | titlecase}}</span>
+                                            </b>
+                                        </td>    
+                                    </tr>
+                                    <tr>
+                                        <td class="w3-right">Authors:</td> 
+                                        <td>&nbsp;</td>
+                                        <td class="w3-text-black">
+                                            <!-- <span [innerHTML]="getHighlights(query, paper['authors'] | titlecase)"></span> -->
+                                            <span>{{paper['authors'] | titlecase}}</span>
+                                        </td>    
+                                    </tr>
+                                    <!-- <tr>
+                                        <td class="w3-right">Abstract:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <span [innerHTML]="getHighlights(query, paper['abstract'])"></span>
+                                        </td> 
+                                    </tr> -->
+                                    <tr>
+                                        <td class="w3-right">Operations:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <span>{{paper['nlp_task_1'] | titlecase}}</span>
+                                        </td> 
+                                    </tr>
+                                    <!-- <tr *ngIf="attr_natural_language[attr_index]==='operations'">
+                                        <td class="w3-right">Operations:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <span [innerHTML]="getHighlights(query, paper['operations'] | titlecase)"></span>
+                                        </td> 
+                                    </tr> -->
+                                    <tr>
+                                        <td class="w3-right">Explainability:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <!-- <span [innerHTML]="getHighlights(query, paper['explainability'] | titlecase)"></span> -->
+                                            <span>{{paper['main_explainability'] | titlecase}}</span>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td class="w3-right">Visualization:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <!-- <span [innerHTML]="getHighlights(query, paper['visualization'] | titlecase)"></span> -->
+                                            <span>{{paper['main_visualization'] | titlecase}}</span>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td class="w3-right"></td> 
+                                        <td>&nbsp;</td>
+                                        <td class="w3-text-indigo">
+                                            <span [innerHTML]="getHighlights(query, paper['venue'] | uppercase)"></span>
+                                            <span>&nbsp;</span>
+                                            <span [innerHTML]="getHighlights(query, paper['year'])"></span>
+                                            <span>&nbsp;</span>
+                                            Cited by <span [innerHTML]="getHighlights(query, paper['citation'])"></span>
+                                        </td> 
+                                    </tr>     
+                                </table>
+                            </mat-card>
+                            
                         </div>
-                        <ngb-pagination class="w3-margin-top w3-small d-flex justify-content-center"
-                            [(page)]="page"
-                            [pageSize]="pageSize"
-                            [collectionSize]="final_results[attr_index].length"
-                            [boundaryLinks]="true">
-                        </ngb-pagination>
-                    </div> -->
-
-                    <!-- nlp topic -->
-                    <!-- <div *ngIf="attr_natural_language[attr_index]==='nlp topic'" class="w3-margin-top w3-white" style="width:80%">
-                        <ngb-pagination class="w3-margin-top w3-small d-flex justify-content-center"
-                            [(page)]="page"
-                            [pageSize]="pageSize"
-                            [collectionSize]="final_results[attr_index].length"
-                            [boundaryLinks]="true">
-                        </ngb-pagination>
-                        <div *ngFor="let paper of final_results[attr_index]  | slice: (page-1) * pageSize: (page-1) * pageSize + pageSize" style="margin-top:40px;">
-                            <table class="w3-margin-bottom">
-                                <tr>
-                                    <td class="w3-right">Title:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <b style="cursor:pointer">
-                                            <span style="text-decoration: underline;" class="w3-text-indigo" [innerHTML]="getHighlights(query, paper['title'] | titlecase)"></span>
-                                        </b>
-                                    </td>    
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Authors:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['authors'] | titlecase)"></span>
-                                    </td>    
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Abstract:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['abstract'])"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">NLP Topic:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['nlp_task_1'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Explainability:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['explainability'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Visualization:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['visualization'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right"></td> 
-                                    <td>&nbsp;</td>
-                                    <td class="w3-text-indigo">
-                                        <span [innerHTML]="getHighlights(query, paper['venue'] | uppercase)"></span>
-                                        <span>&nbsp;</span>
-                                        <span [innerHTML]="getHighlights(query, paper['year'])"></span>
-                                        <span>&nbsp;</span>
-                                        Cited by <span [innerHTML]="getHighlights(query, paper['citation'])"></span>
-                                    </td> 
-                                </tr>                            
-                            </table>
-                            <mat-divider></mat-divider>
-                        </div>
-                        <ngb-pagination class="w3-margin-top w3-small d-flex justify-content-center"
-                            [(page)]="page"
-                            [pageSize]="pageSize"
-                            [collectionSize]="final_results[attr_index].length"
-                            [boundaryLinks]="true">
-                        </ngb-pagination>
-                    </div> -->
-
-                    <!-- Title -->
-                    <!-- <div *ngIf="attr_natural_language[attr_index]==='title'" class="w3-white" style="width:80%">
-                        <div *ngFor="let paper of final_results[attr_index] | slice: (page-1) * pageSize: (page-1) * pageSize + pageSize" style="margin-top:40px;">
-                            <table class="w3-margin-bottom">
-                                <tr>
-                                    <td class="w3-right">Title:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <b style="cursor:pointer">
-                                            <span style="text-decoration: underline;" class="w3-text-indigo" [innerHTML]="getHighlights(query, paper['title'] | titlecase)"></span>
-                                        </b>
-                                    </td>    
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Authors:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['authors'] | titlecase)"></span>
-                                    </td>    
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Abstract:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['abstract'])"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Explainability:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['explainability'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Visualization:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['visualization'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right"></td> 
-                                    <td>&nbsp;</td>
-                                    <td class="w3-text-indigo">
-                                        <span [innerHTML]="getHighlights(query, paper['venue'] | uppercase)"></span>
-                                        <span>&nbsp;</span>
-                                        <span [innerHTML]="getHighlights(query, paper['year'])"></span>
-                                        <span>&nbsp;</span>
-                                        Cited by <span [innerHTML]="getHighlights(query, paper['citation'])"></span>
-                                    </td> 
-                                </tr>                            
-                            </table>
-                            <mat-divider></mat-divider>
-                        </div>
-                        <ngb-pagination class="w3-margin-top w3-small d-flex justify-content-center"
-                            [(page)]="page"
-                            [pageSize]="pageSize"
-                            [collectionSize]="final_results[attr_index].length"
-                            [boundaryLinks]="true">
-                        </ngb-pagination>
-                    </div> -->
-
-                    <!-- Authors -->
-                    <!-- <div *ngIf="attr_natural_language[attr_index]==='authors'" class="w3-white" style="width:80%">
-                        <div *ngFor="let paper of final_results[attr_index] | slice: (page-1) * pageSize: (page-1) * pageSize + pageSize" style="margin-top:40px;">
-                            <table class="w3-margin-bottom">
-                                <tr>
-                                    <td class="w3-right">Title:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <b style="cursor:pointer">
-                                            <span style="text-decoration: underline;" class="w3-text-indigo" [innerHTML]="getHighlights(query, paper['title'] | titlecase)"></span>
-                                        </b>
-                                    </td>    
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Authors:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['authors'] | titlecase)"></span>
-                                    </td>    
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Abstract:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['abstract'])"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Explainability:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['explainability'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Visualization:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['visualization'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right"></td> 
-                                    <td>&nbsp;</td>
-                                    <td class="w3-text-indigo">
-                                        <span [innerHTML]="getHighlights(query, paper['venue'] | uppercase)"></span>
-                                        <span>&nbsp;</span>
-                                        <span [innerHTML]="getHighlights(query, paper['year'])"></span>
-                                        <span>&nbsp;</span>
-                                        Cited by <span [innerHTML]="getHighlights(query, paper['citation'])"></span>
-                                    </td> 
-                                </tr>                            
-                            </table>
-                            <mat-divider></mat-divider>
-                        </div>
-                        <ngb-pagination class="w3-margin-top w3-small d-flex justify-content-center"
-                            [(page)]="page"
-                            [pageSize]="pageSize"
-                            [collectionSize]="final_results[attr_index].length"
-                            [boundaryLinks]="true">
-                        </ngb-pagination>
-                    </div> -->
-
-                    <!-- explainability -->
-                    <!-- <div *ngIf="attr_natural_language[attr_index]==='explainability'" class="w3-white" style="width:80%">
-                        <div *ngFor="let paper of final_results[attr_index] | slice: (page-1) * pageSize: (page-1) * pageSize + pageSize" style="margin-top:40px;">
-                            <table class="w3-margin-bottom">
-                                <tr>
-                                    <td class="w3-right">Title:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <b style="cursor:pointer">
-                                            <span style="text-decoration: underline;" class="w3-text-indigo" [innerHTML]="getHighlights(query, paper['title'] | titlecase)"></span>
-                                        </b>
-                                    </td>    
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Authors:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['authors'] | titlecase)"></span>
-                                    </td>    
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Abstract:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['abstract'])"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Explainability:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['explainability'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Visualization:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['visualization'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right"></td> 
-                                    <td>&nbsp;</td>
-                                    <td class="w3-text-indigo">
-                                        <span [innerHTML]="getHighlights(query, paper['venue'] | uppercase)"></span>
-                                        <span>&nbsp;</span>
-                                        <span [innerHTML]="getHighlights(query, paper['year'])"></span>
-                                        <span>&nbsp;</span>
-                                        Cited by <span [innerHTML]="getHighlights(query, paper['citation'])"></span>
-                                    </td> 
-                                </tr>                            
-                            </table>
-                            <mat-divider></mat-divider>
-                        </div>
-                        <ngb-pagination class="w3-margin-top w3-small d-flex justify-content-center"
-                            [(page)]="page"
-                            [pageSize]="pageSize"
-                            [collectionSize]="final_results[attr_index].length"
-                            [boundaryLinks]="true">
-                        </ngb-pagination>
-                    </div> -->
-
-                    <!-- operations  -->
-                    <!-- <div *ngIf="attr_natural_language[attr_index]==='operations'" class="w3-white" style="width:80%">
-                        <div *ngFor="let paper of final_results[attr_index] | slice: (page-1) * pageSize: (page-1) * pageSize + pageSize" style="margin-top:40px;">
-                            <table class="w3-margin-bottom">
-                                <tr>
-                                    <td class="w3-right">Title:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <b style="cursor:pointer">
-                                            <span style="text-decoration: underline;" class="w3-text-indigo" [innerHTML]="getHighlights(query, paper['title'] | titlecase)"></span>
-                                        </b>
-                                    </td>    
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Authors:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['authors'] | titlecase)"></span>
-                                    </td>    
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Abstract:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['abstract'])"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Operations:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['operations'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Explainability:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['explainability'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Visualization:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['visualization'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right"></td> 
-                                    <td>&nbsp;</td>
-                                    <td class="w3-text-indigo">
-                                        <span [innerHTML]="getHighlights(query, paper['venue'] | uppercase)"></span>
-                                        <span>&nbsp;</span>
-                                        <span [innerHTML]="getHighlights(query, paper['year'])"></span>
-                                        <span>&nbsp;</span>
-                                        Cited by <span [innerHTML]="getHighlights(query, paper['citation'])"></span>
-                                    </td> 
-                                </tr>                            
-                            </table>
-                            <mat-divider></mat-divider>
-                        </div>
-                        <ngb-pagination class="w3-margin-top w3-small d-flex justify-content-center"
-                            [(page)]="page"
-                            [pageSize]="pageSize"
-                            [collectionSize]="final_results[attr_index].length"
-                            [boundaryLinks]="true">
-                        </ngb-pagination>
-                    </div> -->
-
-                    <!-- Venue -->
-                    <!-- <div *ngIf="attr_natural_language[attr_index]==='venue'" class="w3-white" style="width:100%">
-                        <div *ngFor="let paper of final_results[attr_index] | slice: (page-1) * pageSize: (page-1) * pageSize + pageSize" style="margin-top:40px;">
-                            <table class="w3-margin-bottom">
-                                <tr>
-                                    <td class="w3-right">Title:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <b style="cursor:pointer">
-                                            <span style="text-decoration: underline;" class="w3-text-indigo" [innerHTML]="getHighlights(query, paper['title'] | titlecase)"></span>
-                                        </b>
-                                    </td>    
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Authors:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['authors'] | titlecase)"></span>
-                                    </td>    
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Abstract:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['abstract'])"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Explainability:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['main_explainability'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right">Visualization:</td> 
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <span [innerHTML]="getHighlights(query, paper['main_visualization'] | titlecase)"></span>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td class="w3-right"></td> 
-                                    <td>&nbsp;</td>
-                                    <td class="w3-text-indigo">
-                                        <span [innerHTML]="getHighlights(query, paper['venue'] | uppercase)"></span>
-                                        <span>&nbsp;</span>
-                                        <span [innerHTML]="getHighlights(query, paper['year'])"></span>
-                                        <span>&nbsp;</span>
-                                        Cited by <span [innerHTML]="getHighlights(query, paper['citation'])"></span>
-                                    </td> 
-                                </tr>                            
-                            </table>
-                            <mat-divider></mat-divider>
-                        </div>
-                    </div> -->
-
-
-                </ng-template>
-            </li>
-        </ul>
-       <div [ngbNavOutlet]="nav" class="ml-4"></div>
-      </div>
+                        <ngb-pagination class="w3-margin-top d-flex justify-content-center"
+                                [(page)]="sim_page"
+                                [pageSize]="pageSize"
+                                [collectionSize]="similarPapers.length"
+                                [boundaryLinks]="true">
+                            </ngb-pagination>
+                    </div>
+                    
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
 </div>
