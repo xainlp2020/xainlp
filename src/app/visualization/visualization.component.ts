@@ -39,12 +39,14 @@ export class VisualizationComponent implements OnInit {
   "those", "which", "what", "how", "when", "then", "therefore", "hence", "thus", "so", "very", "too", "its", "via", "model", "models",
   "&", ",", "=", "+", "any", "every", "each", "our", "their", "is", "was", "it", "it's", "his", "her", "they", "them", "me", "we", "she", "him", "he",
   "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "0", ".", "by", "as", "(", ")", "-", ".", "@", "'", "<", ">", "%", "both", "neither",
-  "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
-  "seven", "eight", "nine", "ten"])
+  "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z","such","up",'down',
+  "yet", "also", "either", "as", "over", "upon", "seven", "eight", "nine", "ten", "between", "methods", "method", "approach", "task", "tasks", "way", "ways",
+  "into", "while", "whereas", "paper"])
 
   wordcloud_options;
   wordcloud_shape = "circle"
   wordcloudChartInstance;
+  wordcloud_threshold = 4
   wordcloudInit(event)
   {
     this.wordcloudChartInstance = event
@@ -62,8 +64,16 @@ export class VisualizationComponent implements OnInit {
        // get title
        var title = paper['title'].trim()
        var abstract = paper['abstract'].trim()
-      
-       var title_words = title.split(/[\s.]+/g)
+       var explainability = paper['explainability']
+       var visualization = paper['visualization']
+       var operations = paper['operations']
+       var nlp_task = paper['nlp_task_1']
+       
+       var concatenation =  title + " " + abstract + " " + explainability 
+                            + " " + visualization + " " + operations + " " + nlp_task;
+
+
+       var words = concatenation.split(/[\s.]+/g)
         .map(w => w.replace(/^[“‘"\-—()\[\]{}]+/g, ""))
         .map(w => w.replace(/[;:.!?()\[\]{},"'’”\-—]+$/g, ""))
         .map(w => w.replace(/['’]s$/g, ""))
@@ -71,17 +81,9 @@ export class VisualizationComponent implements OnInit {
         .map(w => w.toLowerCase())
         .filter(w => w && !this.stopwords.has(w))
 
-       var abstract_words = abstract.split(/[\s.]+/g)
-       .map(w => w.replace(/^[“‘"\-—()\[\]{}]+/g, ""))
-       .map(w => w.replace(/[;:.!?()\[\]{},"'’”\-—]+$/g, ""))
-       .map(w => w.replace(/['’]s$/g, ""))
-       .map(w => w.substring(0, 30))
-       .map(w => w.toLowerCase())
-       .filter(w => w && !this.stopwords.has(w))
-
-       for(var j = 0; j < title_words.length; j++)
+       for(var j = 0; j < words.length; j++)
        {
-         var word = title_words[j];
+         var word = words[j];
          if(word in word_count)
          {
            word_count[word] = word_count[word] + 1
@@ -90,32 +92,11 @@ export class VisualizationComponent implements OnInit {
            word_count[word] = 1
          }
        }
-       for(var j = 0; j < abstract_words.length; j++)
-       {
-         var word = abstract_words[j];
-         if(word in word_count)
-         {
-           word_count[word] = word_count[word] + 1
-         }
-         else{
-           word_count[word] = 1
-         }
-       }
-      //  for(var word in title_words)
-      //  {
-      //    if(word in word_count)
-      //    {
-      //      word_count[word] = word_count[word] + 1
-      //    }
-      //    else{
-      //      word_count[word] = 1
-      //    }
-      //  }
      }
      var wordcloud_data = []
      for(word in word_count)
      {
-       if(word_count[word] < 2)
+       if(word_count[word] < this.wordcloud_threshold)
        {
          continue
        }
@@ -137,7 +118,7 @@ export class VisualizationComponent implements OnInit {
         series: [ {
             type: 'wordCloud',
             gridSize: 2,
-            sizeRange: [5, 40],
+            sizeRange: [7, 40],
             rotationRange: [-90, 90],
             shape: this.wordcloud_shape,
             width: 500,
