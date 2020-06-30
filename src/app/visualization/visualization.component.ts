@@ -68,10 +68,10 @@ export class VisualizationComponent implements OnInit {
     var venue_set = {}
     var dist_data = []
     // prepare data
-    for(var i = 0; i < this.all_papers.length; i++)
+    for(var i = 0; i < this.all_survived_papers.length; i++)
     {
-      console.log("checking " + this.all_papers[i])
-      var venue = this.all_papers[i]["venue"].toUpperCase();
+      console.log("checking " + this.all_survived_papers[i])
+      var venue = this.all_survived_papers[i]["venue"].toUpperCase();
       if (venue in venue_set)
       {
         venue_set[venue] = venue_set[venue] + 1
@@ -100,11 +100,15 @@ export class VisualizationComponent implements OnInit {
       },
       tooltip: {
           trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)'
+          formatter: '{a} <br/>{b} : {c} ({d}%)',
+      },
+      label:
+      {
+        fontSize: 12
       },
       series: [
         {
-            name: 'Visualization Technique',
+            name: 'Venue',
             type: 'pie',
             radius: [10, 50],
             center: ['50%', '50%'],
@@ -130,16 +134,20 @@ export class VisualizationComponent implements OnInit {
     var viz_set = {}
     var dist_data = []
     // prepare data
-    for(var i = 0; i < this.all_papers.length; i++)
+    for(var i = 0; i < this.all_survived_papers.length; i++)
     {
-      console.log("checking " + this.all_papers[i])
-      var exp = this.all_papers[i]["main_visualization"].toUpperCase();
-      if (exp in viz_set)
+      console.log("checking " + this.all_survived_papers[i])
+      var viz = this.all_survived_papers[i]["main_visualization"].toUpperCase();
+      if(viz.indexOf(" ")>0)
       {
-        viz_set[exp] = viz_set[exp] + 1
+        viz = viz.replace(" ", "\n")
+      }
+      if (viz in viz_set)
+      {
+        viz_set[viz] = viz_set[viz] + 1
       }
       else{
-        viz_set[exp] = 0
+        viz_set[viz] = 0
       }
     }
     for(var key in viz_set)
@@ -165,9 +173,13 @@ export class VisualizationComponent implements OnInit {
           trigger: 'item',
           formatter: '{a} <br/>{b} : {c} ({d}%)'
       },
+      label:
+      {
+        fontSize: 10
+      },
       series: [
         {
-            name: 'Visualization Technique',
+            name: 'Visualization',
             type: 'pie',
             radius: [10, 50],
             center: ['50%', '50%'],
@@ -192,10 +204,15 @@ export class VisualizationComponent implements OnInit {
     var exp_set = {}
     var dist_data = []
     // prepare data
-    for(var i = 0; i < this.all_papers.length; i++)
+    for(var i = 0; i < this.all_survived_papers.length; i++)
     {
-      console.log("checking " + this.all_papers[i])
-      var exp = this.all_papers[i]["main_explainability"].toUpperCase();
+      console.log("checking " + this.all_survived_papers[i])
+      var exp = this.all_survived_papers[i]["main_explainability"].toUpperCase().trim();
+      if(exp.indexOf(" ")>0)
+      {
+        exp = exp.replace(" ", "\n")
+      }
+
       if (exp in exp_set)
       {
         exp_set[exp] = exp_set[exp] + 1
@@ -227,9 +244,13 @@ export class VisualizationComponent implements OnInit {
           trigger: 'item',
           formatter: '{a} <br/>{b} : {c} ({d}%)'
       },
+      label:
+      {
+        fontSize: 12
+      },
       series: [
         {
-            name: 'Explainability Technique',
+            name: 'Explainability',
             type: 'pie',
             radius: [10, 50],
             center: ['50%', '50%'],
@@ -282,9 +303,9 @@ export class VisualizationComponent implements OnInit {
         // },
         series: [
             {
-                name: 'Type of Explanation',
+                name: 'overall',
                 type: 'pie',
-                radius: [0, 50],
+                radius: [0, 70],
                 center: ['50%', '50%'],
                 data: [
                   {
@@ -372,6 +393,27 @@ export class VisualizationComponent implements OnInit {
     this.update_cluster()
   }
 
+  overallPieChartInstance
+  explainabilityPieChartInstance
+  vizPieChartInstance
+  VenuePieChartInstance
+
+  overallPieChartInit(event)
+  {
+    this.overallPieChartInstance = event
+  }
+  explainabilityPieChartInit(event)
+  {
+    this.explainabilityPieChartInstance = event
+  }
+  vizPieChartInit(event)
+  {
+    this.vizPieChartInstance = event
+  }
+  VenuePieChartInit(event)
+  {
+    this.VenuePieChartInstance = event
+  }
 
   clusterViewInstance;
   onChartInit(event)
@@ -382,19 +424,60 @@ export class VisualizationComponent implements OnInit {
   }
   update_cluster()
   {
+    this.all_survived_papers = []
     console.log("updating cluster")
     this.process_papers_local_post();
     this.process_papers_local_self();
     this.process_papers_global_post();
     this.process_papers_global_self();
+
     this.render_scatter()
     this.clusterViewInstance.setOption(this.options)
+
+    this.render_paper_dist_overall()
+    this.overallPieChartInstance.setOption(this.paper_dist_overall_options)
+    
+    this.render_exp_dist_overall()
+    this.explainabilityPieChartInstance.setOption(this.exp_dist_overall_options)
+
+    this.render_viz_dist_overall()
+    this.vizPieChartInstance.setOption(this.viz_dist_overall_options)
+
+    this.render_venue_dist_overall()
+    this.VenuePieChartInstance.setOption(this.venue_dist_overall_options);
+
+    console.log("all papers size() = " + this.all_papers.length)
   }
 
 
 
   constructor(public dialog: MatDialog) { }
   options: any; 
+
+  refinePapers(event)
+  {
+    console.log("refine paper")
+    console.log(event)
+
+    var attr = event.seriesName
+    var sub_attr = event.name.substring(0, event.name.indexOf("(")-1)
+    console.log("subb_attr " + sub_attr)
+
+    if(attr.trim() == 'Visualization')
+    {
+      // this.viz_selected = new Set();
+      // this.viz_selected.add(sub_attr.toLowerCase())
+      // this.update_cluster()
+    }
+    else if(attr.trim() == "Explainability")
+    {
+
+    }
+    else if(attr.trim() == "overall")
+    {
+
+    }
+  }
 
   go2paper(event) 
   {
@@ -899,8 +982,11 @@ export class VisualizationComponent implements OnInit {
   all_exp_values = {}
   all_viz_values = {}
 
+  all_survived_papers = []
+
   process_papers_local_self() 
   {
+    this.local_self = []
     for(var i = 0; i < xaipapers["local-self"].length; i++)
     {
       var paper = xaipapers["local-self"][i]
@@ -910,6 +996,7 @@ export class VisualizationComponent implements OnInit {
         // console.log(paper["main_explainability"] + " not in selected exp, so skip")
         continue
       }
+      this.all_survived_papers.push(paper)
       var new_paper = [
         paper["main_explainability"].toUpperCase().replace(" ", "\n"),
         paper["main_visualization"].toUpperCase().replace(" ", "\n"),
@@ -934,6 +1021,7 @@ export class VisualizationComponent implements OnInit {
   }
   process_papers_local_post() 
   {
+    this.local_post = []
     for(var i = 0; i < xaipapers["local-post-hoc"].length; i++)
     {
       var paper = xaipapers["local-post-hoc"][i]
@@ -943,6 +1031,7 @@ export class VisualizationComponent implements OnInit {
         console.log(paper["main_explainability"] + " not in selected exp, so skip")
         continue
       }
+      this.all_survived_papers.push(paper)
       var new_paper = [
         paper["main_explainability"].toUpperCase().replace(" ", "\n"),
         paper["main_visualization"].toUpperCase().replace(" ", "\n"),
@@ -966,6 +1055,7 @@ export class VisualizationComponent implements OnInit {
   }
   process_papers_global_self() 
   {
+    this.global_self = [];
     for(var i = 0; i < xaipapers["global-self"].length; i++)
     {
       var paper = xaipapers["global-self"][i]
@@ -975,6 +1065,7 @@ export class VisualizationComponent implements OnInit {
         console.log(paper["main_explainability"] + " not in selected exp, so skip")
         continue
       }
+      this.all_survived_papers.push(paper)
       var new_paper = [
         paper["main_explainability"].toUpperCase().replace(" ", "\n"),
         paper["main_visualization"].toUpperCase().replace(" ", "\n"),
@@ -998,6 +1089,7 @@ export class VisualizationComponent implements OnInit {
   }
   process_papers_global_post() 
   {
+    this.global_post = []
     for(var i = 0; i < xaipapers["global-post-hoc"].length; i++)
     {
       var paper = xaipapers["global-post-hoc"][i]
@@ -1007,6 +1099,7 @@ export class VisualizationComponent implements OnInit {
         console.log(paper["main_explainability"] + " not in selected exp, so skip")
         continue
       }
+      this.all_survived_papers.push(paper)
       var new_paper = [
         paper["main_explainability"].toUpperCase().replace(" ", "\n"),
         paper["main_visualization"].toUpperCase().replace(" ", "\n"),
@@ -1028,6 +1121,4 @@ export class VisualizationComponent implements OnInit {
       this.global_post.push(new_paper);
     }
   }
-
-  
 }
