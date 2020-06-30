@@ -1,7 +1,7 @@
 
 
 <div class="w3-light-grey w3-row">
-    <div class="w3-col s7">
+    <div class="w3-col s12">
         <div class="w3-margin-top w3-light-grey w3-center w3-round w3-padding">
             <p>Visualization of Paper Clusters</p>
         </div>
@@ -75,8 +75,44 @@
             <div echarts [options]="options" (chartInit)="onChartInit($event)" (chartClick)="go2paper($event)"></div>
 
         </div>
+        <hr>
     </div>
-    <div class="w3-col s5">
+
+    <!-- Overall Statistics -->
+    <div class="w3-margin-top" style="margin-bottom:100px;">
+        <div class="w3-margin-top w3-light-grey w3-center w3-padding">
+            <p>Statistics</p>
+        </div>
+        <div>
+            <!-- overall -->
+            <div class="w3-margin-top w3-light-grey w3-center w3-round w3-content" style="width:100%">
+                <div echarts [options]="paper_dist_overall_options" style="max-height:250px;"></div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="w3-margin-top w3-row w3-center">
+            <div class="w3-third">
+                <div echarts [options]="exp_dist_overall_options" style="max-height:220px;"></div>
+            </div>
+            <div class="w3-third">
+                <div echarts [options]="viz_dist_overall_options" style="max-height:220px;"></div>
+            </div>
+            <div class="w3-third">
+                <div echarts [options]="venue_dist_overall_options" style="max-height:220px;"></div>
+            </div>
+            <!-- <div class="w3-quarter w3-margin-top w3-light-grey w3-center w3-round w3-content" style="width:100%">
+                <div echarts [options]="exp_dist_overall_options" style="max-height:220px;"></div>
+            </div>
+            <div class="w3-quarter w3-margin-top w3-light-grey w3-center w3-round w3-content" style="width:100%">
+                <div echarts [options]="viz_dist_overall_options" style="max-height:220px;"></div>
+            </div>
+            <div class="w3-quarter w3-margin-top w3-light-grey w3-center w3-round w3-content" style="width:100%">
+                <div echarts [options]="venue_dist_overall_options" style="max-height:220px;"></div>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- <div class="w3-col s5">
         <div class="w3-margin-top w3-light-grey w3-center w3-padding">
             <p>Statistics</p>
         </div>
@@ -98,7 +134,7 @@
                 <mat-divider></mat-divider>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 
