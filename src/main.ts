@@ -9,5 +9,8 @@ if (environment.production) {
   enableProdMode();
 }
 
+require('echarts-wordcloud');
+
+
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

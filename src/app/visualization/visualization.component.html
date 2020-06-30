@@ -1,82 +1,93 @@
 
 
 <div class="w3-light-grey w3-row">
-    <div class="w3-col s12">
-        <div class="w3-margin-top w3-light-grey w3-center w3-round w3-padding">
-            <p>Visualization of Paper Clusters</p>
-        </div>
-        <div class="w3-row w3-light-grey w3-content w3-padding">
-            <table>
-                <tr>
-                    <th>
-                        <label>Explainability: </label>
-                    </th>
-                    <td>&nbsp;</td>
-                    <td>
-                        <input class="w3-margin-left" type="checkbox" checked="ex_driven_checked" 
-                            (change)="ex_driven_checked=!ex_driven_checked; update_exp_selection('example-driven', ex_driven_checked)">
-                        <label >&nbsp;Example-Driven</label>
-                    </td>
-                    <td>
-                        <input class="w3-margin-left" type="checkbox" checked="provenance_checked"
-                            (change)="provenance_checked=!provenance_checked; update_exp_selection('provenance', provenance_checked)">
-                        <label >&nbsp;Provenance</label>
-                    </td>
-                    <td>
-                        <input class="w3-margin-left" type="checkbox" checked="feature_importance_checked"
-                            (change)="feature_importance_checked=!feature_importance_checked; update_exp_selection('feature importance', feature_importance_checked)">
-                        <label >&nbsp;Feature Importance</label>
-                    </td>
-                    <td>
-                        <input class="w3-margin-left" type="checkbox" checked="induction_checked"
-                            (change)="induction_checked=!induction_checked; update_exp_selection('induction', induction_checked)">
-                        <label >&nbsp;Induction</label>
-                    </td>
-                    <td>
-                        <input class="w3-margin-left" type="checkbox" checked="surrogate_checked"
-                        (change)="surrogate_checked=!surrogate_checked; update_exp_selection('surrogate model', surrogate_checked)">
-                        <label >&nbsp;Surrogate Models</label>
-                    </td>
-                </tr>
-        
-                <tr>
-                    <th>
-                        <label class="w3-right">Visualization: </label>
-                    </th>
-                    <td>&nbsp;</td>
-                    <td>
-                        <input class="w3-margin-left" type="checkbox" checked="raw_example_checked"
-                        (change)="raw_example_checked=!raw_example_checked; update_viz_selection('raw examples', raw_example_checked)">
-                        <label >&nbsp;Raw Examples</label>
-                    </td>
-                    <td>
-                        <input class="w3-margin-left" type="checkbox" checked="saliency_checked"
-                        (change)="saliency_checked=!saliency_checked; update_viz_selection('saliency', saliency_checked)">
-                        <label >&nbsp;Saliency</label>
-                    </td>
-                    <td>
-                        <input class="w3-margin-left" type="checkbox" checked="raw_declarative_checked"
-                        (change)="raw_declarative_checked=!raw_declarative_checked; update_viz_selection('raw declarative', raw_declarative_checked)">
-                        <label >&nbsp;Raw Declarative</label>
-                    </td>
-                    <td>
-                        <input class="w3-margin-left" type="checkbox" checked="natural_language_checked"
-                        (change)="natural_language_checked=!natural_language_checked; update_viz_selection('natural language', natural_language_checked)">
-                        <label >&nbsp;Natural Language</label>
-                    </td>
-                    <td>
-                        <input class="w3-margin-left" type="checkbox" checked="other_checked"
-                        (change)="other_checked=!other_checked; update_viz_selection('other', other_checked)">
-                        <label >&nbsp;Other</label>
-                    </td>
-                </tr>
+    <div class="w3-row">
+        <div class="w3-col s8">
+            <div>
+                <div class="w3-margin-top w3-light-grey w3-center w3-round w3-padding">
+                    <p>Visualization of Paper Clusters</p>
+                </div>
+                <div class="w3-row w3-light-grey w3-content w3-padding">
+                    <table>
+                        <tr>
+                            <th>
+                                <label>Explainability: </label>
+                            </th>
+                            <td>&nbsp;</td>
+                            <td>
+                                <input class="w3-margin-left" type="checkbox" checked="ex_driven_checked" 
+                                    (change)="ex_driven_checked=!ex_driven_checked; update_exp_selection('example-driven', ex_driven_checked)">
+                                <label >&nbsp;Example-Driven</label>
+                            </td>
+                            <td>
+                                <input class="w3-margin-left" type="checkbox" checked="provenance_checked"
+                                    (change)="provenance_checked=!provenance_checked; update_exp_selection('provenance', provenance_checked)">
+                                <label >&nbsp;Provenance</label>
+                            </td>
+                            <td>
+                                <input class="w3-margin-left" type="checkbox" checked="feature_importance_checked"
+                                    (change)="feature_importance_checked=!feature_importance_checked; update_exp_selection('feature importance', feature_importance_checked)">
+                                <label >&nbsp;Feature Importance</label>
+                            </td>
+                            <td>
+                                <input class="w3-margin-left" type="checkbox" checked="induction_checked"
+                                    (change)="induction_checked=!induction_checked; update_exp_selection('induction', induction_checked)">
+                                <label >&nbsp;Induction</label>
+                            </td>
+                            <td>
+                                <input class="w3-margin-left" type="checkbox" checked="surrogate_checked"
+                                (change)="surrogate_checked=!surrogate_checked; update_exp_selection('surrogate model', surrogate_checked)">
+                                <label >&nbsp;Surrogate Models</label>
+                            </td>
+                        </tr>
                 
-            </table>
-            <div echarts [options]="options" (chartInit)="onChartInit($event)" (chartClick)="go2paper($event)"></div>
-
+                        <tr>
+                            <th>
+                                <label class="w3-right">Visualization: </label>
+                            </th>
+                            <td>&nbsp;</td>
+                            <td>
+                                <input class="w3-margin-left" type="checkbox" checked="raw_example_checked"
+                                (change)="raw_example_checked=!raw_example_checked; update_viz_selection('raw examples', raw_example_checked)">
+                                <label >&nbsp;Raw Examples</label>
+                            </td>
+                            <td>
+                                <input class="w3-margin-left" type="checkbox" checked="saliency_checked"
+                                (change)="saliency_checked=!saliency_checked; update_viz_selection('saliency', saliency_checked)">
+                                <label >&nbsp;Saliency</label>
+                            </td>
+                            <td>
+                                <input class="w3-margin-left" type="checkbox" checked="raw_declarative_checked"
+                                (change)="raw_declarative_checked=!raw_declarative_checked; update_viz_selection('raw declarative', raw_declarative_checked)">
+                                <label >&nbsp;Raw Declarative</label>
+                            </td>
+                            <td>
+                                <input class="w3-margin-left" type="checkbox" checked="natural_language_checked"
+                                (change)="natural_language_checked=!natural_language_checked; update_viz_selection('natural language', natural_language_checked)">
+                                <label >&nbsp;Natural Language</label>
+                            </td>
+                            <td>
+                                <input class="w3-margin-left" type="checkbox" checked="other_checked"
+                                (change)="other_checked=!other_checked; update_viz_selection('other', other_checked)">
+                                <label >&nbsp;Other</label>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                    <div echarts [options]="options" (chartInit)="onChartInit($event)" (chartClick)="go2paper($event)"></div>
+        
+                </div>
+                <hr>
+            </div>
         </div>
-        <hr>
+        <div class="w3-col s4">
+            <div style="margin-top:50px">
+                <div echarts (charInit)="wordcloudInit($event)" [options]="wordcloud_options" style="max-height:400px">
+                </div>
+            </div>
+        </div>
     </div>
+    
 
     <!-- Overall Statistics -->
     <div class="w3-margin-top" style="margin-bottom:100px;">
@@ -103,8 +114,10 @@
                 </div>
             </div>
         </div>
-
+        <hr>
     </div>
+
+   
 
     <!-- <div class="w3-col s5">
         <div class="w3-margin-top w3-light-grey w3-center w3-padding">

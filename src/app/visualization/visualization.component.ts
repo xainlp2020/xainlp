@@ -28,6 +28,142 @@ export interface paperData{
   styleUrls: ['./visualization.component.css']
 })
 export class VisualizationComponent implements OnInit {
+
+  /**
+   * wordcloud_options
+   */
+
+  stopwords = new Set(["the", "from", "to", "can", "do", "does", "no", "not", "but", "and", "or", "nor", "an", "of", "for", "at", "on", "before",
+  "after", "in", "out", "me", "could", "did", "done", "be", "with", "if", "because", "why", "is", "are", "were", "was",
+  "we", "i", "you", "us", "a", "one", "two", "three", "four", "five", "six", "about", "up", "down", "off", "here", "this", "that", "these", 
+  "those", "which", "what", "how", "when", "then", "therefore", "hence", "thus", "so", "very", "too", "its", "via", "model", "models",
+  "&", ",", "=", "+", "any", "every", "each", "our", "their", "is", "was", "it", "it's", "his", "her", "they", "them", "me", "we", "she", "him", "he",
+  "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "0", ".", "by", "as", "(", ")", "-", ".", "@", "'", "<", ">", "%", "both", "neither",
+  "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+  "seven", "eight", "nine", "ten"])
+
+  wordcloud_options;
+  wordcloud_shape = "circle"
+  wordcloudChartInstance;
+  wordcloudInit(event)
+  {
+    this.wordcloudChartInstance = event
+  }
+   render_wordcloud()
+   {
+     /**
+      * process title and abstract
+      */
+     var word_count = {}
+     for(var i = 0 ; i < this.all_survived_papers.length; i++)
+     {
+       var paper = this.all_survived_papers[i]
+
+       // get title
+       var title = paper['title'].trim()
+       var abstract = paper['abstract'].trim()
+      
+       var title_words = title.split(/[\s.]+/g)
+        .map(w => w.replace(/^[“‘"\-—()\[\]{}]+/g, ""))
+        .map(w => w.replace(/[;:.!?()\[\]{},"'’”\-—]+$/g, ""))
+        .map(w => w.replace(/['’]s$/g, ""))
+        .map(w => w.substring(0, 30))
+        .map(w => w.toLowerCase())
+        .filter(w => w && !this.stopwords.has(w))
+
+       var abstract_words = abstract.split(/[\s.]+/g)
+       .map(w => w.replace(/^[“‘"\-—()\[\]{}]+/g, ""))
+       .map(w => w.replace(/[;:.!?()\[\]{},"'’”\-—]+$/g, ""))
+       .map(w => w.replace(/['’]s$/g, ""))
+       .map(w => w.substring(0, 30))
+       .map(w => w.toLowerCase())
+       .filter(w => w && !this.stopwords.has(w))
+
+       for(var j = 0; j < title_words.length; j++)
+       {
+         var word = title_words[j];
+         if(word in word_count)
+         {
+           word_count[word] = word_count[word] + 1
+         }
+         else{
+           word_count[word] = 1
+         }
+       }
+       for(var j = 0; j < abstract_words.length; j++)
+       {
+         var word = abstract_words[j];
+         if(word in word_count)
+         {
+           word_count[word] = word_count[word] + 1
+         }
+         else{
+           word_count[word] = 1
+         }
+       }
+      //  for(var word in title_words)
+      //  {
+      //    if(word in word_count)
+      //    {
+      //      word_count[word] = word_count[word] + 1
+      //    }
+      //    else{
+      //      word_count[word] = 1
+      //    }
+      //  }
+     }
+     var wordcloud_data = []
+     for(word in word_count)
+     {
+       if(word_count[word] < 2)
+       {
+         continue
+       }
+        var tmp = {
+          name: word,
+          value: word_count[word]
+        }
+        wordcloud_data.push(tmp)
+     }
+     console.log("word cloud")
+     console.log(word_count)
+     console.log(wordcloud_data)
+      this.wordcloud_options = {
+        tooltip: {},
+        // title:
+        // {
+        //   text: "word cloud of selected papers"
+        // },
+        series: [ {
+            type: 'wordCloud',
+            gridSize: 2,
+            sizeRange: [5, 40],
+            rotationRange: [-90, 90],
+            shape: this.wordcloud_shape,
+            width: 500,
+            height: 400,
+            drawOutOfBound: false,
+            textStyle: {
+                normal: {
+                    color: function () {
+                        return 'rgb(' + [
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160)
+                        ].join(',') + ')';
+                    }
+                },
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            data: wordcloud_data
+        } ]
+    };
+   }
+  
+
   all_papers = []
   ngOnInit(): void {
 
@@ -57,6 +193,8 @@ export class VisualizationComponent implements OnInit {
     this.render_exp_dist_overall()
     this.render_viz_dist_overall()
     this.render_venue_dist_overall()
+
+    this.render_wordcloud();
   }
 
   /**
@@ -445,6 +583,9 @@ export class VisualizationComponent implements OnInit {
 
     this.render_venue_dist_overall()
     this.VenuePieChartInstance.setOption(this.venue_dist_overall_options);
+
+    this.render_wordcloud()
+    this.wordcloudChartInstance.setOption(this.wordcloud_options);
 
     console.log("all papers size() = " + this.all_papers.length)
   }
@@ -1121,4 +1262,6 @@ export class VisualizationComponent implements OnInit {
       this.global_post.push(new_paper);
     }
   }
+
+  
 }

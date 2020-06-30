@@ -32,6 +32,7 @@ export interface paperData{
 export class SearchComponent implements OnInit {
   
 
+
   /**
    * 
    * find similar papers
@@ -273,7 +274,7 @@ export class SearchComponent implements OnInit {
   
   active_tab = "All"
 
-  query = "w";
+  query = "";
   attr_order = ["any", "title", "abstract", "nlp_task_1",
   "authors", "explainability", "visualization", 
   "operations", "evaluation_metrics"]
