@@ -43,7 +43,10 @@
                                             <td>&nbsp;</td>
                                             <td>
                                                 <b style="cursor:pointer">
-                                                    <span style="text-decoration: underline;" class="w3-text-indigo" [innerHTML]="getHighlights(query, paper['title'] | titlecase)"></span>
+                                                    <span style="text-decoration: underline;" 
+                                                            class="w3-text-indigo" 
+                                                            (click)="viewPaper(paper)"
+                                                            [innerHTML]="getHighlights(query, paper['title'] | titlecase)"></span>
                                                 </b>
                                             </td>    
                                         </tr>

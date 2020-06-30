@@ -31,7 +31,27 @@ export interface paperData{
 })
 export class SearchComponent implements OnInit {
   
-
+  /**
+   * Open paper dialog
+   * @param event 
+   */
+  placement2type = {
+    "1": "local post-hoc",
+    "2": "local self-explaining",
+    "3": "global post-hoc",
+    "4": "global self-explaining"
+  }
+  viewPaper(selectedPaper) {
+    // selectedPaper["xai_type"] = xai_type
+    var placement = selectedPaper["placement"]
+    selectedPaper["xai_type"] = this.placement2type[placement]
+    console.log("selected paper ");
+    console.log(selectedPaper)
+    this.dialog.open(PaperDialogComponent, {
+      data: selectedPaper
+    });
+  }
+    
 
   /**
    * 
@@ -349,12 +369,6 @@ export class SearchComponent implements OnInit {
     console.log(this.final_results)
   }
   
-  
-  viewPaper(selectedPaper) {
-    this.dialog.open(PaperDialogComponent, {
-      data: selectedPaper
-    });
-  }
   constructor(public dialog: MatDialog) {
 
    }

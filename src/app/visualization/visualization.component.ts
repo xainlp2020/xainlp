@@ -690,11 +690,11 @@ export class VisualizationComponent implements OnInit {
     
     
     var itemStyle = {
-        opacity: 0.8,
-        shadowBlur: 10,
-        shadowOffsetX: 0,
-        shadowOffsetY: 0,
-        shadowColor: 'rgba(0, 0, 0, 0.5)'
+        opacity: 0.7,
+        // shadowBlur: 10,
+        // shadowOffsetX: 0,
+        // shadowOffsetY: 0,
+        // shadowColor: 'rgba(0, 0, 0, 0.5)'
     };
     
     /**
@@ -919,7 +919,7 @@ export class VisualizationComponent implements OnInit {
     this.options = {
         backgroundColor: '#f1f1f1',
         color: [
-            "blue", '#dd4444', "#45b300", "#ffd300"
+            "blue", '#dd4444', "#45b300", "black"
         ],
         legend: {
             backgroundColor: "transparent",
@@ -1054,13 +1054,7 @@ export class VisualizationComponent implements OnInit {
               name: 'global self-explaining',
               type: 'scatter',
               symbolSize: this.symbol_size,
-              itemStyle: {
-                opacity: 0.8,
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowOffsetY: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
-              },
+              itemStyle: itemStyle,
               data: global_self_data,
             }
         ]

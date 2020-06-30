@@ -10,6 +10,17 @@ ng add @ng-bootstrap/ng-bootstrap
 ng add @angular/material
 ```
 
+
+3. [ngx-echarts]{https://xieziyu.github.io/ngx-echarts/#/welcome}
+```
+see installation details at: https://xieziyu.github.io/ngx-echarts/#/welcome
+```
+
+4. [Echart-wordcloud]{https://github.com/ecomfe/echarts-wordcloud}
+```
+see installation details at https://github.com/ecomfe/echarts-wordcloud
+```
+
 # If deploy via angular-cli-ghpage
 need to first add localize package:
 
