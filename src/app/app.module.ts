@@ -34,6 +34,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { VisualizationComponent } from './visualization/visualization.component';
 import {MatSliderModule} from '@angular/material/slider';
 import { SearchComponent } from './search/search.component';
+import { SimilarPaperDialogComponent } from './similar-paper-dialog/similar-paper-dialog.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { SearchComponent } from './search/search.component';
     DefinitionDialogComponent,
     AddNewPapersComponent,
     VisualizationComponent,
-    SearchComponent
+    SearchComponent,
+    SimilarPaperDialogComponent
   ],
   imports: [
     BrowserModule,

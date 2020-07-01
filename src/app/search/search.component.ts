@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import xaipapers from "../../assets/data/xaipapers.json";
 import {PaperDialogComponent} from "../paper-dialog/paper-dialog.component";
+import {SimilarPaperDialogComponent} from "../similar-paper-dialog/similar-paper-dialog.component"
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 export interface paperData{
@@ -21,9 +22,14 @@ export interface paperData{
   operations: string,
   abstract: string,
   id: string,
-  num_preview_img: number
+  num_preview_img: number,
+  similarity: number,
+  similarity_explanation: string
 }
 
+interface similarPaperData {
+  [index: number]: { paperData };
+}
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -31,6 +37,16 @@ export interface paperData{
 })
 export class SearchComponent implements OnInit {
   
+  viewSimilarPapers(paper) {
+    this.findSimilar(paper)
+    var data2viz = this.similarPapers
+    console.log("sim")
+    console.log(data2viz)
+    this.dialog.open(SimilarPaperDialogComponent, {
+        data: data2viz
+    });
+  }
+
   /**
    * Open paper dialog
    * @param event 
