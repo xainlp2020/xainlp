@@ -1,0 +1,46 @@
+/* note: media query breakpoints below same min-width as bootstrap navbar-expand */
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+@import "~@mondal/org-chart/_theming.scss";
+
+
+
+.selection 
+{
+  background-color: #ccc;
+}
+.selection-current
+{
+  
+    background-color: #408bfc;
+   
+}
+.mui-oc-name {
+    font-family: 'Patua One', cursive;
+  }
+   
+  .mui-oc-designation {
+    font-family: 'Oswald', sans-serif;
+  }
+   
+  .mui-oc-border {
+    border-color: #9E9E9E;
+  }
+   
+  .mui-oc-box {
+    color: white;
+    width: 10em;
+  }
+   
+  // Custom cssClass from Employee object 
+  .mui-oc-ceo {
+    background-color: #4caf50;
+  }
+  .mui-oc-vp {
+    background-color: #03A9F4;
+  }
+  .mui-oc-dir {
+    background-color: #607D8B;
+  }
+  .mui-oc-man {
+    background-color: #9C27B0;
+  }

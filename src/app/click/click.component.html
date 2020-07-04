@@ -1,0 +1,95 @@
+<div class="container-fluid top-section" >
+ 
+    <div class="row">
+ 
+      <div class="col-md-12">
+        <br>
+        <h1 class="title">XAIT</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="prog-steps" >
+           <!--<a *ngFor="let r of route;let i=index;" (click)="selectPath(i)"><li class="set">{{r.name}}</li></a>-->
+    
+          <!-- <a routerLink="/surrogatems"><li class="inactive">Publications (Surrogate Model)</li></a>  -->
+        </ul>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="button-group">
+
+          <span class="step-back"><button type="button" class="btn btn-secondary step-button" ><a routerLink="/local">Back</a></button></span> 
+          <!-- <button type="button" class="btn btn-primary step-button" onclick="next()"><a routerLink="/samples">Next</a></button> -->
+           <!-- <button type="button" class="btn btn-primary step-button" (click)="next()">Next</button>  -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+
+  <!-- ****************** step panel ****************** -->
+  <div class="container-fluid" style="height: 100%">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="step-panel">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2 class="title">{{pnodes.name}}</h2>
+          <br/> <br/>
+         
+             
+          <br/>
+             
+          
+        
+          <p>{{explanations}}</p>
+
+
+            <div class="step-panel" *ngIf="node_d">
+          
+                 
+          
+                    <h2 class="title" >Publications for {{pnodes.userType}}</h2>
+                    <br/>
+          
+          
+                    <h3 class="title" style="white-space: pre;"> Publication details </h3>
+  
+            <div *ngFor="let d of books">
+              <p>
+                <b>Title - </b>
+                {{d.title}}
+                <br>
+                <a href="{{d.link}} "target="_blank">Link to publication: </a>
+              </p>
+              
+              <ul>
+                <li><font color="blue"><b>Author: </b></font>{{d["author"]}}</li>
+                <li><font color="green"><b>Year: </b></font>{{d["year"]}}</li>
+                <li><font color="purple"><b>Explainability Technique: </b></font>{{d["xai_tech"]}}</li>
+                <li><font color="black"><b>Classification: </b></font>{{d["algorithms"]}}</li>
+                <!-- <li><font color="#daa520"><b>Description </b><br></font>This publication presents a computational method for calculating the measure of salience in understanding metaphors. (AI System builder) </li> -->
+                <li><font color="red"><b>Tools: </b></font>{{d.tools.name}} <br>{{d.tools.description}}</li>
+              </ul>
+            </div>
+     
+        
+          </div>
+
+
+
+        </div>
+        <div class="col-md-8">  
+            <!-- <img src="assets/images/posthoc.png" width="100%"> -->
+            
+                <mui-org-chart [topEmployee]="nodes" direction="vertical" (itemClick)="popup($event)"></mui-org-chart>
+         
+      </div>
+    </div>
+  </div>

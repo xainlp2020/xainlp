@@ -1,4 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "~@mondal/org-chart/_theming.scss";
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.selection 
+{
+  background-color: #ccc;
+}
+.selection-current
+{
+  
+    background-color: #408bfc;
+   
+}
+.mui-oc-name {
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+  }
+   
+  .mui-oc-designation {
+    font-family: 'Oswald', sans-serif;
+  }
+   
+  .mui-oc-border {
+    border-color: #9E9E9E;
+  }
+   
+  .mui-oc-box {
+    color: blue;
+    width: 7em;
+  }
+   
+  .mui-oc-border {
+    border: 1px solid darkgrey;
+}
+.mui-oc-connector-vertical {
+    height: 1.5em;
+}
+.mui-oc-connector {
+    flex: 1;
+}
+
+.mui-oc-box{
+    cursor: pointer;
+    display: flex;
+    font-size: 10px;
+    padding: 5px;
+    align-items: center;
+}
+  .mui-oc-ceo {
+    background-color: #4caf50;
+  }
+  .mui-oc-vp {
+    background-color: #03A9F4;
+  }
+  .mui-oc-dir {
+    background-color: #607D8B;
+  }
+  .mui-oc-man {
+    background-color: #9C27B0;
+  }

@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { OrgChartModule } from '@mondal/org-chart';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,6 +39,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import { SearchComponent } from './search/search.component';
 import { SimilarPaperDialogComponent } from './similar-paper-dialog/similar-paper-dialog.component';
 import { CitationGraphComponent } from './citation-graph/citation-graph.component';
+import { ClickComponent } from './click/click.component';
 
 
 @NgModule({
@@ -50,11 +54,13 @@ import { CitationGraphComponent } from './citation-graph/citation-graph.componen
     VisualizationComponent,
     SearchComponent,
     SimilarPaperDialogComponent,
-    CitationGraphComponent
+    CitationGraphComponent,
+    ClickComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
     NgbModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -78,7 +84,9 @@ import { CitationGraphComponent } from './citation-graph/citation-graph.componen
     NgxEchartsModule.forRoot({
       echarts
     }),
-    MatCheckboxModule
+    MatCheckboxModule,
+    OrgChartModule,
+    Ng2SearchPipeModule,
   ],
   entryComponents:
   [
@@ -86,6 +94,7 @@ import { CitationGraphComponent } from './citation-graph/citation-graph.componen
     DefinitionDialogComponent
   ],
   providers: [],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
