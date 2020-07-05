@@ -1,0 +1,40 @@
+[
+    {
+        "resource_type": "survey",
+        "resources":
+        [
+            {
+                "title":"Peeking inside the black-box: A survey on Explainable Artificial Intelligence (XAI)",
+                "authors": "Adadi, Amina and Berrada, Mohammed",
+                "year": 2018, 
+                "venue": "IEEE Access",
+                "link": "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8466590",
+                "focus": "general"
+            },
+            {
+                "title": "One Explanation Does Not Fit All: A Toolkit and Taxonomy of AI Explainability Techniques",
+                "authors": "Vijay Arya and Rachel K. E. Bellamy and Pin-Yu Chen and Amit Dhurandhar and Michael Hind and Samuel C. Hoffman and Stephanie Houde and Q. Vera Liao and Ronny Luss and Aleksandra Mojsilović and Sami Mourad and Pablo Pedemonte and Ramya Raghavendra and John Richards and Prasanna Sattigeri and Karthikeyan Shanmugam and Moninder Singh and Kush R. Varshney and Dennis Wei and Yunfeng Zhang",
+                "year": 2019,
+                "venue": "arXiv",
+                "link": "https://arxiv.org/pdf/1909.03012.pdf",
+                "foucs": "general"
+
+            }
+        ]
+    },
+    {
+        "resource_type": "tutorial",
+        "resources":
+        [
+            {
+                "title":"Explainable AI: Foundations, Industrial Applications, Practical Challenges, and Lessons Learned",
+                "authors": "Freddy Lecue, Krishna Gade, Sahin Cem Geyik, Krish-naram Kenthapadi, Varun Mithal, Ankur Taly, Ric-cardo Guidotti, and Pasquale Minervini",
+                "year": 2020, 
+                "venue": "AAAI",
+                "link": "https://xaitutorial2020.github.io/",
+                "focus": "general"
+            }
+        ]
+    }
+]
+    
