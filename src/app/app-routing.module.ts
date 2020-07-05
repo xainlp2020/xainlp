@@ -10,6 +10,7 @@ import { CitationGraphComponent} from "./citation-graph/citation-graph.component
 import { ResourcesComponent } from "./resources/resources.component";
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'definitions', component: DefinitionsComponent },
   { path: 'tree', component: TreeComponent },
   { path: 'home', component: HomeComponent },
