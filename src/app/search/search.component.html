@@ -18,7 +18,7 @@
 
 
     <div class="w3-row">
-        <div class="w3-col s8">
+        <div class="w3-col s12">
             <div class="w3-margin d-flex w3-padding">
                 <ul ngbNav #nav="ngbNav" activeId={{active_tab}} class="nav-pills" orientation="vertical">
                     <li *ngFor="let result of final_results; let attr_index=index" 
@@ -65,7 +65,7 @@
                                             </td> 
                                         </tr>
                                         <tr *ngIf="attr_natural_language[attr_index]==='nlp topic'">
-                                            <td class="w3-right">Operations:</td> 
+                                            <td class="w3-right">NLP Topic:</td> 
                                             <td>&nbsp;</td>
                                             <td>
                                                 <span [innerHTML]="getHighlights(query, paper['nlp_task_1'] | titlecase)"></span>
@@ -86,10 +86,24 @@
                                             </td> 
                                         </tr>
                                         <tr>
+                                            <td style="min-width:150px;text-align: right;">Main Explainability:</td> 
+                                            <td>&nbsp;</td>
+                                            <td>
+                                                <span [innerHTML]="getHighlights(query, paper['main_explainability'] | titlecase)"></span>
+                                            </td> 
+                                        </tr>
+                                        <tr>
                                             <td class="w3-right">Visualization:</td> 
                                             <td>&nbsp;</td>
                                             <td>
                                                 <span [innerHTML]="getHighlights(query, paper['visualization'] | titlecase)"></span>
+                                            </td> 
+                                        </tr>
+                                        <tr>
+                                            <td class="w3-right">Main Visualization:</td> 
+                                            <td>&nbsp;</td>
+                                            <td>
+                                                <span [innerHTML]="getHighlights(query, paper['main_visualization'] | titlecase)"></span>
                                             </td> 
                                         </tr>
                                         <tr>
