@@ -36,6 +36,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import { SearchComponent } from './search/search.component';
 import { SimilarPaperDialogComponent } from './similar-paper-dialog/similar-paper-dialog.component';
 import { CitationGraphComponent } from './citation-graph/citation-graph.component';
+import { ResourcesComponent } from './resources/resources.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { CitationGraphComponent } from './citation-graph/citation-graph.componen
     VisualizationComponent,
     SearchComponent,
     SimilarPaperDialogComponent,
-    CitationGraphComponent
+    CitationGraphComponent,
+    ResourcesComponent
   ],
   imports: [
     BrowserModule,
