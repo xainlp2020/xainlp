@@ -19,7 +19,15 @@
                 "link": "https://arxiv.org/pdf/1909.03012.pdf",
                 "foucs": "general"
 
-            }
+            },
+            {
+                "title":"A Survey of Methods for Explaining Black Box Models",
+                "authors": "Guidotti, Riccardo and Monreale, Anna and Ruggieri, Salvatore and Turini, Franco and Giannotti, Fosca and Pedreschi, Dino",
+                "year": 2018, 
+                "venue": "ACM Computing Surveys",
+                "link": "https://dl.acm.org/doi/10.1145/3236009",
+                "focus": "general"
+            }            
         ]
     },
     {
@@ -32,6 +40,34 @@
                 "year": 2020, 
                 "venue": "AAAI",
                 "link": "https://xaitutorial2020.github.io/",
+                "focus": "general"
+            },
+            {
+                "title":"Explainable AI in Industry: Practical Challenges and Lessons Learned",
+                "authors": "Krishna Gade, Sahin Cem Geyik, Krishnaram Kenthapadi, Varun Mithal, Ankur Taly",
+                "year": 2020, 
+                "venue": "WWW",
+                "link": "https://sites.google.com/view/www20-explainable-ai-tutorial",
+                "focus": "general"
+            },
+            {
+                "title":"On Explainable AI: From Theory to Motivation, Applications and Limitations",
+                "authors": "Luca Costabello, Fosca Giannotti, Riccardo Guidotti, Pascal Hitzler, Freddy Lecue, Pasquale Minervini, Md. Kamruzzaman Sarker",
+                "year": 2019, 
+                "venue": "AAAI",
+                "link": "https://xaitutorial2019.github.io/",
+                "focus": "general"
+            }
+        ]
+    },
+    {
+        "resource_type": "online resources",
+        "resources":
+        [
+            {
+                "title":"Interesting resources related to XAI (Explainable Artificial Intelligence)",
+                "venue": "Github Repository",
+                "link": "https://github.com/pbiecek/xai_resources",
                 "focus": "general"
             }
         ]
