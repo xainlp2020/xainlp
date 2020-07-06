@@ -5,8 +5,8 @@
       <div class="w3-margin-top w3-margin-bottom"><b>{{resource.resource_type | uppercase}}</b></div>
       <div class="w3-margin-top" *ngFor="let r of resource.resources; let idx = index">
          <div class="w3-large w3-margin-left"><a href="{{r.link}}" target="_blank">{{r.title}}</a></div>
-         <div class="w3-margin-left"><i>{{r.authors}}</i></div>
-         <div class="w3-margin-left">{{r.venue}} {{r.year}}</div>
+         <div *ngIf="r.authors!=undefined" class="w3-margin-left"><i>{{r.authors}}</i></div>
+         <div *ngIf="r.year!=undefined" class="w3-margin-left">{{r.venue}} {{r.year}}</div>
          <!-- <div class="w3-margin-left"></div> -->
       </div>
       <hr>
