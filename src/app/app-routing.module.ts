@@ -7,6 +7,7 @@ import { AddNewPapersComponent} from './add-new-papers/add-new-papers.component'
 import { VisualizationComponent } from './visualization/visualization.component';
 import { SearchComponent } from "./search/search.component";
 import { CitationGraphComponent} from "./citation-graph/citation-graph.component";
+import { ClickComponent } from './click/click.component';
 import { ResourcesComponent } from "./resources/resources.component";
 
 const routes: Routes = [
@@ -18,8 +19,8 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'newpapers', component: AddNewPapersComponent },
   { path: 'network', component: CitationGraphComponent },
+  { path: 'click', component: ClickComponent},
   { path: 'resource', component: ResourcesComponent },
-
 ];
 
 @NgModule({

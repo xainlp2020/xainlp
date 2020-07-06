@@ -1,7 +1,8 @@
-
+/* note: media query breakpoints below same min-width as bootstrap navbar-expand */
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
 @import "~@mondal/org-chart/_theming.scss";
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
 
 .selection 
 {
@@ -11,12 +12,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 {
   
     background-color: #408bfc;
-    
    
 }
 .mui-oc-name {
-    font-family: 'Times New Roman', Times, serif;
-    color: black;
+    font-family: 'Patua One', cursive;
   }
    
   .mui-oc-designation {
@@ -28,27 +27,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
    
   .mui-oc-box {
-    color: blue;
-    width: 15em;
+    color: white;
+    width: 6em;
   }
    
-  .mui-oc-border {
-    border: 1px solid darkgrey;
-}
-.mui-oc-connector-vertical {
-    height: 1.8em;
-}
-.mui-oc-connector {
-    flex: 1;
-}
-
-.mui-oc-box{
-    cursor: pointer;
-    display: flex;
-    font-size: 10px;
-    padding: 5px;
-    align-items: center;
-}
+  // Custom cssClass from Employee object 
   .mui-oc-ceo {
     background-color: #4caf50;
   }
