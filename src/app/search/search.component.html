@@ -71,7 +71,7 @@
                                                 <span [innerHTML]="getHighlights(query, paper['nlp_task_1'] | titlecase)"></span>
                                             </td> 
                                         </tr>
-                                        <tr *ngIf="attr_natural_language[attr_index]==='operations'">
+                                        <tr *ngIf="attr_natural_language[attr_index]==='operations' || attr_natural_language[attr_index]==='All'">
                                             <td class="w3-right">Operations:</td> 
                                             <td>&nbsp;</td>
                                             <td>
@@ -104,6 +104,13 @@
                                             <td>&nbsp;</td>
                                             <td>
                                                 <span [innerHTML]="getHighlights(query, paper['main_visualization'] | titlecase)"></span>
+                                            </td> 
+                                        </tr>
+                                        <tr>
+                                            <td class="w3-right">Evaluation Metrics:</td> 
+                                            <td>&nbsp;</td>
+                                            <td>
+                                                <span [innerHTML]="getHighlights(query, paper['evaluation_metrics'] | titlecase)"></span>
                                             </td> 
                                         </tr>
                                         <tr>
