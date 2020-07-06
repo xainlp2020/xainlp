@@ -8,8 +8,10 @@ import { VisualizationComponent } from './visualization/visualization.component'
 import { SearchComponent } from "./search/search.component";
 import { CitationGraphComponent} from "./citation-graph/citation-graph.component";
 import { ClickComponent } from './click/click.component';
+import { ResourcesComponent } from "./resources/resources.component";
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'definitions', component: DefinitionsComponent },
   { path: 'tree', component: TreeComponent },
   { path: 'home', component: HomeComponent },
@@ -18,6 +20,7 @@ const routes: Routes = [
   { path: 'newpapers', component: AddNewPapersComponent },
   { path: 'network', component: CitationGraphComponent },
   { path: 'click', component: ClickComponent},
+  { path: 'resource', component: ResourcesComponent },
 ];
 
 @NgModule({

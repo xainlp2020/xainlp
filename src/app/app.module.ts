@@ -40,6 +40,7 @@ import { SearchComponent } from './search/search.component';
 import { SimilarPaperDialogComponent } from './similar-paper-dialog/similar-paper-dialog.component';
 import { CitationGraphComponent } from './citation-graph/citation-graph.component';
 import { ClickComponent } from './click/click.component';
+import { ResourcesComponent } from './resources/resources.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { ClickComponent } from './click/click.component';
     SimilarPaperDialogComponent,
     CitationGraphComponent,
     ClickComponent
+    ResourcesComponent
   ],
   imports: [
     BrowserModule,
