@@ -77,21 +77,20 @@ export class ClickableTreeComponent implements OnInit {
         series: [
             {
                 type: 'tree',
-                layout: "orthogonal",
+                layout: "horizontal",
                 data: [this.papers],
                 roam: true,
                 top: '1%',
                 left: '10%',
                 bottom: '1%',
                 right: '50%',
-
-                symbolSize: 7,
-
+                height: 700,
+                symbolSize: 10,
                 label: {
                     position: 'left',
                     verticalAlign: 'middle',
                     align: 'right',
-                    fontSize: 9
+                    fontSize: 12
                 },
 
                 leaves: {
