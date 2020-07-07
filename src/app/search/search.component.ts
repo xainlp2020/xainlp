@@ -73,7 +73,7 @@ export class SearchComponent implements OnInit {
           natural_language: this.facets_natural_language[facetidx],
           query: "",
           match_method: "contains",
-          case_sensitive: true
+          case_sensitive: false
         }
       )
     }
@@ -419,6 +419,7 @@ export class SearchComponent implements OnInit {
     {
       var paper = this.all_papers_orig[i]
       var already_included_in_any_result = false;
+      var satisfy_all_condition = true
       for(let facet of this.facetConfig)
       {
         var attr = facet["facet"]
@@ -434,7 +435,7 @@ export class SearchComponent implements OnInit {
           // console.log("match_type " + match_method)
           if(!case_sensitive)
           {
-            massaged_paper = JSON.parse(JSON.stringify(paper))
+            massaged_paper = JSON.parse(JSON.stringify(paper).toLowerCase())
             facet_query = facet_query.toLowerCase()
           }
           else{
@@ -445,23 +446,18 @@ export class SearchComponent implements OnInit {
           facet_query = facet_query.trim()
           if(match_method === 'exact match')
           {            
+            console.log("(exact match) comparing " + paper_attr_val + " vs. " + facet_query)
             if(facet_query === paper_attr_val)
             {
-              if(attr in this.query_results)
-              {
-                this.query_results[attr].push(paper)
-              }
-              else
-              {
-                this.query_results[attr] = [paper]
-              }
-              if(!already_included_in_any_result)
-              {
-                this.query_results["any"].push(paper)
-                already_included_in_any_result = true;
-              }
+              // if(!already_included_in_any_result)
+              // {
+              //   this.query_results["any"].push(paper)
+              //   already_included_in_any_result = true;
+              // }
             }
-            
+            else{
+              satisfy_all_condition = false;
+            }
           }
           else if(match_method == 'contains')
           {
@@ -469,24 +465,20 @@ export class SearchComponent implements OnInit {
             console.log("contains? " + paper_attr_val.includes(facet_query))
             if(paper_attr_val.includes(facet_query))
             {
-              
-              if(attr in this.query_results)
-              {
-                this.query_results[attr].push(paper)
-              }
-              else
-              {
-                this.query_results[attr] = [paper]
-              }
-              if(!already_included_in_any_result)
-              {
-                this.query_results["any"].push(paper)
-                already_included_in_any_result = true;
-              }
             }
-            
+            else{
+              satisfy_all_condition = false;
+            }  
           }
         }
+        if(!satisfy_all_condition)
+        {
+          break
+        }
+      }
+      if(satisfy_all_condition)
+      {
+        this.query_results["any"].push(paper)
       }
     }
 
