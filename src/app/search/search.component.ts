@@ -41,9 +41,9 @@ export class SearchComponent implements OnInit {
    * @param 
    */
   search_type = 'facet'
-  facets                  = ["explainability", "main_explainability", "visualization", "main_visualization", 
+  facets                  = ["explainability", "main_explainability", "visualization", "main_visualization", "abstract",
                             "nlp_task_1", "evaluation_metrics","operations"]
-  facets_natural_language = ["Explainability", "Main Explainability", "Visualization", "Main visualization",
+  facets_natural_language = ["Explainability", "Main Explainability", "Visualization", "Main visualization", "Abstract",
                             "NLP Topic", "Evaluation Metrics","Explainability Operations"]
 
   match_method = ["exact match", "contains"]
