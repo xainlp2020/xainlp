@@ -9,6 +9,7 @@ import { SearchComponent } from "./search/search.component";
 import { CitationGraphComponent} from "./citation-graph/citation-graph.component";
 import { ClickComponent } from './click/click.component';
 import { ResourcesComponent } from "./resources/resources.component";
+import { ClickableTreeComponent } from './clickable-tree/clickable-tree.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,8 @@ const routes: Routes = [
   { path: 'network', component: CitationGraphComponent },
   { path: 'click', component: ClickComponent},
   { path: 'resource', component: ResourcesComponent },
+  { path: 'clickabletree', component: ClickableTreeComponent },
+
 ];
 
 @NgModule({

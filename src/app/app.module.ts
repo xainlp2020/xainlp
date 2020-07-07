@@ -41,6 +41,7 @@ import { SimilarPaperDialogComponent } from './similar-paper-dialog/similar-pape
 import { CitationGraphComponent } from './citation-graph/citation-graph.component';
 import { ClickComponent } from './click/click.component';
 import { ResourcesComponent } from './resources/resources.component';
+import { ClickableTreeComponent } from './clickable-tree/clickable-tree.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { ResourcesComponent } from './resources/resources.component';
     SimilarPaperDialogComponent,
     CitationGraphComponent,
     ClickComponent,
-    ResourcesComponent
+    ResourcesComponent,
+    ClickableTreeComponent
   ],
   imports: [
     BrowserModule,
