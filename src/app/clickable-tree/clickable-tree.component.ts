@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import xaipapers from "../../assets/data/xaipapers.json";
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {PaperDialogComponent} from "../paper-dialog/paper-dialog.component";
+import { NONE_TYPE } from '@angular/compiler';
 
 
 export interface paperData{
@@ -146,6 +147,7 @@ export class ClickableTreeComponent implements OnInit {
                     }
                 },
                 tooltip: {
+                  show: false,
                   position: "bottom"
                 },
                 expandAndCollapse: true,
