@@ -1,20 +1,69 @@
 <div style="font-size: 13px;">
-    <div class="w3-margin w3-content w3-padding-large">
-        <div class="w3-row">
-            <div class="w3-twothird">
-                <input class="w3-input w3-border w3-border-dark-grey w3-round" placeholder="Enter your query terms..." (keydown)="keyDownFunction($event)" [(ngModel)]="query" type="text">
+    <div class="w3-margin-bottom w3-margin-left w3-margin-right w3-padding-large">
+        <div>
+            <mat-radio-group [(ngModel)]="search_type" aria-label="Select an option">
+                <mat-radio-button class="w3-margin-left" value="keyword">Keyword Search</mat-radio-button>
+                <mat-radio-button value="facet" class="w3-margin-left">Facet Search</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div *ngIf="search_type==='keyword'">
+            <div class="w3-margin-top w3-row">
+                <div class="w3-twothird">
+                    <input class="w3-margin-left w3-margin-right w3-input w3-border w3-border-dark-grey w3-round" placeholder="Enter your query terms..." (keydown)="keyDownFunction($event)" [(ngModel)]="query" type="text">
+                </div>
+                <div class="w3-third">
+                    <button style="margin-left:20px" class="w3-padding w3-border w3-border-black w3-round w3-button w3-white" (click)="search(query)">SEARCH</button>
+                </div>
             </div>
-            <div class="w3-third">
-                <!-- <input class="w3-margin-left" type="checkbox" checked="search_caseSensitive" 
-                    (change)="search_caseSensitive=!search_caseSensitive;">
-                <label>&nbsp;Case Sensitive</label>
-                 -->
-                <button class="w3-margin-left w3-padding w3-border w3-border-black w3-round w3-button w3-white"
-                        (click)="search(query)">SEARCH</button>
-                
+        </div>
+        <div *ngIf="search_type==='facet'">
+            <div class="w3-margin-top w3-row">
+                <span class="w3-margin-left w3-padding w3-border-black w3-hover-blue-grey" style="cursor: pointer; border: 1px; border-style: dashed" 
+                        *ngFor="let facet of facets; let idx = index" (click)="addFacet(facet, idx)">
+                    {{facets_natural_language[idx]}}
+                    <i class="w3-margin-left w3-medium fa fa-plus-circle" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div *ngIf="facetConfig.length > 0" class="w3-medium w3-margin-top">
+                <div class="w3-margin-top">&nbsp;</div>
+                <div class="w3-margin-top w3-margin-left">Facet Configuration</div>
+                <div class="w3-padding">
+                    <table>
+                        <tr *ngFor="let facet of facetConfig; let idx = index" >
+                            <td>
+                                <span *ngIf="idx!=0" class="w3-margin-right w3-small"><b>AND</b></span>
+                                <span *ngIf="idx==0" class="w3-margin-right w3-small w3-text-white"><b>AND</b></span>
+                            </td>
+                            <td>
+                                <span class="w3-light-grey w3-padding-small" style="font-weight: 500;">{{facet.natural_language}}</span>
+                            </td>
+                            <td>
+                                <select class="w3-margin-left w3-border w3-small w3-round w3-dark-grey" [(ngModel)]="facet.match_method" style="padding:3px">
+                                    <option value="" disabled selected>match method</option>
+                                    <option *ngFor="let method of match_method" value="{{method}}">{{method}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input class="w3-margin-left" type="text" [(ngModel)]="facet.query" placeholder="enter your keywords..." style="min-width:400px">
+                            </td>
+                            <td style="padding-top:8px; padding-bottom: 1px;">
+                                <mat-checkbox class="w3-margin-left" (change)="changeCaseSensitive(idx)" [checked]="facet.case_sensitive">case sensitive?</mat-checkbox>
+                            </td>
+                            <td>
+                                <i class="w3-margin-left w3-large fa fa-times w3-hover-text-red"
+                                    (click)="deleteFacet(idx)" aria-hidden="true" style="cursor:pointer"></i>
+                            </td>
+                        </tr>
+                    </table>
+                    <div>
+                        <button class="w3-margin-top w3-padding-small w3-border w3-border-black w3-small w3-button w3-white"
+                            (click)="facetSearch()">SEARCH</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <hr>
 
 
     <div class="w3-row">

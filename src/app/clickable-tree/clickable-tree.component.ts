@@ -34,6 +34,7 @@ export interface paperData{
 })
 export class ClickableTreeComponent implements OnInit {
 
+ 
   typeMap = {
     "1": "Local Post-hoc",
     "2": "Local Self-explaining",

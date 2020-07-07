@@ -36,7 +36,74 @@ interface similarPaperData {
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  
+  /**
+   * 
+   * @param 
+   */
+  search_type = 'facet'
+  facets                  = ["explainability", "main_explainability", "visualization", "main_visualization", 
+                            "nlp_task_1", "evaluation_metrics","operations"]
+  facets_natural_language = ["Explainability", "Main Explainability", "Visualization", "Main visualization",
+                            "NLP Topic", "Evaluation Metrics","Explainability Operations"]
+
+  match_method = ["exact match", "contains"]
+  // case_sensitive = ["yes", "no"]
+  curr_facet_list = []
+  facetConfig = []
+
+  addFacet(facet, facetidx)
+  {
+    console.log("adding facet " + facet)
+    console.log(this.curr_facet_list)
+    if(this.ifContains(facet))
+    {
+      console.log("already included")
+    }
+    else
+    {
+      this.curr_facet_list.push(
+        {
+          facetName: facet,
+          facetIdx: facetidx
+        }
+      )
+      this.facetConfig.push(
+        {
+          facet: this.facets[facetidx],
+          natural_language: this.facets_natural_language[facetidx],
+          query: "",
+          match_method: "contains",
+          case_sensitive: true
+        }
+      )
+    }
+  }
+  deleteFacet(idx)
+  {
+    this.facetConfig.splice(idx, 1)
+  }
+  changeCaseSensitive(index)
+  {
+    this.facetConfig[index].case_sensitive = !this.facetConfig[index].case_sensitive;
+  }
+  ifContains(item)
+  {
+    if(this.curr_facet_list == undefined || this.curr_facet_list.length == 0)
+    {
+      return false
+    }
+    else{
+      for(var i = 0; i < this.curr_facet_list.length; i++)
+      {
+        if(this.curr_facet_list[i].facetName === item)
+        {
+          return true
+        }
+      }
+      return false;
+    }
+  }
+
   viewSimilarPapers(paper) {
     this.findSimilar(paper)
     var data2viz = this.similarPapers
@@ -233,23 +300,28 @@ export class SearchComponent implements OnInit {
   }
 
   all_papers = []
+  all_papers_orig = []
   load_all_papers()
   {
     for(var i = 0; i < xaipapers['local-post-hoc'].length; i++)
     {
       this.all_papers.push(xaipapers["local-post-hoc"][i])
+      this.all_papers_orig.push(xaipapers["local-post-hoc"][i])
     }
     for(var i = 0; i < xaipapers['local-self'].length; i++)
     {
       this.all_papers.push(xaipapers["local-self"][i])
+      this.all_papers_orig.push(xaipapers["local-self"][i])
     }
     for(var i = 0; i < xaipapers['global-post-hoc'].length; i++)
     {
       this.all_papers.push(xaipapers["global-post-hoc"][i])
+      this.all_papers_orig.push(xaipapers["global-post-hoc"][i])
     }
     for(var i = 0; i < xaipapers['global-self'].length; i++)
     {
       this.all_papers.push(xaipapers["global-self"][i])
+      this.all_papers_orig.push(xaipapers["global-self"][i])
     }
     var tmp = JSON.stringify(this.all_papers).toLowerCase()
     this.all_papers = JSON.parse(tmp)
@@ -326,6 +398,117 @@ export class SearchComponent implements OnInit {
   query_results = {}
   final_results = []
   
+  // facet search
+  facetSearch()
+  {
+    console.log(this.facetConfig)
+    this.final_results = []
+    this.query_results = {"any":[]}
+
+    var selected_facets = []
+    console.log("facet search")
+    console.log(this.facetConfig)
+    for(var i = 0; i < this.facetConfig.length; i++)
+    {
+      var facet = this.facetConfig[i]
+      selected_facets.push(facet["facet"])
+      // console.log(facet["facet"])
+    }
+    console.log(selected_facets)
+    for(var i = 0; i < this.all_papers_orig.length; i++)
+    {
+      var paper = this.all_papers_orig[i]
+      var already_included_in_any_result = false;
+      for(let facet of this.facetConfig)
+      {
+        var attr = facet["facet"]
+        var facet_query = facet["query"]
+        if(attr in paper)
+        {
+          // this facet is included in current candidate paper
+          console.log("checking attr " + attr)
+          var match_method = facet["match_method"]
+          var case_sensitive = facet["case_sensitive"]
+          var massaged_paper;
+
+          // console.log("match_type " + match_method)
+          if(!case_sensitive)
+          {
+            massaged_paper = JSON.parse(JSON.stringify(paper))
+            facet_query = facet_query.toLowerCase()
+          }
+          else{
+            massaged_paper = paper
+          }
+
+          var paper_attr_val = massaged_paper[attr].trim()
+          facet_query = facet_query.trim()
+          if(match_method === 'exact match')
+          {            
+            if(facet_query === paper_attr_val)
+            {
+              if(attr in this.query_results)
+              {
+                this.query_results[attr].push(paper)
+              }
+              else
+              {
+                this.query_results[attr] = [paper]
+              }
+              if(!already_included_in_any_result)
+              {
+                this.query_results["any"].push(paper)
+                already_included_in_any_result = true;
+              }
+            }
+            
+          }
+          else if(match_method == 'contains')
+          {
+            console.log("(contains) comparing " + paper_attr_val + " vs. " + facet_query)
+            console.log("contains? " + paper_attr_val.includes(facet_query))
+            if(paper_attr_val.includes(facet_query))
+            {
+              
+              if(attr in this.query_results)
+              {
+                this.query_results[attr].push(paper)
+              }
+              else
+              {
+                this.query_results[attr] = [paper]
+              }
+              if(!already_included_in_any_result)
+              {
+                this.query_results["any"].push(paper)
+                already_included_in_any_result = true;
+              }
+            }
+            
+          }
+        }
+      }
+    }
+
+    console.log("query_results")
+    console.log(this.query_results)
+
+    for(var i = 0; i < this.attr_order.length; i++)
+    {
+      var attrx = this.attr_order[i]
+       // first, for any attribute
+       if(this.query_results[attrx] != undefined)
+       {
+         this.final_results.push(this.query_results[attrx])
+       }
+       else
+       {
+         this.final_results.push(undefined)
+       }
+    }    
+  }
+
+  // simple keyword search
   search(query)
   {
     this.final_results = []
