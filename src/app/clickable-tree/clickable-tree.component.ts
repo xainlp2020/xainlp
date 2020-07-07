@@ -1,5 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import xaipapers from "../../assets/data/xaipapers.json";
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {PaperDialogComponent} from "../paper-dialog/paper-dialog.component";
+
+
+export interface paperData{
+  title: string,
+  authors: string,
+  year: number,
+  venue: string,
+  main_explainability: string,
+  main_visualization: string,
+  citation: number,
+  link: string,
+  placement: string,
+  xai_type: string,
+  nlp_task_1: string,
+  parts_covered: string,
+  type: string,
+  evaluation_metrics: string,
+  operations: string,
+  abstract: string,
+  id: string,
+  num_preview_img: number
+}
 
 
 @Component({
@@ -8,6 +32,27 @@ import xaipapers from "../../assets/data/xaipapers.json";
   styleUrls: ['./clickable-tree.component.css']
 })
 export class ClickableTreeComponent implements OnInit {
+
+  typeMap = {
+    "1": "Local Post-hoc",
+    "2": "Local Self-explaining",
+    "3": "Global Post-hoc",
+    "4": "Global Self-explaining"
+  }
+  viewPaper(event)
+  {
+    var data = event.data
+    if (data.info != undefined)
+    {
+      console.log('clicking a leaf node')
+      var selectedPaper = data.info
+      selectedPaper["xai_type"] = this.typeMap[selectedPaper["placement"]]
+      this.dialog.open(PaperDialogComponent, {
+        data: selectedPaper
+      });
+    }
+    // console.log(event)
+  }
 
   tree_option;
   papers;
@@ -112,7 +157,7 @@ export class ClickableTreeComponent implements OnInit {
   }
 
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
   
   ngOnInit(): void {
     this.render_tree()
