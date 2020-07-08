@@ -665,6 +665,29 @@ export class VisualizationComponent implements OnInit {
   symbol_size = 14;
   random_step_size = 2.5
   
+  seed = 1
+  testRandom()
+  {
+    var i = 0
+    while ( i < 30)
+    {
+      var r = this.randomFn(0,1,this.seed)
+      console.log(r)
+      this.seed += 1
+      i += 1
+    }
+  }
+  randomFn(min, max, seed)
+  {
+    max = max || 1;
+    min = min || 0;
+ 
+    seed = (seed * 9301 + 49297) % 233280;
+    var rnd = seed / 233280;
+ 
+    return min + rnd * (max - min);
+  }
+
   render_scatter()
   {
     var paper_schema = [
@@ -690,11 +713,11 @@ export class VisualizationComponent implements OnInit {
     
     
     var itemStyle = {
-        opacity: 0.8,
-        shadowBlur: 10,
-        shadowOffsetX: 0,
-        shadowOffsetY: 0,
-        shadowColor: 'rgba(0, 0, 0, 0.5)'
+        opacity: 0.7,
+        // shadowBlur: 10,
+        // shadowOffsetX: 0,
+        // shadowOffsetY: 0,
+        // shadowColor: 'rgba(0, 0, 0, 0.5)'
     };
     
     /**
@@ -743,6 +766,7 @@ export class VisualizationComponent implements OnInit {
 
 
 
+    
     var local_post_data = []
     for(var i = 0; i < this.local_post.length; i++)
     {
@@ -919,7 +943,7 @@ export class VisualizationComponent implements OnInit {
     this.options = {
         backgroundColor: '#f1f1f1',
         color: [
-            "blue", '#dd4444', "#45b300", "#ffd300"
+            "blue", '#dd4444', "#45b300", "black"
         ],
         legend: {
             backgroundColor: "transparent",
@@ -1054,13 +1078,7 @@ export class VisualizationComponent implements OnInit {
               name: 'global self-explaining',
               type: 'scatter',
               symbolSize: this.symbol_size,
-              itemStyle: {
-                opacity: 0.8,
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowOffsetY: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
-              },
+              itemStyle: itemStyle,
               data: global_self_data,
             }
         ]

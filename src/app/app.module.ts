@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { OrgChartModule } from '@mondal/org-chart';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +37,12 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { VisualizationComponent } from './visualization/visualization.component';
 import {MatSliderModule} from '@angular/material/slider';
 import { SearchComponent } from './search/search.component';
+import { SimilarPaperDialogComponent } from './similar-paper-dialog/similar-paper-dialog.component';
+import { CitationGraphComponent } from './citation-graph/citation-graph.component';
+import { ClickComponent } from './click/click.component';
+import { ResourcesComponent } from './resources/resources.component';
+import { ClickableTreeComponent } from './clickable-tree/clickable-tree.component';
+import { Ng5SliderModule } from 'ng5-slider';
 
 
 @NgModule({
@@ -46,11 +55,17 @@ import { SearchComponent } from './search/search.component';
     DefinitionDialogComponent,
     AddNewPapersComponent,
     VisualizationComponent,
-    SearchComponent
+    SearchComponent,
+    SimilarPaperDialogComponent,
+    CitationGraphComponent,
+    ClickComponent,
+    ResourcesComponent,
+    ClickableTreeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
     NgbModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -74,7 +89,10 @@ import { SearchComponent } from './search/search.component';
     NgxEchartsModule.forRoot({
       echarts
     }),
-    MatCheckboxModule
+    MatCheckboxModule,
+    OrgChartModule,
+    Ng2SearchPipeModule,
+    Ng5SliderModule
   ],
   entryComponents:
   [
@@ -82,6 +100,7 @@ import { SearchComponent } from './search/search.component';
     DefinitionDialogComponent
   ],
   providers: [],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

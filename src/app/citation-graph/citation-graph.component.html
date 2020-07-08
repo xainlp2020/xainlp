@@ -1,0 +1,23 @@
+<div class="w3-margin"></div>
+<div class="w3-content">
+    <p>
+        In this view, we show the citation graph among XAI paper included in our repository. In particular, we show the evolution of the citation
+        graph in terms of different years. Citation data will be periodically updated. Click the legend to select and deselect certain type of papers 
+        to explore the citation graph in different ways.
+    </p>
+</div>
+<div class="w3-light-grey w3-row">
+    <div class="w3-row w3-light-grey w3-padding">
+        <div echarts [options]="citation_net_options" (chartClick)="viewPaper($event)" (chartInit)="onChartInit($event)" style="min-height:600px">
+        </div>
+    </div>
+</div>
+<div class="w3-row w3-margin">
+    <div class="w3-margin-left w3-row">
+        <div class="w3-margin-left w3-col s3">
+            <ng5-slider [(value)]="year_value" (userChange)="updateYear($event)" [options]="year_options"></ng5-slider>
+            <i class="w3-margin-top w3-round w3-large fa fa-play-circle w3-dark-grey w3-hover-orange w3-padding-small" 
+                    (click)="showEvolution()" aria-hidden="true" style="cursor:pointer"> Show Evolution </i>
+        </div>
+    </div>
+</div>
