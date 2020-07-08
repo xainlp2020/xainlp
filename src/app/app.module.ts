@@ -42,6 +42,7 @@ import { CitationGraphComponent } from './citation-graph/citation-graph.componen
 import { ClickComponent } from './click/click.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { ClickableTreeComponent } from './clickable-tree/clickable-tree.component';
+import { Ng5SliderModule } from 'ng5-slider';
 
 
 @NgModule({
@@ -91,6 +92,7 @@ import { ClickableTreeComponent } from './clickable-tree/clickable-tree.componen
     MatCheckboxModule,
     OrgChartModule,
     Ng2SearchPipeModule,
+    Ng5SliderModule
   ],
   entryComponents:
   [

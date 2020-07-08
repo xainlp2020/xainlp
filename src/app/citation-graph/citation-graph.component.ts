@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import citation_network from "../../assets/citation/network.json";
 import xaipapers from "../../assets/data/xaipapers.json";
+import { Options } from 'ng5-slider';
+import { P } from '@angular/cdk/keycodes';
 
 
 @Component({
@@ -10,6 +12,46 @@ import xaipapers from "../../assets/data/xaipapers.json";
 })
 export class CitationGraphComponent implements OnInit {
 
+  /**
+   * slider config
+   * hard coded for now, should change to programmatically read the start year and end year from citation network json records
+   */
+  startYear = 2013
+  endYear   = 2019
+  year_value: number = this.startYear;
+  year_options: Options = {
+    floor: this.startYear,
+    ceil: this.endYear,
+    step: 1,
+    showTicks: true,
+    showTicksValues: true
+  };
+  showEvolution()
+  {
+    this.year_value = this.startYear
+    console.log("start evolution")
+    console.log(this.year_value)
+    // this.year_value += 1
+    console.log(this.year_value)
+
+    var num_iteration = this.endYear - this.startYear
+    var counter = 0
+    var interval = setInterval(() =>
+    {
+      counter += 1
+      this.year_value = this.year_value + 1
+      console.log("year_value " + this.year_value)
+      if(counter === num_iteration)
+      {
+        clearInterval(interval)
+      }
+    }, 1000)
+  }
+
+
+  /**
+   * network config 
+   * */
   citation_net_options;
   networkInstance
   network
@@ -59,7 +101,7 @@ export class CitationGraphComponent implements OnInit {
     });
     this.citation_net_options = {
         title: {
-            text: 'Citation Network',
+            text: 'Citation Graph',
             subtext: 'Default layout',
             top: 'bottom',
             left: 'right'

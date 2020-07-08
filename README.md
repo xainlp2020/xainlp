@@ -21,6 +21,17 @@ see installation details at: https://xieziyu.github.io/ngx-echarts/#/welcome
 see installation details at https://github.com/ecomfe/echarts-wordcloud
 ```
 
+5. [Org-chart]{https://www.npmjs.com/package/orgchart}
+```
+see installation details at https://www.npmjs.com/package/orgchart
+```
+
+6. [ng5-slider]{https://www.npmjs.com/package/ng5-slider}
+```
+see installation details at https://www.npmjs.com/package/ng5-slider
+```
+
+
 # If deploy via angular-cli-ghpage
 need to first add localize package:
 
