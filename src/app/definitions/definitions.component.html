@@ -1,29 +1,91 @@
 <!-- <div class="w3-content w3-margin-top" style="max-width:1500px;"></div> -->
 <div class = w3-light-grey>
+
 <div class="w3-content w3-padding w3-light-grey def-container">
+	<div class="page-title">
+		Definitions
+	</div>
+	<div class="page-content">
+		We have identified 4 major dimensions on which explainability approaches can be classified. We summarize below the common approaches encountered in the literature for each of the 4 dimensions.
+	</div>
+
+    <!-------------------->
+    <!-- EXPLANATION TYPE -->
+    <!-------------------->
+	
     <mat-card class="w3-margin def-section">
-      <mat-card-title>
-        Taxonomy
+      <mat-card-title class="def-title">
+        Explanation Types
       </mat-card-title>
-      <mat-card-content class="w3-content w3-center">
-        <img src="assets/img/taxonomy.svg">
-      </mat-card-content>
-      
-    </mat-card>
+      <mat-card-content>
+      <div class="def-subtitle">
+      	What is the type of the explanation
+      </div>
+    <div class="card-container" style="display: flex;    overflow-x: auto; overflow-y: auto;">
+          <mat-card  class="col-sm-3 def-card">
+            <mat-card-header class="title">
+              <mat-card-title class="w3-large">Local Post-Hoc</mat-card-title>
+            </mat-card-header>
+             <mat-card-content>
+              <div class="text">
+                Explain a single prediction by performing additional operations (<b>after</b> the model has emitted a prediction).
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card  class="col-sm-3 def-card">
+            <mat-card-header class="title">
+              <mat-card-title class="w3-large">Local Self-Explaining</mat-card-title>
+            </mat-card-header>
+             <mat-card-content>
+              <div class="text">
+                Explain a single prediction using the model itself (calculated from information made available from the model <b>as part of</b> making the prediction).
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card  class="col-sm-3 def-card">
+            <mat-card-header class="title">
+              <mat-card-title class="w3-large">Global Post-Hoc</mat-card-title>
+            </mat-card-header>
+             <mat-card-content>
+              <div class="text">
+                Perform additional operations to explain the entire model's predictive reasoning.
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card  class="col-sm-3 def-card">
+            <mat-card-header class="title">
+              <mat-card-title class="w3-large">Global Self-Explaining</mat-card-title>
+            </mat-card-header>
+             <mat-card-content>
+              <div class="text">
+                Use the predictive model itself to explain the entire model's predictive reasoning (a.k.a. directly interpretable model).
+              </div>
+            </mat-card-content>
+          </mat-card>
+    
+    </div>
+	</mat-card-content>
+	</mat-card>
+
 
     <!-------------------->
     <!-- EXPLAINABILITY -->
     <!-------------------->
 
     <mat-card class="w3-margin def-section">
-      <mat-card-title>
+      <mat-card-title class="def-title">
         Explainability Techniques
       </mat-card-title>
-      <mat-card-content>
-        <div fxLayout="row wrap" class="w3-padding">
+      <mat-card-content class="def-subtitle">
+        <div>
+      	  How are explanations generated
+        </div>      
+        <div class="card-container" style="display: flex;    overflow-x: auto; overflow-y: auto;">
 
-
-          <mat-card >
+        <mat-card class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Feature Importance</mat-card-title>
             </mat-card-header>
@@ -36,7 +98,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card class="w3-margin-top">
+          <mat-card class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Surrogate Model</mat-card-title>
             </mat-card-header>
@@ -48,8 +110,8 @@
               </div>
             </mat-card-content>
           </mat-card>
-
-          <mat-card class="w3-margin-top">
+          
+          <mat-card class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Example-Driven</mat-card-title>
             </mat-card-header>
@@ -62,7 +124,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card class="w3-margin-top">
+          <mat-card class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Provenance</mat-card-title>
             </mat-card-header>
@@ -76,7 +138,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card class="w3-margin-top">
+          <mat-card class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Induction</mat-card-title>
             </mat-card-header>
@@ -87,29 +149,36 @@
               </div>
             </mat-card-content>
           </mat-card>
-        </div>
 
-      </mat-card-content>
+    </div>
+    
+    </mat-card-content>
+</mat-card>
 
-    </mat-card>
-
-    <!------------------->
+    <!-------------------->
     <!-- VISUALIZATION -->
-    <!------------------->
+    <!-------------------->
 
     <mat-card class="w3-margin def-section">
-      <mat-card-title>
+      <mat-card-title class="def-title">
         Visualization Techniques
       </mat-card-title>
       <mat-card-content>
+         <div class="def-subtitle">
+           How are explanations visualized
+         </div>
+         <div class="card-container" style="display: flex;    overflow-x: auto; overflow-y: auto;">
 
-        <div class="w3-padding">
-
-          <mat-card class="w3-margin-top">
+          <mat-card class="col-md-5 def-card" fxFlexAlign="stretch">
             <mat-card-header class="title">
-              <mat-card-title>Saliency - Heatmap</mat-card-title>
+              <mat-card-title class="w3-large">Saliency - Heatmap</mat-card-title>
             </mat-card-header>
-            <mat-card-content fxLayout="column" style="display:flex;">
+            <mat-card-content>
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+              <span class="text">
+                Visualize importance scores of different types of elements (such as input-output word alignment) through a heatmap.
+              </span>
+            </div>
               <div>
                 <img width="280px" style="margin-right:50px; margin-left:8px;" src="assets/img/saliency-heatmap-word-alignment.png">
                 <div class="cite">
@@ -118,21 +187,19 @@
                   (Bahdanau et al.,2015)</a>
                 </div>
             </div>
-            <div style="display: flex; align-items: center;">
-              <span class="text">
-                Saliency has been primarily used to visualize the importance
-                scores  of  different  types  of  elements  in  XAI  learning
-                systems,  such  as  showing input-output word alignment.
-              </span>
-            </div>
             </mat-card-content>
           </mat-card>
 
-          <mat-card class="w3-margin-top">
-            <mat-card-header class="title">
-              <mat-card-title>Saliency - Highlighting</mat-card-title>
+          <mat-card class="col-md-5 def-card"  fxFlexAlign="stretch">
+            <mat-card-header class="w3-large">
+              <mat-card-title class="w3-large">Saliency - Highlighting</mat-card-title>
             </mat-card-header>
-            <mat-card-content fxLayout="column" style="display:flex;">
+            <mat-card-content>
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+              <span class="text">
+                Visualize importance scores of different types of elements by highlighting words in input text.
+              </span>
+            </div>
               <div>
                 <img width="320px" style="margin:8px;" src="assets/img/saliency-highlighting.png">
                 <div class="cite">
@@ -141,21 +208,19 @@
                   (Mullenbach et al., 2018)</a>
                 </div>
             </div>
-            <div style="display: flex; align-items: center;">
-              <span class="text">
-                Saliency has been primarily used to visualize the importance
-                scores of different types of elements in XAI learning
-                systems, such as highlighting words in input text.
-              </span>
-            </div>
             </mat-card-content>
           </mat-card>
 
-          <mat-card  class="w3-margin-top">
+          <mat-card class="col-md-5 def-card"  fxFlexAlign="stretch">
             <mat-card-header class="title">
-              <mat-card-title>Raw Declarative Representation - Rules</mat-card-title>
+              <mat-card-title class="w3-large">Raw Declarative Representation - Rules</mat-card-title>
             </mat-card-header>
-            <mat-card-content fxLayout="column" style="display:flex;">
+            <mat-card-content>
+			  <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                <span class="text">
+                  Directly present learned logic rules.
+                </span>
+              </div>
               <div>
                 <img width="320px" style="margin:8px;" src="assets/img/raw-declarative-rules.png">
                 <div class="cite">
@@ -164,20 +229,19 @@
                   (Pezeshkpour et al., 2019)</a>
                 </div>
             </div>
-            <div style="display: flex; align-items: center;">
-              <span class="text">
-                This visualization technique directly presents the learned
-                declarative representations, such as logic rules.
-              </span>
-            </div>
             </mat-card-content>
           </mat-card>
 
-          <mat-card  class="w3-margin-top">
+          <mat-card class="col-md-5 def-card"  fxFlexAlign="stretch">
             <mat-card-header class="title">
-              <mat-card-title>Raw Declarative Representation - Programs</mat-card-title>
+              <mat-card-title class="w3-large">Raw Declarative Representation - Programs</mat-card-title>
             </mat-card-header>
-            <mat-card-content fxLayout="column" style="display:flex;">
+            <mat-card-content>
+              <div style="display: flex; align-items: top; margin-bottom: 12px;">
+                <span class="text">
+                  Directly present learned programs.
+                </span>
+              </div>
               <div>
                 <img width="320px" style="margin:8px;" src="assets/img/raw-declarative-program.png">
                 <div class="cite">
@@ -186,20 +250,20 @@
                   (Amini et al., 2019)</a>
                 </div>
             </div>
-            <div style="display: flex; align-items: top;">
-              <span class="text">
-                This visualization technique directly presents the learned
-                declarative representations, such as programs.
-              </span>
-            </div>
             </mat-card-content>
           </mat-card>
 
-          <mat-card  class="w3-margin-top">
+          <mat-card class="col-md-5 def-card"  fxFlexAlign="stretch">
             <mat-card-header class="title">
-              <mat-card-title>Natural Language</mat-card-title>
+              <mat-card-title class="w3-large">Natural Language</mat-card-title>
             </mat-card-header>
-            <mat-card-content fxLayout="column" style="display:flex;">
+            <mat-card-content>
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+              <span class="text">
+                Verbalize explanation in human-comprehensible
+                natural language.
+              </span>
+            </div>
               <div>
                 <img width="320px" style="margin:8px;" src="assets/img/natural-language-QUINT.png">
                 <div class="cite">
@@ -208,21 +272,20 @@
                   (Abujabal et al., 2017)</a>
                 </div>
             </div>
-            <div style="display: flex; align-items: center;">
-              <span class="text">
-                The explanation is verbalized in human-comprehensible
-                natural language, which can be generated, for example,
-                by using simple template-based approaches.
-              </span>
-            </div>
             </mat-card-content>
           </mat-card>
 
-          <mat-card  class="w3-margin-top">
+          <mat-card class="col-md-5 def-card"  fxFlexAlign="stretch">
             <mat-card-header class="title">
-              <mat-card-title>Raw Examples</mat-card-title>
+              <mat-card-title class="w3-large">Raw Examples</mat-card-title>
             </mat-card-header>
-            <mat-card-content fxLayout="column" style="display:flex;">
+            <mat-card-content>
+            <div style="display: flex; align-items: top; margin-bottom: 12px;">
+              <span class="text">
+                Presents raw examples, usually from
+                the training data, to motivate the explanation.
+              </span>
+            </div>
               <div>
                 <img width="320px" style="margin:8px;" src="assets/img/raw-examples.png">
                 <div class="cite">
@@ -231,36 +294,27 @@
                   (Croce et al., 2019)</a>
                 </div>
             </div>
-            <div style="display: flex; align-items: top;">
-              <span class="text">
-                This visualization technique presents raw examples, usually from
-                the training data, to motivate the explanation.
-              </span>
-            </div>
             </mat-card-content>
           </mat-card>
 
 
-        </div>
+	</div>
+	</mat-card-content>
+	</mat-card>	
 
-      </mat-card-content>
-
-    </mat-card>
-
-    <!---------------->
+    <!-------------------->
     <!-- EVALUATION -->
-    <!---------------->
-
+    <!-------------------->	
+	
     <mat-card class="w3-margin def-section">
-      <mat-card-title>
-        Evaluation Metrics
+      <mat-card-title class="def-title">
+        Evaluation Techniques
       </mat-card-title>
-      <mat-card-content>
+      <mat-card-content class="def-subtitle">
+      <div>How are explainations evaluated</div>
+    <div class="card-container" style="display: flex;    overflow-x: auto; overflow-y: auto;">
 
-        <div fxLayout="row wrap" class="w3-padding">
-
-
-          <mat-card  class="w3-margin-top">
+          <mat-card  class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Informal Examination</mat-card-title>
             </mat-card-header>
@@ -273,7 +327,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card  class="w3-margin-top">
+          <mat-card  class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Comparison to Ground Truth</mat-card-title>
             </mat-card-header>
@@ -286,7 +340,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card  class="w3-margin-top">
+          <mat-card  class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Human Evaluation</mat-card-title>
             </mat-card-header>
@@ -297,15 +351,11 @@
               </div>
             </mat-card-content>
           </mat-card>
+    
+    </div>
+	</mat-card-content>
+	</mat-card>
 
-          </div>
-
-      </mat-card-content>
-
-    </mat-card>
-
-
-
-  </div>
+</div>
 
 </div>
