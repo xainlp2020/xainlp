@@ -64,7 +64,7 @@ export class CitationGraphComponent implements OnInit {
   /**
    * year-based graphs
    */
-  symbolsize = 15;
+  symbolsize = 8;
   updateYear(event)
   {
     console.log("year update")
@@ -88,8 +88,9 @@ export class CitationGraphComponent implements OnInit {
     "3": 3,
     "4": 4
   }
-  canvas_width = 300
-  canvas_height = 300
+  canvas_width = 700
+  canvas_height = 500
+  gap_size = 500
   exp_categories = []
   prepareGraphs()
   {
@@ -128,7 +129,7 @@ export class CitationGraphComponent implements OnInit {
       var paper_id = paper['id']
       var paper_info = paper
       var citation = paper['citation']
-      var exp_type_id = this.placement2id[paper['placement']]
+      var exp_type_id = this.placement2id[paper['placement']] - 1
 
       var new_node = {
         category: exp_type_id,
@@ -140,6 +141,35 @@ export class CitationGraphComponent implements OnInit {
         y: Math.random() * this.canvas_height,
         info: paper_info
       }
+      var base_x ;
+      var base_y ;
+      if(paper["placement"] == "1")
+      {
+        base_x = -1 * this.canvas_width
+        base_y = this.canvas_height
+      }
+      else if(paper["placement"] == "2")
+      {
+        base_x = -1 * this.canvas_width
+        base_y = -1 * this.canvas_height
+      }
+      else if(paper["placement"] == "3")
+      {
+        base_x = this.canvas_width
+        base_y = -1 * this.canvas_height
+      }
+      else{
+        base_x = this.canvas_width
+        base_y = this.canvas_height
+      }
+      var randomSign = 1
+      if(Math.random() > 0.5)
+      {
+        randomSign = -1
+      }
+      new_node.x = base_x + Math.random() * this.gap_size * randomSign;
+      new_node.y = base_y + Math.random() * this.gap_size * randomSign;
+
       // console.log(year + " " + citation + " " + paper['title'])
       for(var curr = year; curr <= this.endYear; curr++)
       {
@@ -265,7 +295,15 @@ export class CitationGraphComponent implements OnInit {
             left: 'right'
         },
         tooltip: {},
-
+        color: [
+          "blue", '#dd4444', "#45b300", "black"
+        ],
+        legend: [{
+          // selectedMode: 'single',
+          data: this.exp_categories.map(function (a) {
+              return a.name;
+          })
+      }],
         animationDuration: 1500,
         animationEasingUpdate: 'quinticInOut',
         series : [
@@ -280,9 +318,6 @@ export class CitationGraphComponent implements OnInit {
                 categories: this.exp_categories,
                 roam: true,
                 focusNodeAdjacency: true,
-                itemStyle: {
-                  symbolSize: 20,
-                },
                 label: {
                     position: 'right',
                     formatter: '{b}'
