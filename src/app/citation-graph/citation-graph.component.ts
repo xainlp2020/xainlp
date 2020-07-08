@@ -90,7 +90,7 @@ export class CitationGraphComponent implements OnInit {
   }
   canvas_width = 700
   canvas_height = 500
-  gap_size = 500
+  gap_size = 300
   exp_categories = []
   prepareGraphs()
   {
@@ -167,7 +167,7 @@ export class CitationGraphComponent implements OnInit {
       {
         randomSign = -1
       }
-      new_node.x = base_x + Math.random() * this.gap_size * randomSign;
+      new_node.x = base_x + Math.random() * this.gap_size * 1.5 * randomSign;
       new_node.y = base_y + Math.random() * this.gap_size * randomSign;
 
       // console.log(year + " " + citation + " " + paper['title'])
