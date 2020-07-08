@@ -56,7 +56,7 @@ import { ResourcesComponent } from './resources/resources.component';
     SearchComponent,
     SimilarPaperDialogComponent,
     CitationGraphComponent,
-    ClickComponent
+    ClickComponent,
     ResourcesComponent
   ],
   imports: [
