@@ -1,20 +1,3 @@
-<div class="container-fluid top-section" >
- 
-    <div class="row">
- 
-     
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <ul class="prog-steps" >
-           <!--<a *ngFor="let r of route;let i=index;" (click)="selectPath(i)"><li class="set">{{r.name}}</li></a>-->
-    
-          <!-- <a routerLink="/surrogatems"><li class="inactive">Publications (Surrogate Model)</li></a>  -->
-        </ul>
-      </div>
-    </div>
-
-
 
 
   <!-- ****************** step panel ****************** -->
@@ -23,26 +6,23 @@
       <div class="col-md-12">
         <div class="step-panel">
             <div class="row">
-                <div class="col-md-4">
+
+              <div class="col-md-6">  
+                <!-- <img src="assets/images/posthoc.png" width="100%"> -->
+                
+                    <mui-org-chart [topEmployee]="nodes" direction="vertical" (itemClick)="popup($event)"></mui-org-chart>
+                    <br/>
+          </div>
+      
+                <div class="col-md-9">
                     <h2 class="title">{{pnodes.name}}</h2>
-          <br/> <br/>
-         
-             
-          <br/>
-             
-          
-        
           <p>{{explanations}}</p>
-
-
             <div class="step-panel" *ngIf="node_d">
           
                  
           
                     <h2 class="title" >Publications for {{pnodes.userType}}</h2>
                     <br/>
-          
-          
                     <h3 class="title" style="white-space: pre;"> Publication details </h3>
   
             <div *ngFor="let d of books">
@@ -69,11 +49,6 @@
 
 
         </div>
-        <div class="col-md-8">  
-            <!-- <img src="assets/images/posthoc.png" width="100%"> -->
-            
-                <mui-org-chart [topEmployee]="nodes" direction="vertical" (itemClick)="popup($event)"></mui-org-chart>
-         
-      </div>
+      
     </div>
   </div>
