@@ -19,10 +19,7 @@ export class ClickComponent implements OnInit {
     name: 'Type of explanation',
     split: ['Static', 'Interactive'],
     cssClass: 'selection-current',
-    index:[0],
-   
-    
-    
+    index:[0],   
     subordinates: [
       {
         name: 'Local',
@@ -80,8 +77,6 @@ export class ClickComponent implements OnInit {
 
         ]
       },
-      
-    
     ]
   };
   

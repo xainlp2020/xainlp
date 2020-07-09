@@ -37,6 +37,130 @@ export interface paperData{
 export class TreeComponent {
 
 
+  /**
+   * clickable taxonomy related
+   */
+  books: any = []
+  index: any = []
+  node_d: boolean = false
+  explanations : String = ''
+  pnodes : any ={}
+  
+  nodes: any = {
+    name: 'Type of explanation',
+    split: ['Static', 'Interactive'],
+    cssClass: 'selection-current',
+    index:[0],   
+    subordinates: [
+      {
+        name: 'Local',
+        split: ['Data','Model'],
+        cssClass: 'selection-not',
+        index:[0,0],
+        subordinates: [
+          {
+            name: 'Local Post-hoc',
+            split:['Algorithms. ProtoDash, DIP-VAE'],
+            cssClass: 'selection-not',
+            index:[0,0,0],
+            subordinates: []
+          },
+
+          {
+            name: 'Local Self-explaining',
+            cssClass: 'selection-not',
+            split:['Local', 'Global'],
+            index:[0,0,1],
+            // designation: 'Explanation',
+            subordinates: [ ]
+          }
+  
+        ]
+      },
+      {
+        name: 'Global',
+        cssClass: 'selection-not',
+        split:[],
+        index:[0,1],
+        // designation: 'Explanation',
+        subordinates: [
+
+          {
+            name: 'Global Post-hoc',
+            cssClass: 'selection-not',
+            split:[],
+            index:[0,1,0],
+            // designation: 'Explanation',
+            subordinates: []
+          }, 
+
+          {
+            name: 'Global Self-explaining',
+            cssClass: 'selection-not',
+            split:[],
+            index:[0,1,1],
+            // designation: 'Explanation',
+            subordinates: []
+          }
+        ]
+      },
+    ]
+  };
+
+  resetPath()
+  {
+    this.pnodes = this.nodes
+    if(this.index.length < 2)
+    {
+      this.pnodes.cssClass = 'selection-not'
+      return;
+    }
+    for(var i=1; i<this.index.length; i++)
+    {
+      this.pnodes.cssClass = 'selection-not';
+      this.pnodes = this.pnodes.subordinates[this.index[i]]
+    }
+    this.pnodes.cssClass = 'selection-not';
+
+    
+  }
+  selectPath()
+  {
+    
+    this.pnodes = this.nodes
+    if(this.index.length < 2)
+    {
+      this.pnodes.cssClass = 'selection-current'
+      return;
+    }
+ 
+    for(var i=1; i<this.index.length; i++)
+    {
+     
+      this.pnodes.cssClass = 'selection';
+      this.pnodes = this.pnodes.subordinates[this.index[i]]
+    }
+    this.pnodes.cssClass = 'selection-current'
+
+    if(this.node_d)
+    {
+      // this.books = data[this.pnodes.node_data]
+    }
+
+
+  }
+
+
+  
+  
+
+
+
+
+   /** 
+    * paper list
+    * 
+    */
   papers = xaipapers;
 
   local_posthoc = [];
@@ -79,6 +203,27 @@ export class TreeComponent {
   }
   compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
+
+  selected_sorted
+  sortData_selected(sort: Sort) {
+    const data = this.selected_sorted.slice();
+    if (!sort.active || sort.direction === '') {
+      this.selected_sorted = data;
+      return;
+    }
+
+    this.selected_sorted = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'year': return this.compare(a.year, b.year, isAsc);
+        case 'main_explainability': return this.compare(a.main_explainability, b.main_explainability, isAsc);
+        case 'main_visualization': return this.compare(a.main_visualization, b.main_visualization, isAsc);
+        case 'citation': return this.compare(a.citation, b.citation, isAsc);
+        case 'venue': return this.compare(a.venue, b.venue, isAsc);
+        default: return 0;
+      }
+    });
   }
 
   sortData_local_posthoc(sort: Sort) {
@@ -160,6 +305,80 @@ export class TreeComponent {
     });
   }
 
+
+  selected_type = ""
+  popup(e)
+  {
+    console.log(e)
+    this.resetPath()
+   
+    // this.explanations = this.dialog(e.name)
+    this.index = e.index
+    if(e.node_data == undefined)
+    {
+      this.node_d = false
+    }else
+    {
+      this.node_d = true
+    }
+    this.selectPath()
+    this.selected_type = e.name
+
+    if(this.selected_type === 'Local')
+    {
+      this.selected_sorted = []
+      this.selected_sorted = this.selected_sorted.concat(this.local_posthoc_sorted)
+      this.selected_sorted = this.selected_sorted.concat(this.local_self_sorted)
+      this.selected_sorted = this.selected_sorted.sort((a, b) => {
+        return this.compare(a.year, b.year, false);
+      });
+    }
+    else if(this.selected_type === 'Global')
+    {
+      this.selected_sorted = []
+      this.selected_sorted = this.selected_sorted.concat(this.global_posthoc_sorted)
+      this.selected_sorted = this.selected_sorted.concat(this.global_self_sorted)
+
+      this.selected_sorted = this.selected_sorted.sort((a, b) => {
+        return this.compare(a.year, b.year, false);
+      });
+    }
+    else if(this.selected_type === 'Local Self-explaining')
+    {
+      this.selected_sorted = []
+      this.selected_sorted = this.selected_sorted.concat(this.local_self_sorted)
+
+      this.selected_sorted = this.selected_sorted.sort((a, b) => {
+        return this.compare(a.year, b.year, false);
+      });
+    }
+    else if(this.selected_type === 'Local Post-hoc')
+    {
+      this.selected_sorted = []
+      this.selected_sorted = this.selected_sorted.concat(this.local_posthoc_sorted)
+      this.selected_sorted = this.selected_sorted.sort((a, b) => {
+        return this.compare(a.year, b.year, false);
+      });
+    }
+    else if(this.selected_type === 'Global Post-hoc')
+    {
+      this.selected_sorted = []
+      this.selected_sorted = this.selected_sorted.concat(this.global_posthoc_sorted)
+
+      this.selected_sorted = this.selected_sorted.sort((a, b) => {
+        return this.compare(a.year, b.year, false);
+      });
+    }
+    else if(this.selected_type === 'Global Self-explaining')
+    {
+      this.selected_sorted = []
+      this.selected_sorted = this.selected_sorted.concat(this.global_self)
+
+      this.selected_sorted = this.selected_sorted.sort((a, b) => {
+        return this.compare(a.year, b.year, false);
+      });
+    }
+  }
 
 
   constructor(public dialog: MatDialog) {
