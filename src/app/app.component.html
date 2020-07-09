@@ -10,7 +10,7 @@
     <a routerLink="/definitions" (click)="setActiveTab('definitions')" class="{{getHighlight('definitions')}} w3-bar-item w3-button"><i class="fa fa-file-text-o"></i> Definitions</a>
     <div (click)="setActiveTab('publications')" class="{{getHighlight('publications')}} w3-dropdown-hover">
       <button class="w3-button"  ><i class="fa fa-list"></i> Publications</button>
-      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+      <div style="z-index: 1" class="w3-dropdown-content w3-bar-block w3-card-4">
         <a routerLink="/viz" class="w3-bar-item w3-button"><i class="fa fa-pie-chart" aria-hidden="true"></i> Cluster </a>
         <a routerLink="/search" class="w3-bar-item w3-button"><i class="fa fa-search" aria-hidden="true"></i> Search </a>
         <a routerLink="/network" class="w3-bar-item w3-button"><i class="fa fa-share-alt" aria-hidden="true"></i> Citation Graph</a>

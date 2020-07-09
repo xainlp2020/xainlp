@@ -32,11 +32,12 @@
           To find relevant papers, we searched for titles containing (lemma-tized) terms related to XAI, such as “explainability”, “interpretability”, “transparent”, etc.  
           While this may ignore some related papers, we argue that representative papers are more likely to include such terms in their titles. In particular, 
           we assume that if authors consider explainability to be a major component of their work, they are more likely touse related keywords in the title of their work.</p>
-        <p>Our search criteria yielded a set of 107 papers. During the paper review process we first verified whether each paper truly fell within the scope of the survey. 
-          This process excluded 57 papers, leaving us with a total of <b>50</b> papers (by the end of 2019). The following tables reveals the top 3 NLP topics that these papers
-        study and top 3 conference venues that they were published.</p>
+        <p>Our search criteria yielded a set of {{total_search}} papers. During the paper review process we first verified whether each paper truly fell within the scope of the survey. 
+          This process excluded {{total_search - total_num_papers}} papers, leaving us with a total of <b>{{total_num_papers}}</b> papers (by the end of 2019). 
+          See some overall statistics in the <a routerLink="/viz">Cluster View</a> under Publications tab.
+        </p>
         
-        <div class="w3-row">
+        <!-- <div class="w3-row">
           <div class="w3-col s6 w3-center">
             <div class="w3-margin w3-content w3-border w3-small">
               <table class="w3-content w3-center table table-striped">
@@ -86,7 +87,7 @@
             </div>
           </div>
           
-        </div>
+        </div> -->
           
         
         
