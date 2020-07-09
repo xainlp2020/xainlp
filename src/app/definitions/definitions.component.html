@@ -1,7 +1,8 @@
 <!-- <div class="w3-content w3-margin-top" style="max-width:1500px;"></div> -->
-<div class = w3-light-grey>
+<div>
 
-<div class="w3-content w3-padding w3-light-grey def-container">
+<!--<div class="w3-content w3-padding w3-light-grey def-container"> -->
+<div class="def-container">
 	<div class="page-title">
 		Definitions
 	</div>
@@ -9,19 +10,34 @@
 		We have identified 4 major dimensions on which explainability approaches can be classified. We summarize below the common approaches encountered in the literature for each of the 4 dimensions.
 	</div>
 
+
+
+
+<!-- Tabs -->
+<mat-tab-group animationDuration="0ms">
+
     <!-------------------->
     <!-- EXPLANATION TYPE -->
     <!-------------------->
-	
-    <mat-card class="w3-margin def-section">
+
+   <mat-tab label="Explanation Types">	
+<!-- 
+     <ng-template mat-tab-label>
+      <span class="tab-label">Explanation Types</span><br>
+      <span class="tab-desc">What is the type of the explanation</span>
+	</ng-template>
+-->
+    <mat-card class="def-section">
+	  <!--
       <mat-card-title class="def-title">
         Explanation Types
       </mat-card-title>
+      -->
       <mat-card-content>
       <div class="def-subtitle">
       	What is the type of the explanation
       </div>
-    <div class="card-container" style="display: flex;    overflow-x: auto; overflow-y: auto;">
+    <div class="card-container d-flex flex-wrap">
           <mat-card  class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Local Post-Hoc</mat-card-title>
@@ -69,21 +85,24 @@
     </div>
 	</mat-card-content>
 	</mat-card>
-
+  </mat-tab>
 
     <!-------------------->
     <!-- EXPLAINABILITY -->
     <!-------------------->
 
-    <mat-card class="w3-margin def-section">
+  <mat-tab label="Explainability Techniques">
+    <mat-card class="def-section">
+      <!--
       <mat-card-title class="def-title">
         Explainability Techniques
       </mat-card-title>
+      -->
       <mat-card-content class="def-subtitle">
         <div>
       	  How are explanations generated
         </div>      
-        <div class="card-container" style="display: flex;    overflow-x: auto; overflow-y: auto;">
+        <div class="card-container d-flex flex-wrap">
 
         <mat-card class="col-sm-3 def-card">
             <mat-card-header class="title">
@@ -104,7 +123,7 @@
             </mat-card-header>
              <mat-card-content>
               <div class="text">
-                Explains model predictions by learning a second model,
+                Explain model predictions by learning a second model,
                 which is usually more explainable than the original
                 model, as a proxy.
               </div>
@@ -153,21 +172,25 @@
     </div>
     
     </mat-card-content>
-</mat-card>
+    </mat-card>
+  </mat-tab>
 
     <!-------------------->
     <!-- VISUALIZATION -->
     <!-------------------->
 
-    <mat-card class="w3-margin def-section">
+  <mat-tab label="Visualization Techniques">
+    <mat-card class="def-section">
+      <!--
       <mat-card-title class="def-title">
         Visualization Techniques
       </mat-card-title>
+      -->
       <mat-card-content>
          <div class="def-subtitle">
            How are explanations visualized
          </div>
-         <div class="card-container" style="display: flex;    overflow-x: auto; overflow-y: auto;">
+         <div class="card-container d-flex flex-wrap">
 
           <mat-card class="col-md-5 def-card" fxFlexAlign="stretch">
             <mat-card-header class="title">
@@ -191,7 +214,7 @@
           </mat-card>
 
           <mat-card class="col-md-5 def-card"  fxFlexAlign="stretch">
-            <mat-card-header class="w3-large">
+            <mat-card-header class="title">
               <mat-card-title class="w3-large">Saliency - Highlighting</mat-card-title>
             </mat-card-header>
             <mat-card-content>
@@ -301,18 +324,22 @@
 	</div>
 	</mat-card-content>
 	</mat-card>	
+  </mat-tab>
 
     <!-------------------->
     <!-- EVALUATION -->
     <!-------------------->	
-	
-    <mat-card class="w3-margin def-section">
+
+  <mat-tab label="Evaluation Techniques">	
+    <mat-card class="def-section">
+      <!--
       <mat-card-title class="def-title">
         Evaluation Techniques
       </mat-card-title>
+      -->
       <mat-card-content class="def-subtitle">
       <div>How are explainations evaluated</div>
-    <div class="card-container" style="display: flex;    overflow-x: auto; overflow-y: auto;">
+    <div class="card-container d-flex flex-wrap">
 
           <mat-card  class="col-sm-3 def-card">
             <mat-card-header class="title">
@@ -355,6 +382,8 @@
     </div>
 	</mat-card-content>
 	</mat-card>
+  </mat-tab>
+</mat-tab-group>
 
 </div>
 
