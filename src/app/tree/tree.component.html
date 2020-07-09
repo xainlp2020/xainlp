@@ -7,10 +7,10 @@
   <div >
     <mui-org-chart [topEmployee]="nodes" direction="vertical" (itemClick)="popup($event)"></mui-org-chart>
   </div>
-  <div class="w3-margin w3-center">
-    <div class="w3-margin-top">&nbsp;</div>
-    <span *ngIf="selected_type!=undefined && selected_type.length > 0" class="w3-margin-top w3-padding w3-text-indigo w3-large">
-          Showing <b>{{selected_sorted.length}}</b> papers for <b>{{selected_type}}</b> explanation</span>
+  <div *ngIf="selected_type!=undefined && selected_type.length > 0"  class="w3-margin w3-center">
+    <p class="w3-margin-top w3-text-indigo w3-large">
+          Showing <b>{{selected_sorted.length}}</b> papers for <b>{{selected_type}}</b> explanation</p>
+    <p>(Columns are sortable; Rows are clickable)</p>
     <div class="w3-padding w3-light-grey">
       <table class="w3-table table-striped" matSort (matSortChange)="sortData_selected($event)">
         <tr>
