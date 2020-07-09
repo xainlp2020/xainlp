@@ -40,10 +40,183 @@ export class SearchComponent implements OnInit {
    * 
    * @param 
    */
+  // facet search
+  facet_query_result;
+  final_facet_result;
+  colors = ["w3-text-red w3-large", "w3-text-teal w3-large", "w3-text-blue-grey w3-large", "w3-text-organe w3-large", "w3-text-purple w3-large", ]
+  getFacetHighlights(attr, attrStr) {
+    // first check if this attribute is included in facet search
+    var found_in_facet = false
+    var query_term = undefined
+    var facet_idx = -1
+    for(var i = 0; i < this.facetConfig.length; i++)
+    {
+      var facet = this.facetConfig[i]
+      if(facet['facet'] === attr)
+      {
+        found_in_facet = true
+        query_term = facet['query']
+        facet_idx = i
+        break;
+      }
+    }
+    if(!found_in_facet || query_term == undefined || attrStr == undefined){
+      return attrStr;
+    }
+    var searchStrLen = query_term.length
+    
+    var massaged_str = attrStr.slice(0);
+    if(!this.search_caseSensitive)
+    {
+      massaged_str = massaged_str.toLowerCase()
+    }
+
+    var startIndex = 0, index, indices = [];
+    if (true) {
+      query_term = query_term.toLowerCase();
+    }
+
+    while ((index = massaged_str.indexOf(query_term, startIndex)) > -1) {
+        indices.push(index);
+        startIndex = index + searchStrLen;
+    }
+    // console.log("indices")
+    // console.log(indices)
+    return this.facetResulHelper(query_term, attrStr, indices, facet_idx);
+    // return indices;
+  }
+
+  facetResulHelper(searchStr, str, indices, facet_idx)
+  {
+    var startIdex = 0;
+    // console.log(startIdex + " " +  str.length)
+
+    var highlight_color = this.colors[facet_idx % this.colors.length]
+
+    var highlighted = "";
+    for(var i = 0; i < indices.length; i++)
+    {
+      // console.log(startIdex + "\t" + i)
+      var curr_index = indices[i]
+      var temp = str.substring(startIdex, curr_index)
+      highlighted = highlighted.concat(temp)
+      var highlight_part = "<b class='" + highlight_color + "'>" + str.substring(curr_index, curr_index + searchStr.length) + "</b>"
+      highlighted = highlighted.concat(highlight_part)
+      
+      startIdex = curr_index + searchStr.length
+    }
+    if(startIdex < str.length)
+    {
+      highlighted = highlighted.concat(str.substring(startIdex))
+    }
+    return highlighted
+  }
+
+  facetSearch()
+  {
+    console.log(this.facetConfig)
+    this.final_facet_result = []
+    this.facet_query_result = {"any":[]}
+
+    var selected_facets = []
+    console.log("facet search")
+    console.log(this.facetConfig)
+    for(var i = 0; i < this.facetConfig.length; i++)
+    {
+      var facet = this.facetConfig[i]
+      selected_facets.push(facet["facet"])
+      // console.log(facet["facet"])
+    }
+    console.log(selected_facets)
+    for(var i = 0; i < this.all_papers_orig.length; i++)
+    {
+      var paper = this.all_papers_orig[i]
+      var already_included_in_any_result = false;
+      var satisfy_all_condition = true
+      for(let facet of this.facetConfig)
+      {
+        var attr = facet["facet"]
+        var facet_query = facet["query"]
+        if(attr in paper)
+        {
+          // this facet is included in current candidate paper
+          console.log("checking attr " + attr)
+          var match_method = facet["match_method"]
+          var case_sensitive = facet["case_sensitive"]
+          var massaged_paper;
+
+          // console.log("match_type " + match_method)
+          if(!case_sensitive)
+          {
+            massaged_paper = JSON.parse(JSON.stringify(paper).toLowerCase())
+            facet_query = facet_query.toLowerCase()
+          }
+          else{
+            massaged_paper = paper
+          }
+
+          var paper_attr_val = massaged_paper[attr].trim()
+          facet_query = facet_query.trim()
+          if(match_method === 'exact match')
+          {            
+            console.log("(exact match) comparing " + paper_attr_val + " vs. " + facet_query)
+            if(facet_query === paper_attr_val)
+            {
+              // if(!already_included_in_any_result)
+              // {
+              //   this.query_results["any"].push(paper)
+              //   already_included_in_any_result = true;
+              // }
+            }
+            else{
+              satisfy_all_condition = false;
+            }
+          }
+          else if(match_method == 'contains')
+          {
+            console.log("(contains) comparing " + paper_attr_val + " vs. " + facet_query)
+            console.log("contains? " + paper_attr_val.includes(facet_query))
+            if(paper_attr_val.includes(facet_query))
+            {
+            }
+            else{
+              satisfy_all_condition = false;
+            }  
+          }
+        }
+        if(!satisfy_all_condition)
+        {
+          break
+        }
+      }
+      if(satisfy_all_condition)
+      {
+        this.facet_query_result["any"].push(paper)
+      }
+    }
+
+    console.log("query_results")
+    console.log(this.facet_query_result)
+
+    for(var i = 0; i < this.attr_order.length; i++)
+    {
+      var attrx = this.attr_order[i]
+       // first, for any attribute
+       if(this.facet_query_result[attrx] != undefined)
+       {
+         this.final_facet_result.push(this.facet_query_result[attrx])
+       }
+       else
+       {
+         this.final_facet_result.push(undefined)
+       }
+    }    
+  }
+
   search_type = 'facet'
-  facets                  = ["explainability", "main_explainability", "visualization", "main_visualization", "abstract",
+  facets                  = ["title", "explainability", "main_explainability", "visualization", "main_visualization", "abstract",
                             "nlp_task_1", "evaluation_metrics","operations"]
-  facets_natural_language = ["Explainability", "Main Explainability", "Visualization", "Main visualization", "Abstract",
+  facets_natural_language = ["Title", "Explainability", "Main Explainability", "Visualization", "Main visualization", "Abstract",
                             "NLP Topic", "Evaluation Metrics","Explainability Operations"]
 
   match_method = ["exact match", "contains"]
@@ -342,7 +515,7 @@ export class SearchComponent implements OnInit {
       var curr_index = indices[i]
       var temp = str.substring(startIdex, curr_index)
       highlighted = highlighted.concat(temp)
-      var highlight_part = "<b class='w3-text-red'>" + str.substring(curr_index, curr_index + searchStr.length) + "</b>"
+      var highlight_part = "<b class='w3-text-red w3-large'>" + str.substring(curr_index, curr_index + searchStr.length) + "</b>"
       highlighted = highlighted.concat(highlight_part)
       
       startIdex = curr_index + searchStr.length
@@ -398,107 +571,7 @@ export class SearchComponent implements OnInit {
   query_results = {}
   final_results = []
   
-  // facet search
-  facetSearch()
-  {
-    console.log(this.facetConfig)
-    this.final_results = []
-    this.query_results = {"any":[]}
-
-    var selected_facets = []
-    console.log("facet search")
-    console.log(this.facetConfig)
-    for(var i = 0; i < this.facetConfig.length; i++)
-    {
-      var facet = this.facetConfig[i]
-      selected_facets.push(facet["facet"])
-      // console.log(facet["facet"])
-    }
-    console.log(selected_facets)
-    for(var i = 0; i < this.all_papers_orig.length; i++)
-    {
-      var paper = this.all_papers_orig[i]
-      var already_included_in_any_result = false;
-      var satisfy_all_condition = true
-      for(let facet of this.facetConfig)
-      {
-        var attr = facet["facet"]
-        var facet_query = facet["query"]
-        if(attr in paper)
-        {
-          // this facet is included in current candidate paper
-          console.log("checking attr " + attr)
-          var match_method = facet["match_method"]
-          var case_sensitive = facet["case_sensitive"]
-          var massaged_paper;
-
-          // console.log("match_type " + match_method)
-          if(!case_sensitive)
-          {
-            massaged_paper = JSON.parse(JSON.stringify(paper).toLowerCase())
-            facet_query = facet_query.toLowerCase()
-          }
-          else{
-            massaged_paper = paper
-          }
-
-          var paper_attr_val = massaged_paper[attr].trim()
-          facet_query = facet_query.trim()
-          if(match_method === 'exact match')
-          {            
-            console.log("(exact match) comparing " + paper_attr_val + " vs. " + facet_query)
-            if(facet_query === paper_attr_val)
-            {
-              // if(!already_included_in_any_result)
-              // {
-              //   this.query_results["any"].push(paper)
-              //   already_included_in_any_result = true;
-              // }
-            }
-            else{
-              satisfy_all_condition = false;
-            }
-          }
-          else if(match_method == 'contains')
-          {
-            console.log("(contains) comparing " + paper_attr_val + " vs. " + facet_query)
-            console.log("contains? " + paper_attr_val.includes(facet_query))
-            if(paper_attr_val.includes(facet_query))
-            {
-            }
-            else{
-              satisfy_all_condition = false;
-            }  
-          }
-        }
-        if(!satisfy_all_condition)
-        {
-          break
-        }
-      }
-      if(satisfy_all_condition)
-      {
-        this.query_results["any"].push(paper)
-      }
-    }
-
-    console.log("query_results")
-    console.log(this.query_results)
-
-    for(var i = 0; i < this.attr_order.length; i++)
-    {
-      var attrx = this.attr_order[i]
-       // first, for any attribute
-       if(this.query_results[attrx] != undefined)
-       {
-         this.final_results.push(this.query_results[attrx])
-       }
-       else
-       {
-         this.final_results.push(undefined)
-       }
-    }    
-  }
+  
 
   // simple keyword search
   search(query)

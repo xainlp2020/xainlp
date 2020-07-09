@@ -18,7 +18,7 @@
         </div>
         <div *ngIf="search_type==='facet'">
             <div class="w3-margin-top w3-row">
-                <span class="w3-margin-left w3-padding w3-border-black w3-hover-blue-grey" style="cursor: pointer; border: 1px; border-style: dashed" 
+                <span class="w3-margin-left w3-padding-small w3-border-black w3-hover-blue-grey" style="cursor: pointer; border: 1px; border-style: dashed" 
                         *ngFor="let facet of facets; let idx = index" (click)="addFacet(facet, idx)">
                     {{facets_natural_language[idx]}}
                     <i class="w3-margin-left w3-medium fa fa-plus-circle" aria-hidden="true"></i>
@@ -65,8 +65,142 @@
     </div>
     <hr>
 
+    <!-- facet results -->
+    <div *ngIf="search_type==='facet'" class="w3-col s12">
+        <div class="w3-margin d-flex w3-padding">
+            <ul ngbNav #nav="ngbNav" activeId={{active_tab}} class="nav-pills" orientation="vertical">
+                <li *ngFor="let result of final_facet_result; let attr_index=index" 
+                    ngbNavItem="{{attr_natural_language[attr_index]}}"  
+                    [disabled]="result == undefined" style="width:100%">
+                    <a *ngIf="final_facet_result[attr_index]!=undefined" ngbNavLink>{{attr_natural_language[attr_index] | uppercase}} ({{final_facet_result[attr_index].length}})</a>
+                    <ng-template ngbNavContent>
+                        <p>Found in {{final_facet_result[attr_index].length}} publication(s)</p>
+                        
+                        <!-- All results *ngIf="attr_natural_language[attr_index]==='All'" -->
+                        <div class="w3-white" style="width:100%">
+                            <ngb-pagination class="w3-small d-flex justify-content-center"
+                                [(page)]="page"
+                                [pageSize]="pageSize"
+                                [collectionSize]="final_facet_result[attr_index].length"
+                                [boundaryLinks]="true">
+                            </ngb-pagination>
+                            <div *ngFor="let paper of final_facet_result[attr_index] | slice: (page-1) * pageSize: (page-1) * pageSize + pageSize" style="margin-top:40px;">    
+                                <table class="w3-margin-bottom">
+                                    <tr>
+                                        <td class="w3-right">Title:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <b style="cursor:pointer">
+                                                <span style="text-decoration: underline;" 
+                                                        class="w3-text-indigo" 
+                                                        (click)="viewPaper(paper)"
+                                                        [innerHTML]="getFacetHighlights('title', paper['title'] | titlecase)"></span>
+                                            </b>
+                                        </td>    
+                                    </tr>
+                                    <tr>
+                                        <td class="w3-right">Authors:</td> 
+                                        <td>&nbsp;</td>
+                                        <td class="w3-text-black">
+                                            <span [innerHTML]="getFacetHighlights('authors', paper['authors'] | titlecase)"></span>
+                                        </td>    
+                                    </tr>
+                                    <tr>
+                                        <td class="w3-right">Abstract:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <span [innerHTML]="getFacetHighlights('abstract', paper['abstract'])"></span>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td class="w3-right">NLP Topic:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <span [innerHTML]="getFacetHighlights('nlp_task_1', paper['nlp_task_1'] | titlecase)"></span>
+                                        </td> 
+                                    </tr>
+                                    <tr *ngIf="attr_natural_language[attr_index]==='operations' || attr_natural_language[attr_index]==='All'">
+                                        <td class="w3-right">Operations:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <span [innerHTML]="getFacetHighlights('operations', paper['operations'] | titlecase)"></span>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td class="w3-right">Explainability:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <span [innerHTML]="getFacetHighlights('explainability', paper['explainability'] | titlecase)"></span>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td style="min-width:150px;text-align: right;">Main Explainability:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <span [innerHTML]="getFacetHighlights('main_explainability', paper['main_explainability'] | titlecase)"></span>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td class="w3-right">Visualization:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <span [innerHTML]="getFacetHighlights('visualization', paper['visualization'] | titlecase)"></span>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td class="w3-right">Main Visualization:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <span [innerHTML]="getFacetHighlights('main_visualization', paper['main_visualization'] | titlecase)"></span>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td class="w3-right">Evaluation Metrics:</td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <span [innerHTML]="getFacetHighlights('evaluation_metrics', paper['evaluation_metrics'] | titlecase)"></span>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td class="w3-right"></td> 
+                                        <td>&nbsp;</td>
+                                        <td class="w3-text-indigo">
+                                            <span [innerHTML]="getFacetHighlights('venue', paper['venue'] | uppercase)"></span>
+                                            <span>&nbsp;</span>
+                                            <span [innerHTML]="getFacetHighlights('year', paper['year'])"></span>
+                                            <span>&nbsp;</span>
+                                            Cited by <span [innerHTML]="getFacetHighlights('citation', paper['citation'])"></span>
+                                        </td> 
+                                    </tr>    
+                                    <tr>
+                                        <td class="w3-right"></td> 
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <button class="w3-button w3-hover-pink w3-round w3-indigo" 
+                                                style="cursor:pointer; padding: 3px 5px;" 
+                                                (click)="viewSimilarPapers(paper)"> Find Similar Papers </button>
+                                                <!-- (click)="findSimilar(paper)"> Find Similar Papers </button> -->
+                                        </td> 
+                                    </tr>                        
+                                </table>
+                                <mat-divider></mat-divider>
+                            </div>
+                            <ngb-pagination class="w3-margin-top w3-small d-flex justify-content-center"
+                                [(page)]="page"
+                                [pageSize]="pageSize"
+                                [collectionSize]="final_facet_result[attr_index].length"
+                                [boundaryLinks]="true">
+                            </ngb-pagination>
+                        </div>
+                    </ng-template>
+                </li>
+            </ul>
+            <div [ngbNavOutlet]="nav" class="ml-4"></div>
+        </div>
+    </div>
 
-    <div class="w3-row">
+    <!-- keyword search result -->
+    <div *ngIf="search_type==='keyword'" class="w3-row">
         <div class="w3-col s12">
             <div class="w3-margin d-flex w3-padding">
                 <ul ngbNav #nav="ngbNav" activeId={{active_tab}} class="nav-pills" orientation="vertical">
