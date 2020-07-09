@@ -18,6 +18,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { PaperDialogComponent } from './paper-dialog/paper-dialog.component';
 import { DefinitionDialogComponent } from './definition-dialog/definition-dialog.component';
 import {MatTableModule} from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
 import {MatSortModule} from '@angular/material/sort';
 import { AddNewPapersComponent } from './add-new-papers/add-new-papers.component';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -73,6 +74,7 @@ import { Ng5SliderModule } from 'ng5-slider';
     MatCardModule,
     MatDialogModule,
     MatTableModule,
+    MatTabsModule,
     MatSortModule,
     MatStepperModule,
     MatFormFieldModule,

@@ -1,34 +1,37 @@
 <div class="w3-margin-top w3-round w3-content w3-padding" style="width:90%">
+  <div class="page-title">
+  	XAI for Natural Language Processing
+  </div>
+
   <div>
-    <span class="w3-margin-top w3-large">Welcome, this is a companion website of the following survey paper that is currently under review</span>
+    <span class="w3-margin-top w3-large">Summarizing the state of AI Explainability for NLP</span>
 
-    <div class="w3-margin-top w3-sand w3-padding-16">
-      <i class="w3-padding">"A Survey of the State of Explainable AI for Natural Language Processing."</i><br>
-      <span class="w3-padding">Anonymous authors from anonymous affliations.</span><br>
-      <span class="w3-padding">venue ??. Pages ??-??</span><br>
-    </div>
+	<hr>
 
-    <!-- <div class="w3-margin-top">&nbsp;</div> -->
-    
-    <div class="w3-border w3-margin-top">
-      <div class="w3-padding-small w3-dark-grey w3-text-white">Structure of the website</div>
-      <div class="w3-padding">
-        <p>Core concepts are introduced in <a routerLink="/definitions">Definitions</a> and XAI papers are listed <a routerLink="/tree">XAI Publications.</a></p>
-      </div>
-    </div>
+	<h4 style="margin-top: 20px">Overview</h4>
+	
+	<div class="page-content">
+	This web-site summarizes the state of AI explainability based on our survey  (under review). 
+	
+	To explore this web-site:
+	<ul>
+		<li>Get familiar with the dimensions on which NLP explainability approaches can be classified by consulting the <a href="definitions">Definitions</a> </li>
+		<li>Then find relevant NLP XAI publications by visualizing <a href="viz">Publication Statistics</a>, seeing a <a href="tree">Tabular List of Publications</a>, or <a href="search">Searching for Publications</a> </li>
+	</ul>
+	</div>
 
-    <div class="w3-border w3-margin-top">
-      <div class="w3-padding-small w3-dark-grey w3-text-white">Literature Review</div>
-      <div class="w3-padding">
-        <p><span><b>Goal:</b></span> This survey aims to demonstrate the recent advances of XAI research in NLP, rather than to provide an exhaustive list of XAI papers in the NLP community. 
-          To this end, we identified relevant papers published in major NLP conferences (ACL, NAACL, EMNLP, and COLING) between 2013 and 2019 (papers after 2019 are also in our
-          pipeline).
-        </p>
-          
-        <p><span><b>Search criteria for XAI papers for NLP:</b></span>
-          We filtered for titles containing (lemma-tized) terms related to XAI, such as “explainability”, “interpretability”, “transparent”, etc.  
+	<hr>
+	
+	<h4 style="margin-top: 20px">Literature Survey</h4>
+	
+	<div class="page-content">
+	<p><span><i>Scope:</i></span>
+	Our survey aims to demonstrate the recent advances of XAI research in NLP. To this end, we identified relevant papers published in major NLP conferences (ACL, NAACL, EMNLP, and COLING) between 2013 and 2019 (more recent papers are also in our pipeline).</p>
+
+       <p><span><i>Search criteria for XAI papers for NLP:</i></span>
+          To find relevant papers, we searched for titles containing (lemma-tized) terms related to XAI, such as “explainability”, “interpretability”, “transparent”, etc.  
           While this may ignore some related papers, we argue that representative papers are more likely to include such terms in their titles. In particular, 
-          we assume that if authors consider explainability to be a majorcomponent of their work, they are more likely touse related keywords in the title of their work.</p>
+          we assume that if authors consider explainability to be a major component of their work, they are more likely touse related keywords in the title of their work.</p>
         <p>Our search criteria yielded a set of 107 papers. During the paper review process we first verified whether each paper truly fell within the scope of the survey. 
           This process excluded 57 papers, leaving us with a total of <b>50</b> papers (by the end of 2019). The following tables reveals the top 3 NLP topics that these papers
         study and top 3 conference venues that they were published.</p>
@@ -86,46 +89,49 @@
         </div>
           
         
-          <!-- <div class="w3-margin w3-border w3-content w3-small" style="width:50%">
-            <table class="w3-content w3-center table table-striped">
-              <thead>
-              <tr>
-                <th colspan="3" scope="col">Top 3 Conferences</th>
-              </tr>
-              </thead>
-              <tbody>
-                <td>EMNLP (22 papers)</td>
-                <td>ACL (11 papers)</td>
-                <td>NAACL (9 papers)</td>
-              </tbody>
-            </table>
-          </div> -->
         
-        
-          <p><span><b>Reviewing methodology:</b></span>
+          <p><span><i>Reviewing methodology:</i></span>
           Each paper was then classified across four major aspects: <i>explainability</i>, <i>operations to enable explainability</i>, <i>visualization</i>, and <i>evaluation metrics</i>.
           To ensure a consistent classification, each paper was individually reviewed by at least two reviewers, consulting additional reviewers in the case of disagreement. 
           For simplicity of presentation, we label each paper with its main applicable category for each aspect. However, some papers may span multiple categories within an aspect, 
           though usually with varying degrees of emphasis. We include all relevant categories for every paper in website, with the goal of enablingthe readers of this survey to discover 
           interesting explainability techniques and ideas, even if they have not been fully developed in the respective publications. 
         </p>
-        </div>
+    </div>
+ 	
+	<hr>
+	
+	<h4 style="margin-top: 20px;">Adding New Papers</h4>
+	
+	<div class="page-content">
+    <p>If you are aware of other papers that should be included, please submit them through the <a href="newpapers">Add New Papers</a> link.</p>
+	</div>
 
+	<hr>
 
+	<h4 style="margin-top: 20px">Citation</h4>
+
+	<div class="page-content">	
+	<p>To refer to this work, please cite:</p>
+	</div>
+
+    <div class="w3-margin-top w3-sand w3-padding-16">
+      <i class="w3-padding">"A Survey of the State of Explainable AI for Natural Language Processing."</i><br>
+      <span class="w3-padding">Anonymous authors from anonymous affliations.</span><br>
+      <span class="w3-padding">venue ??. Pages ??-??</span><br>
     </div>
 
-  </div>
-      
-  <div class="w3-border w3-margin-top">
-    <div class="w3-padding-small w3-dark-grey w3-text-white">Contact Us</div>
-    <div class="w3-padding">
-      <p>As we mentioned in our literature review, our goal is not to provide an exhaustive list of XAI papers in the NLP community, 
-        and our search criteria may ignore certain XAI papers in NLP.</p>
-      If you know papers that we missed but should be included in the survey and this website, please contact us at 
+	<hr>	
+
+	<h4 style="margin-top: 20px">Contact</h4>
+    
+    <div class="page-content">
+    For any other questions or comments, please contact us at 
       <address>
         <a href="mailto:xainlp2020@gmail.com">xainlp2020@gmail.com</a>
       </address>
     </div>
+    
   </div>
 
 </div>
