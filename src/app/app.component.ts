@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'xai-web';
 
-  active_tab = 'home'
+  active_tab = ''
 
   setActiveTab(tab)
   {
