@@ -14,7 +14,7 @@ import { ClickableTreeComponent } from './clickable-tree/clickable-tree.componen
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'definitions', component: DefinitionsComponent },
-  { path: 'tree', component: TreeComponent },
+  { path: 'table', component: TreeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'viz', component: VisualizationComponent },
   { path: 'search', component: SearchComponent },

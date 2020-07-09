@@ -378,6 +378,18 @@ export class TreeComponent {
         return this.compare(a.year, b.year, false);
       });
     }
+    else{
+      this.selected_type = "all"
+      this.selected_sorted = []
+      this.selected_sorted = this.selected_sorted.concat(this.local_posthoc_sorted)
+      this.selected_sorted = this.selected_sorted.concat(this.local_self_sorted)
+      this.selected_sorted = this.selected_sorted.concat(this.global_self)
+      this.selected_sorted = this.selected_sorted.concat(this.global_posthoc_sorted)
+
+      this.selected_sorted = this.selected_sorted.sort((a, b) => {
+        return this.compare(a.year, b.year, false);
+      });
+    }
   }
 
 
