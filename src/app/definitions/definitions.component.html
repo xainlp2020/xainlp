@@ -37,7 +37,7 @@
       	What is the type of the explanation
       </div>
     <div class="card-container d-flex flex-wrap">
-          <mat-card  class="col-sm-3 def-card">
+          <mat-card (click)="showPapers('explanation type', 'local post-hoc')" style="cursor:pointer" class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Local Post-Hoc</mat-card-title>
             </mat-card-header>
@@ -48,7 +48,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card  class="col-sm-3 def-card">
+          <mat-card (click)="showPapers('explanation type', 'local self-explaining')" style="cursor:pointer"  class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Local Self-Explaining</mat-card-title>
             </mat-card-header>
@@ -59,7 +59,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card  class="col-sm-3 def-card">
+          <mat-card (click)="showPapers('explanation type', 'global post-hoc')" style="cursor:pointer"  class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Global Post-Hoc</mat-card-title>
             </mat-card-header>
@@ -70,7 +70,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card  class="col-sm-3 def-card">
+          <mat-card (click)="showPapers('explanation type', 'global self-explaining')" style="cursor:pointer"  class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Global Self-Explaining</mat-card-title>
             </mat-card-header>
@@ -103,7 +103,7 @@
         </div>      
         <div class="card-container d-flex flex-wrap">
 
-        <mat-card class="col-sm-3 def-card">
+        <mat-card (click)="showPapers('explainability', 'feature importance')" style="cursor:pointer" class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Feature Importance</mat-card-title>
             </mat-card-header>
@@ -116,7 +116,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card class="col-sm-3 def-card">
+          <mat-card (click)="showPapers('explainability', 'surrogate model')" style="cursor:pointer" class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Surrogate Model</mat-card-title>
             </mat-card-header>
@@ -129,7 +129,7 @@
             </mat-card-content>
           </mat-card>
           
-          <mat-card class="col-sm-3 def-card">
+          <mat-card (click)="showPapers('explainability', 'example-driven')" style="cursor:pointer" class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Example-Driven</mat-card-title>
             </mat-card-header>
@@ -142,7 +142,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card class="col-sm-3 def-card">
+          <mat-card (click)="showPapers('explainability', 'provenance')" style="cursor:pointer" class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Provenance</mat-card-title>
             </mat-card-header>
@@ -156,7 +156,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card class="col-sm-3 def-card">
+          <mat-card (click)="showPapers('explainability', 'induction')" style="cursor:pointer"  class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Induction</mat-card-title>
             </mat-card-header>
@@ -191,7 +191,7 @@
          </div>
          <div class="card-container d-flex flex-wrap">
 
-          <mat-card class="col-md-5 def-card" fxFlexAlign="stretch">
+          <mat-card (click)="showPapers('visualization', 'saliency')" style="cursor:pointer"  class="col-md-5 def-card" fxFlexAlign="stretch">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Saliency - Heatmap</mat-card-title>
             </mat-card-header>
@@ -212,7 +212,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card class="col-md-5 def-card"  fxFlexAlign="stretch">
+          <mat-card  (click)="showPapers('visualization', 'saliency')" style="cursor:pointer" class="col-md-5 def-card"  fxFlexAlign="stretch">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Saliency - Highlighting</mat-card-title>
             </mat-card-header>
@@ -233,7 +233,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card class="col-md-5 def-card"  fxFlexAlign="stretch">
+          <mat-card  (click)="showPapers('visualization', 'raw declarative')" style="cursor:pointer" class="col-md-5 def-card"  fxFlexAlign="stretch">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Raw Declarative Representation - Rules</mat-card-title>
             </mat-card-header>
@@ -254,7 +254,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card class="col-md-5 def-card"  fxFlexAlign="stretch">
+          <mat-card (click)="showPapers('visualization', 'raw declarative')" style="cursor:pointer" class="col-md-5 def-card"  fxFlexAlign="stretch">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Raw Declarative Representation - Programs</mat-card-title>
             </mat-card-header>
@@ -275,7 +275,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card class="col-md-5 def-card"  fxFlexAlign="stretch">
+          <mat-card (click)="showPapers('visualization', 'natural language')" style="cursor:pointer" class="col-md-5 def-card"  fxFlexAlign="stretch">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Natural Language</mat-card-title>
             </mat-card-header>
@@ -297,7 +297,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card class="col-md-5 def-card"  fxFlexAlign="stretch">
+          <mat-card (click)="showPapers('visualization', 'raw example')" style="cursor:pointer" class="col-md-5 def-card"  fxFlexAlign="stretch">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Raw Examples</mat-card-title>
             </mat-card-header>
@@ -340,7 +340,7 @@
       <div>How are explainations evaluated</div>
     <div class="card-container d-flex flex-wrap">
 
-          <mat-card  class="col-sm-3 def-card">
+          <mat-card (click)="showPapers('evaluation', 'informal examination')" style="cursor:pointer" class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Informal Examination</mat-card-title>
             </mat-card-header>
@@ -353,7 +353,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card  class="col-sm-3 def-card">
+          <mat-card (click)="showPapers('evaluation', 'comparison to ground truth')"  style="cursor:pointer" class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Comparison to Ground Truth</mat-card-title>
             </mat-card-header>
@@ -366,7 +366,7 @@
             </mat-card-content>
           </mat-card>
 
-          <mat-card  class="col-sm-3 def-card">
+          <mat-card (click)="showPapers('evaluation', 'human evaluation')"  style="cursor:pointer" class="col-sm-3 def-card">
             <mat-card-header class="title">
               <mat-card-title class="w3-large">Human Evaluation</mat-card-title>
             </mat-card-header>

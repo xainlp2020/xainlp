@@ -44,6 +44,7 @@ import { ClickComponent } from './click/click.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { ClickableTreeComponent } from './clickable-tree/clickable-tree.component';
 import { Ng5SliderModule } from 'ng5-slider';
+import { PaperDialogInDefinitionComponent } from './paper-dialog-in-definition/paper-dialog-in-definition.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { Ng5SliderModule } from 'ng5-slider';
     CitationGraphComponent,
     ClickComponent,
     ResourcesComponent,
-    ClickableTreeComponent
+    ClickableTreeComponent,
+    PaperDialogInDefinitionComponent
   ],
   imports: [
     BrowserModule,

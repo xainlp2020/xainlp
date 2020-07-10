@@ -1,0 +1,34 @@
+<div class="w3-padding w3-small w3-light-grey" style="max-height:600px; overflow: scroll;">
+    <table class="w3-table table-striped" matSort (matSortChange)="sortData_selected($event)">
+      <tr class="w3-dark-grey">
+        <th mat-sort-header="year">Year</th>
+        <th>Title</th>
+        <th mat-sort-header="main_explainability">Main Explainability</th>
+        <th mat-sort-header="main_visualization">Main Visualization</th>
+        <th mat-sort-header="citation">Citations</th>
+        <th mat-sort-header="venue">Venue</th>
+        <th>Link</th>
+        <th>Details</th>
+      </tr>
+      <tr class="w3-hover-grey" *ngFor="let paper of listOfPapers_sorted; index as i" style="cursor:pointer">
+        <td>{{ paper.year}}</td>
+        <td (click)="viewPaper(paper)" >{{ paper.title | titlecase }}</td>
+        <td>
+              <span class="w3-hover-text-white"
+                    ngbPopover="{{getPlainDefinition('explainability', paper.main_explainability | titlecase)}}"
+                    triggers="mouseenter:mouseleave"
+                    popoverTitle="{{paper.main_explainability | titlecase }}">{{paper.main_explainability | titlecase }}</span>
+        </td>
+        <td >
+          <span class="w3-hover-text-white"
+                    ngbPopover="{{getPlainDefinition('visualization', paper.main_visualization | titlecase)}}"
+                    triggers="mouseenter:mouseleave"
+                    popoverTitle="{{paper.main_visualization | titlecase }}">{{paper.main_visualization | titlecase }}</span>
+        </td>
+        <td>{{ paper.citation}}</td>
+        <td>{{ paper.venue | uppercase}}</td>
+        <td><a class="w3-hover-text-white" href="{{paper.link}}" target="_blank">view</a></td>
+        <td (click)="viewPaper(paper)"><span class="w3-small w3-text-blue w3-hover-text-white">Details</span></td>
+      </tr>
+    </table>
+  </div>
