@@ -17,13 +17,61 @@
             </div>
         </div>
         <div *ngIf="search_type==='facet'">
-            <div class="w3-margin-top w3-row">
+            <table class="w3-margin" (keydown)="facetKeyDownFunction($event)" >
+                <tr *ngFor="let attr of facets; let idx = index">
+                    <td>
+                        <span *ngIf="idx!=0" class="w3-margin w3-small">AND</span>
+                        <span *ngIf="idx==0" class="w3-margin w3-small w3-text-white">AND</span>
+                    </td>
+                    <td>
+                        <div class="w3-container w3-cell-middle">
+                            <span style="font-weight:600;">"{{facets_natural_language[idx]}}"</span>
+                        </div>
+                    </td>
+                    <td class="w3-center">
+                        <div class="w3-padding-small">
+                            <span class="w3-small w3-padding w3-round w3-margin">contains</span>
+                        </div>
+                    </td>
+                    <td>
+                        <!-- either input box for keyword search or allowed values -->
+                        <div class="w3-padding-small" *ngIf="can_free_search[idx]">
+                            <input class="w3-margin-left" type="text" [(ngModel)]="user_queries[idx]" placeholder="enter keywords, or leave it to match any term..." style="width:100%">
+                        </div>
+                        <div class="w3-padding-small" *ngIf="!can_free_search[idx]">
+                            <select class="w3-margin-left w3-border w3-small w3-round w3-light-grey" 
+                                    [(ngModel)]="user_queries[idx]" style="width:100%; padding:3px">
+                                <option value="anything" disabled selected>anything</option>
+                                <option *ngFor="let value of allow_search_terms[idx]" value="{{value}}">{{value}}</option>
+                            </select>
+                        </div>
+                    </td>
+                    <!-- <td>
+                        <div class="w3-container w3-cell-middle">
+                            <mat-checkbox class="w3-margin-left">case sensitive?</mat-checkbox>
+                        </div>
+                    </td> -->
+                </tr>
+                <tr>
+                    <td>
+                        <div class="w3-margin-top w3-margin-left">
+                            <button (click)="resetFacetSearch()">Reset</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="w3-margin-top w3-margin-left">
+                            <button (click)="facetSearch2()">Search</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <!-- <div class="w3-margin-top w3-row">
                 <span class="w3-margin-left w3-padding-small w3-border-black w3-hover-blue-grey" style="cursor: pointer; border: 1px; border-style: dashed" 
                         *ngFor="let facet of facets; let idx = index" (click)="addFacet(facet, idx)">
                     {{facets_natural_language[idx]}}
                     <i class="w3-margin-left w3-medium fa fa-plus-circle" aria-hidden="true"></i>
                 </span>
-            </div>
+            </div> -->
             <div *ngIf="facetConfig.length > 0" class="w3-medium w3-margin-top">
                 <div class="w3-margin-top">&nbsp;</div>
                 <div class="w3-margin-top w3-margin-left">Facet Configuration</div>

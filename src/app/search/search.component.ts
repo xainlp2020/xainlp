@@ -49,20 +49,22 @@ export class SearchComponent implements OnInit {
     var found_in_facet = false
     var query_term = undefined
     var facet_idx = -1
-    for(var i = 0; i < this.facetConfig.length; i++)
+    for(var i = 0; i < this.facets.length; i++)
     {
-      var facet = this.facetConfig[i]
-      if(facet['facet'] === attr)
+      var facet = this.facets[i]
+      if(facet === attr)
       {
         found_in_facet = true
-        query_term = facet['query']
+        query_term = this.user_queries[i]
         facet_idx = i
         break;
       }
     }
-    if(!found_in_facet || query_term == undefined || attrStr == undefined){
+    // console.log("here 1")
+    if(!found_in_facet || query_term == undefined || query_term.length === 0 || attrStr == undefined){
       return attrStr;
     }
+    // console.log("here 2")
     var searchStrLen = query_term.length
     
     var massaged_str = attrStr.slice(0);
@@ -76,10 +78,12 @@ export class SearchComponent implements OnInit {
       query_term = query_term.toLowerCase();
     }
 
+    // console.log("here 3")
     while ((index = massaged_str.indexOf(query_term, startIndex)) > -1) {
         indices.push(index);
         startIndex = index + searchStrLen;
     }
+    // console.log("here 4")
     // console.log("indices")
     // console.log(indices)
     return this.facetResulHelper(query_term, attrStr, indices, facet_idx);
@@ -112,6 +116,88 @@ export class SearchComponent implements OnInit {
     return highlighted
   }
 
+  resetFacetSearch()
+  {
+    this.user_queries = ["", "", "", "anything", "anything", "anything", "anything", "anything"]
+    this.final_facet_result = []
+    this.facet_query_result = {"any":[]}
+  }
+  facetSearch2()
+  {
+    // new implementation of facet search
+    console.log("facet searching")
+    console.log(this.user_queries)
+
+    this.final_facet_result = []
+    this.facet_query_result = {"any":[]}
+
+    for(var i = 0; i < this.all_papers_orig.length; i++)
+    {
+      var paper = this.all_papers_orig[i]
+      var satisfy_all_condition = true
+      for(var attr_idx = 0; attr_idx < this.facets.length; attr_idx++)
+      {
+        var attr =  this.facets[attr_idx]
+        var user_query_over_attr = this.user_queries[attr_idx]
+        if(user_query_over_attr === "anything")
+        {
+          continue
+        }
+        if(attr in paper)
+        {
+          // this facet is included in current candidate paper
+          console.log("checking attr " + attr)
+          var match_method = "contains"
+          var case_sensitive = false
+          var massaged_paper;
+          // console.log("match_type " + match_method)
+          if(!case_sensitive)
+          {
+            massaged_paper = JSON.parse(JSON.stringify(paper).toLowerCase())
+            user_query_over_attr = user_query_over_attr.toLowerCase()
+          }
+          else{
+            massaged_paper = paper
+          }
+          var paper_attr_val = massaged_paper[attr].trim()
+          user_query_over_attr = user_query_over_attr.trim()
+          if(match_method == 'contains')
+          {
+            console.log("(contains) comparing " + paper_attr_val + " vs. " + user_query_over_attr)
+            console.log("contains? " + paper_attr_val.includes(user_query_over_attr))
+            if(paper_attr_val.includes(user_query_over_attr))
+            {
+            }
+            else{
+              satisfy_all_condition = false;
+            }  
+          }
+        }
+        if(!satisfy_all_condition)
+        {
+          break
+        }
+      }
+      if(satisfy_all_condition)
+      {
+        this.facet_query_result["any"].push(paper)
+      }
+    }
+
+    for(var i = 0; i < this.attr_order.length; i++)
+    {
+      var attrx = this.attr_order[i]
+       // first, for any attribute
+       if(this.facet_query_result[attrx] != undefined)
+       {
+         this.final_facet_result.push(this.facet_query_result[attrx])
+       }
+       else
+       {
+         this.final_facet_result.push(undefined)
+       }
+    }  
+  }
   facetSearch()
   {
     console.log(this.facetConfig)
@@ -213,69 +299,130 @@ export class SearchComponent implements OnInit {
     }    
   }
 
-  search_type = 'facet'
-  facets                  = ["title", "explainability", "main_explainability", "visualization", "main_visualization", "abstract",
+  search_type = 'keyword'
+  facets                  = ["title", "abstract", "authors", "explainability", "visualization",
                             "nlp_task_1", "evaluation_metrics","operations"]
-  facets_natural_language = ["Title", "Explainability", "Main Explainability", "Visualization", "Main visualization", "Abstract",
-                            "NLP Topic", "Evaluation Metrics","Explainability Operations"]
+  facets_natural_language = ["Title", "Abstract", "Authors", "Explainability", "Visualization", 
+                            "NLP Topic", "Evaluation Metrics","Operations"]
+  can_free_search         = [true, true, true, false, false, false, false, false]
+  operation_values = ["First Derivative Saliency", "Attention", "Explainability Aware Architecture", "layer-wise relevance propagation", "input perturbation"]
+  eval_values = ["Informal Evaluation", "Comparison to Ground Truth", "Human Evaluation"]
+  exp_values = ["Feature Importance", "Example-driven", "surrogate models", "provenance", "induction"]
+  viz_values = ["saliency", "raw examples", "raw declarative", "natural language", "other"]
+  nlp_topics = [
+    "Cognitive Modeling and Psycholinguistics",
+    "Computational Social Science and Social Media",
+    "Dialogue and Interactive Systems",
+    "Discourse and Pragmatics",
+    "Ethics and NLP",
+    "Generation",
+    "Information Extraction",
+    "Information Retrieval and Text Mining",
+    "Interpretability and Analysis of Models for NLP",
+    "Language Grounding to Vision, Robotics and Beyond",
+    "Theory and Formalism in NLP (Linguistic and Mathematical)",
+    "Machine Learning for NLP",
+    "Machine Translation",
+    "NLP Applications",
+    "Phonology, Morphology and Word Segmentation",
+    "Question Answering",
+    "Resources and Evaluation",
+    "Semantics: Lexical",
+    "Semantics: Sentence Level",
+    "Semantics: Textual Inference and Other Areas of Semantics",
+    "Sentiment Analysis, Stylistic Analysis, and Argument Mining",
+    "Speech and Multimodality",
+    "Summarization",
+    "Syntax: Tagging, Chunking and Parsing",
+    "Theme"
+  ]
+  allow_search_terms      = [undefined, undefined, undefined, this.exp_values, this.viz_values, this.nlp_topics, this.eval_values, this.operation_values]
+  user_queries = ["", "", "", "anything", "anything", "anything", "anything", "anything"]
 
   match_method = ["exact match", "contains"]
   // case_sensitive = ["yes", "no"]
   curr_facet_list = []
   facetConfig = []
 
-  addFacet(facet, facetidx)
+  addFacet(attr, facetidx)
   {
-    console.log("adding facet " + facet)
+    console.log("adding facet " + attr)
     console.log(this.curr_facet_list)
-    if(this.ifContains(facet))
+    if(this.ifContains(attr))
     {
       console.log("already included")
     }
     else
     {
-      this.curr_facet_list.push(
-        {
-          facetName: facet,
-          facetIdx: facetidx
-        }
-      )
-      this.facetConfig.push(
-        {
-          facet: this.facets[facetidx],
-          natural_language: this.facets_natural_language[facetidx],
-          query: "",
-          match_method: "contains",
-          case_sensitive: false
-        }
-      )
+      console.log("do not contain this facet, can add")
+      // this.curr_facet_list.push(
+      //   {
+      //     facetName: facet,
+      //     facetIdx: facetidx
+      //   }
+      // )
+      console.log(this.facetConfig)
+      this.facetConfig = JSON.parse(JSON.stringify(this.facetConfig))
+      var new_config = {
+        facet: this.facets[facetidx],
+        natural_language: this.facets_natural_language[facetidx],
+        query: "",
+        match_method: "contains",
+        case_sensitive: false
+      }
+      console.log("to add")
+      console.log(JSON.stringify(new_config))
+      this.facetConfig.push(new_config)
+      console.log("current facet config list")
+      console.log(JSON.stringify(this.facetConfig))
     }
+  }
+  ifContains(item)
+  {
+    if(this.facetConfig == undefined || this.facetConfig.length == 0)
+    {
+      return false
+    }
+    console.log("checking facet config")
+    console.log(this.facetConfig)
+    console.log(this.facetConfig[0])
+
+    for(var i = 0; i < this.facetConfig.length; i++)
+    {
+      if(this.facetConfig[i].facet === item)
+      {
+        return true
+      }
+    }
+    return false;
+    
+    // if(this.curr_facet_list == undefined || this.curr_facet_list.length == 0)
+    // {
+    //   return false
+    // }
+    // else{
+    //   for(var i = 0; i < this.curr_facet_list.length; i++)
+    //   {
+    //     if(this.curr_facet_list[i].facetName === item)
+    //     {
+    //       return true
+    //     }
+    //   }
+    //   return false;
+    // }
   }
   deleteFacet(idx)
   {
+    console.log("before deletion")
+    console.log(this.facetConfig)
     this.facetConfig.splice(idx, 1)
+    console.log(this.facetConfig)
   }
   changeCaseSensitive(index)
   {
     this.facetConfig[index].case_sensitive = !this.facetConfig[index].case_sensitive;
   }
-  ifContains(item)
-  {
-    if(this.curr_facet_list == undefined || this.curr_facet_list.length == 0)
-    {
-      return false
-    }
-    else{
-      for(var i = 0; i < this.curr_facet_list.length; i++)
-      {
-        if(this.curr_facet_list[i].facetName === item)
-        {
-          return true
-        }
-      }
-      return false;
-    }
-  }
+  
 
   viewSimilarPapers(paper) {
     this.findSimilar(paper)
@@ -454,6 +601,13 @@ export class SearchComponent implements OnInit {
     return positive + negative + ".";
   }
 
+  facetKeyDownFunction(event)
+  {
+    if (event.keyCode === 13)
+    {
+      this.facetSearch2()
+    }
+  }
   keyDownFunction(event)
   {
     if (event.keyCode === 13)
