@@ -118,7 +118,7 @@ export class SearchComponent implements OnInit {
 
   resetFacetSearch()
   {
-    this.user_queries = ["", "", "", "anything", "anything", "anything", "anything", "anything"]
+    this.user_queries =  ["", "", "", "anything", "anything", "anything", "anything", "anything", "anything"]
     this.final_facet_result = []
     this.facet_query_result = {"any":[]}
   }
@@ -300,12 +300,13 @@ export class SearchComponent implements OnInit {
   }
 
   search_type = 'keyword'
-  facets                  = ["title", "abstract", "authors", "explainability", "visualization",
+  facets                  = ["title", "abstract", "authors", "venue", "explainability", "visualization",
                             "nlp_task_1", "evaluation_metrics","operations"]
-  facets_natural_language = ["Title", "Abstract", "Authors", "Explainability", "Visualization", 
+  facets_natural_language = ["Title", "Abstract", "Authors", "Venue", "Explainability", "Visualization", 
                             "NLP Topic", "Evaluation Metrics","Operations"]
-  can_free_search         = [true, true, true, false, false, false, false, false]
+  can_free_search         = [true, true, true, false, false, false, false, false, false]
   operation_values = ["First Derivative Saliency", "Attention", "Explainability Aware Architecture", "layer-wise relevance propagation", "input perturbation"]
+  venue_values = ["ACL", "EMNLP", "KDD", "AAAI", "IJCAI", "COLING", "NAACL"] // hard coded for now, should load from data
   eval_values = ["Informal Evaluation", "Comparison to Ground Truth", "Human Evaluation"]
   exp_values = ["Feature Importance", "Example-driven", "surrogate models", "provenance", "induction"]
   viz_values = ["saliency", "raw examples", "raw declarative", "natural language", "other"]
@@ -336,8 +337,8 @@ export class SearchComponent implements OnInit {
     "Syntax: Tagging, Chunking and Parsing",
     "Theme"
   ]
-  allow_search_terms      = [undefined, undefined, undefined, this.exp_values, this.viz_values, this.nlp_topics, this.eval_values, this.operation_values]
-  user_queries = ["", "", "", "anything", "anything", "anything", "anything", "anything"]
+  allow_search_terms      = [undefined, undefined, undefined, this.venue_values, this.exp_values, this.viz_values, this.nlp_topics, this.eval_values, this.operation_values]
+  user_queries = ["", "", "", "anything", "anything", "anything", "anything", "anything", "anything"]
 
   match_method = ["exact match", "contains"]
   // case_sensitive = ["yes", "no"]
