@@ -151,6 +151,16 @@ export class TreeComponent {
   }
 
 
+  getTableRowBackgroundColor(index)
+  {
+    if(index % 2 == 1)
+    {
+      return "w3-light-grey"
+    }
+    else{
+      return "w3-white"
+    }
+  }
   
   
 
@@ -221,6 +231,7 @@ export class TreeComponent {
         case 'main_visualization': return this.compare(a.main_visualization, b.main_visualization, isAsc);
         case 'citation': return this.compare(a.citation, b.citation, isAsc);
         case 'venue': return this.compare(a.venue, b.venue, isAsc);
+        case 'nlp_task_1': return this.compare(a.nlp_task_1, b.nlp_task_1, isAsc);
         default: return 0;
       }
     });
@@ -241,6 +252,7 @@ export class TreeComponent {
         case 'main_visualization': return this.compare(a.main_visualization, b.main_visualization, isAsc);
         case 'citation': return this.compare(a.citation, b.citation, isAsc);
         case 'venue': return this.compare(a.venue, b.venue, isAsc);
+        case 'nlp_task_1': return this.compare(a.nlp_task_1, b.nlp_task_1, isAsc);
         default: return 0;
       }
     });
@@ -261,6 +273,7 @@ export class TreeComponent {
         case 'main_visualization': return this.compare(a.main_visualization, b.main_visualization, isAsc);
         case 'citation': return this.compare(a.citation, b.citation, isAsc);
         case 'venue': return this.compare(a.venue, b.venue, isAsc);
+        case 'nlp_task_1': return this.compare(a.nlp_task_1, b.nlp_task_1, isAsc);
         default: return 0;
       }
     });
@@ -280,6 +293,7 @@ export class TreeComponent {
         case 'main_visualization': return this.compare(a.main_visualization, b.main_visualization, isAsc);
         case 'citation': return this.compare(a.citation, b.citation, isAsc);
         case 'venue': return this.compare(a.venue, b.venue, isAsc);
+        case 'nlp_task_1': return this.compare(a.nlp_task_1, b.nlp_task_1, isAsc);
         default: return 0;
       }
     });

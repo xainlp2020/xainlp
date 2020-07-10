@@ -13,20 +13,19 @@
   <div *ngIf="selected_type!=undefined && selected_type.length > 0"  class="w3-margin w3-center">
     <p class="w3-margin-top w3-text-indigo w3-large">
           Showing <b>{{selected_sorted.length}}</b> papers for <b>{{selected_type}}</b></p>
-    <p>(Columns are sortable; Rows are clickable)</p>
-    <div class="w3-padding w3-light-grey">
-      <table class="w3-table table-striped" matSort (matSortChange)="sortData_selected($event)">
-        <tr>
+    <p>(<b class="w3-text-pink">Columns are sortable, and rows are clickable</b>)</p>
+    <div class="w3-padding w3-small">
+      <table class="w3-table w3-striped	" matSort (matSortChange)="sortData_selected($event)">
+        <tr class="w3-dark-grey w3-text-white">
           <th mat-sort-header="year">Year</th>
           <th>Title</th>
           <th mat-sort-header="main_explainability">Main Explainability</th>
           <th mat-sort-header="main_visualization">Main Visualization</th>
           <th mat-sort-header="citation">Citations</th>
           <th mat-sort-header="venue">Venue</th>
-          <th>Link</th>
-          <th>Details</th>
+          <th mat-sort-header="nlp_task_1">NLP Topic</th>
         </tr>
-        <tr class="w3-hover-grey" *ngFor="let paper of selected_sorted; index as i" style="cursor:pointer">
+        <tr class="w3-hover-grey {{getTableRowBackgroundColor(i)}}" *ngFor="let paper of selected_sorted; index as i" style="border-bottom: 1px ; cursor:pointer">
           <td>{{ paper.year}}</td>
           <td (click)="viewPaper(paper, 'Local Post-hoc')" >{{ paper.title | titlecase }}</td>
           <td (click)="viewDefinition(paper.main_explainability)">
@@ -43,8 +42,7 @@
           </td>
           <td>{{ paper.citation}}</td>
           <td>{{ paper.venue | uppercase}}</td>
-          <td><a class="w3-hover-text-white" href="{{paper.link}}" target="_blank">view</a></td>
-          <td (click)="viewPaper(paper, 'Local post-hoc')"><span class="w3-small w3-text-blue w3-hover-text-white">Details</span></td>
+          <td>{{ paper.nlp_task_1 | titlecase}}</td>
         </tr>
       </table>
     </div>
