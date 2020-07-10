@@ -1,5 +1,22 @@
-<div class="w3-margin w3-padding">
-    <div echarts [options]="tree_option" style="min-height:1000px" (chartClick)="viewPaper($event)"></div>
+<div class="w3-content">
+    <p><b class="w3-text-pink">INSTRUCTION:</b> 
+        Explore publications organized in different taxonomies. You may drag and move the tree if it overflows or zoom in and zoom out. 
+        You can click the nodes to expand/collapse children nodes. Publications
+        are in leaf nodes, which can be clicked to show more detailed information of the paper.
+    </p>
+    <hr>
+    <div class="w3-center">
+        <mat-radio-group [(ngModel)]="chart_type" aria-label="Select an option">
+            <mat-radio-button class="w3-margin-left" value="without_nlp">Taxonomy <b>without</b> NLP tasks</mat-radio-button>
+            <mat-radio-button value="with_nlp" class="w3-margin-left">Taxonomy <b>with</b> NLP tasks</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+<div class="w3-margin w3-padding" >
+    <div  *ngIf="chart_type==='with_nlp'" echarts [options]="tree_option" 
+          style="cursor:move;min-height: 900px" (chartClick)="viewPaper($event)"></div>
+    <div *ngIf="chart_type==='without_nlp'" echarts [options]="tree_option_withoutNLP" 
+          style="cursor:move;min-height: 900px;" (chartClick)="viewPaper($event)"></div>
 </div>
   
 

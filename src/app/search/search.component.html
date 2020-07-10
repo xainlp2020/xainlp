@@ -48,7 +48,7 @@
                         <div class="w3-padding-small" *ngIf="!can_free_search[idx]">
                             <select class="w3-margin-left w3-border w3-small w3-round w3-light-grey" 
                                     [(ngModel)]="user_queries[idx]" style="width:100%; padding:3px">
-                                <option value="anything" disabled selected>anything</option>
+                                <option value="anything" selected>anything</option>
                                 <option *ngFor="let value of allow_search_terms[idx]" value="{{value}}">{{value}}</option>
                             </select>
                         </div>

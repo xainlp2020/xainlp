@@ -307,8 +307,8 @@ export class SearchComponent implements OnInit {
   can_free_search         = [true, true, true, false, false, false, false, false, false]
   operation_values = ["First Derivative Saliency", "Attention", "Explainability Aware Architecture", "layer-wise relevance propagation", "input perturbation"]
   venue_values = ["ACL", "EMNLP", "KDD", "AAAI", "IJCAI", "COLING", "NAACL"] // hard coded for now, should load from data
-  eval_values = ["Informal Evaluation", "Comparison to Ground Truth", "Human Evaluation"]
-  exp_values = ["Feature Importance", "Example-driven", "surrogate models", "provenance", "induction"]
+  eval_values = ["informal evaluation", "comparison to ground truth", "human evaluation"]
+  exp_values = ["feature importance", "example-driven", "surrogate model", "provenance", "induction"]
   viz_values = ["saliency", "raw examples", "raw declarative", "natural language", "other"]
   nlp_topics = [
     "Cognitive Modeling and Psycholinguistics",
