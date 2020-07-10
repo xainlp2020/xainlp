@@ -1,9 +1,11 @@
 <div class="w3-padding">
   <div class="w3-content">
-    <div class="w3-center w3-content">
-      <p>Explore publications with respect to the types of explanations. Click the tree nodes to view relevant publications listed in tables.</p>
-      <p>To get a global view of all the papers organized in tree structure, please go to <a routerLink="/clickabletree">Tree View</a></p>
-    </div>
+    <p><b class="w3-text-pink">INSTRUCTION:</b> 
+        Explore publications with respect to the types of explanations. 
+        Click the tree nodes to view relevant publications listed in tables.
+        To get a global view of all the papers organized in tree structure, please go to <a routerLink="/clickabletree">Tree View</a>
+    </p>
+    <hr>
   </div>
   <div >
     <mui-org-chart [topEmployee]="nodes" direction="vertical" (itemClick)="popup($event)"></mui-org-chart>
