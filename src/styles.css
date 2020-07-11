@@ -29,7 +29,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
    
   .mui-oc-box {
     color: blue;
-    width: 12em;
+    width: 17em;
   }
    
   .mui-oc-border {
@@ -46,7 +46,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     cursor: pointer;
     display: flex;
     font-size: 12px;
-    padding: 5px;
+    padding: 5px 46px 5px;
     margin: 0 10px;
     align-items: center;
 }
