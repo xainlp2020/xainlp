@@ -11,11 +11,16 @@
     <div (click)="setActiveTab('publications')" class="{{getHighlight('publications')}} w3-dropdown-hover">
       <button class="w3-button"  ><i class="fa fa-list"></i> Publications</button>
       <div style="z-index: 100" class="w3-dropdown-content w3-bar-block w3-card-4">
+        <!-- <div class="w3-sand w3-small w3-padding w3-center">
+          <span>Overview</span>
+        </div> -->
         <a routerLink="/viz" class="w3-bar-item w3-button"><i class="fa fa-pie-chart" aria-hidden="true"></i> Cluster </a>
-        <a routerLink="/search" class="w3-bar-item w3-button"><i class="fa fa-search" aria-hidden="true"></i> Search </a>
-        <a routerLink="/network" class="w3-bar-item w3-button"><i class="fa fa-share-alt" aria-hidden="true"></i> Citation Graph</a>
-        <a routerLink="/table" class="w3-bar-item w3-button"><i class="fa fa-table" aria-hidden="true"></i> Table </a>
         <a routerLink="/clickabletree" class="w3-bar-item w3-button"><i class="fa fa-list-ol" aria-hidden="true"></i> Tree </a>
+        <a routerLink="/network" class="w3-bar-item w3-button"><i class="fa fa-share-alt" aria-hidden="true"></i> Citation Graph</a>
+        <a routerLink="/table" class="w3-bar-item w3-button"><i class="fa fa-table" aria-hidden="true"></i> List </a>
+        <a routerLink="/search" class="w3-bar-item w3-button"><i class="fa fa-search" aria-hidden="true"></i> Search </a>
+
+        
       </div>
     </div>
     <a routerLink="/resource" (click)="setActiveTab('resource')" class="{{getHighlight('resource')}} w3-bar-item w3-button"><i class="fa fa-external-link-square"></i> Relevant Resources </a>
