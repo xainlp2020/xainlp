@@ -1,0 +1,415 @@
+{
+    "papers citation links": [
+        {
+            "id": "10",
+            "title": "Explaining non-linear Classifier Decisions within Kernel-based Deep Architectures",
+            "num_citations": "5",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=5249488835075948410&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "58",
+            "title": "Interpreting Neural Networks with Nearest Neighbors",
+            "num_citations": "12",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=8447845956740185062&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=8447845956740185062&scipsc="
+            ]
+        },
+        {
+            "id": "46",
+            "title": "Right for the Right Reasons: Training Differentiable Models by Constraining Their Explanations",
+            "num_citations": "143",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=1999112949296082528&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=0&hl=en&as_sdt=2005&sciodt=0,5&cites=1999112949296082528&scipsc="
+            ]
+        },
+        {
+            "id": "15",
+            "title": "LISA: Explaining Recurrent Neural Network Judgments via Layer-wIse Semantic Accumulation and Example to Pattern Transformation",
+            "num_citations": "10",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=11411695712387829613&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "49",
+            "title": "Train, Sort, Explain: Learning to Diagnose Translation Models",
+            "num_citations": "3",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=8316584079712321757&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "16",
+            "title": "Learning Explanations from Language Data",
+            "citation": "3",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=16371557956489752485&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "3",
+            "title": "A causal framework for explaining the predictions of black-box sequence-to-sequence models",
+            "citation": "91",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=13976944183815620975&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=13976944183815620975&scipsc="
+            ]
+        },
+        {
+            "id": "41",
+            "title": "Evaluating neural network explanation methods using hybrid documents and morphosyntactic agreement",
+            "citation": "23",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=15913634374662912882&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=15913634374662912882&scipsc="
+            ]
+        },
+        {
+            "id": "57",
+            "title": "Learning to Explain Entity Relationships in Knowledge Graphs",
+            "citation": "48",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=14644865426627791221&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=14644865426627791221&scipsc="
+            ]
+        },
+        {
+            "id": "36",
+            "title": "Unsupervised, Knowledge-Free, and Interpretable Word Sense Disambiguation",
+            "citation": "11",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=1761614467556225713&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=1761614467556225713&scipsc="
+            ]
+        },
+        {
+            "id": "27",
+            "title": "Program Induction by Rationale Generation: Learning to Solve and Explain Algebraic Word Problems",
+            "citation": "63",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=9730686950221011630&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=9730686950221011630&scipsc="
+            ]
+        },
+        {
+            "id": "34",
+            "title": "Explainable Prediction of Medical Codes from Clinical Text",
+            "citation": "98",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=7588660628347197715&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=7588660628347197715&scipsc="
+            ]
+        },
+        {
+            "id": "59",
+            "title": "An Interpretable Knowledge Transfer Model for Knowledge Base Completion",
+            "citation": "41",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=16977182114759140341&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=16977182114759140341&scipsc="
+            ]
+        },
+        {
+            "id": "91",
+            "title": "Explaining Character-Aware Neural Networks for Word-Level Prediction: Do They Discover Linguistic Rules?",
+            "citation": "9",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=13059731052029066638&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "5",
+            "title": "Interpreting Neural Networks to Improve Politeness Comprehension",
+            "citation": "33",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=14763559620119892024&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=14763559620119892024&scipsc="
+            ]
+        },
+        {
+            "id": "13",
+            "title": "Interpreting Recurrent and Attention-Based Neural Models: a Case Study on Natural Language Inference",
+            "citation": "32",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=14591189199573923152&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=14591189199573923152&scipsc="
+            ]
+        },
+        {
+            "id": "21",
+            "title": "Detecting Linguistic Characteristics of Alzheimer's Dementia by Interpreting Neural Models",
+            "citation": "24",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=881945681356255954&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=881945681356255954&scipsc="
+            ]
+        },
+        {
+            "id": "24",
+            "title": "CNM: An Interpretable Complex-valued Network for Matching",
+            "citation": "10",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=2387809550896383184&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "54",
+            "title": "Generating Token-Level Explanations for Natural Language Inference",
+            "citation": "5",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=14937468002680382415&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "9",
+            "title": "Extractive Adversarial Networks: High-Recall Explanations for Identifying Personal Attacks in Social Media Posts",
+            "citation": "4",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=17679181183356971235&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "32",
+            "title": "Beyond Polarity: Interpretable Financial Sentiment Analysis with Hierarchical Query- driven Attention",
+            "citation": "20",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=10168328287960024839&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=10168328287960024839&scipsc="
+            ]
+        },
+        {
+            "id": "8",
+            "title": "Interpretable Emoji Prediction via Label-Wise Attention LSTMs",
+            "citation": "13",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=1803095182590910847&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=1803095182590910847&scipsc="
+            ]
+        },
+        {
+            "id": "97",
+            "title": "Self-Assembling Modular Networks for Interpretable Multi-Hop Reasoning",
+            "citation": "11",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=10870084054538870092&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=10870084054538870092&scipsc="
+            ]
+        },
+        {
+            "id": "17",
+            "title": "An Interpretable Generative Adversarial Approach to Classification of Latent Entity Relations in Unstructured Sentences.",
+            "citation": "3",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=289355023992608360&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "6",
+            "title": "Multimodal Language Analysis in the Wild: CMU-MOSEI Dataset and Interpretable Dynamic Fusion Graph",
+            "citation": "74",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=7311117951717561963&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=7311117951717561963&scipsc="
+            ]
+        },
+        {
+            "id": "37",
+            "title": "Explaining the Stars: Weighted Multiple-Instance Learning for Aspect- Based Sentiment Analysis",
+            "citation": "36",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=11532181941766049325&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=11532181941766049325&scipsc="
+            ]
+        },
+        {
+            "id": "20",
+            "title": "Detecting and Explaining Causes From Text For a Time Series Event",
+            "citation": "14",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=592102464683518596&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=592102464683518596&scipsc="
+            ]
+        },
+        {
+            "id": "62",
+            "title": "Interpretable Reasoning Network for Multi-Relation Question Answering",
+            "citation": "20",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=9821932838389753800&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=9821932838389753800&scipsc="
+            ]
+        },
+        {
+            "id": "56",
+            "title": "Iterative Recursive Attention Model for Interpretable Sequence Classification",
+            "citation": "4",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=10076066040335454528&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "12",
+            "title": "Predicting and interpreting embeddings for out of vocabulary words in downstream tasks",
+            "citation": "4",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=15409212419299861799&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "22",
+            "title": "Unsupervised Token-wise Alignment to Improve Interpretation of Encoder-Decoder Models",
+            "citation": "3",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=5713243987871362261&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "66",
+            "title": "Constructing Interpretive Spatio-Temporal Features for Multi-Turn Responses Selection",
+            "citation": "2",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=5515840843813216216&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "65",
+            "title": "Towards Explainable NLP: A Generative Explanation Framework for Text Classification",
+            "citation": "15",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=3396834781212755446&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=3396834781212755446&scipsc="
+            ]
+        },
+        {
+            "id": "69",
+            "title": "EditNTS: An Neural Programmer-Interpreter Model for Sentence Simplification through Explicit Editing",
+            "citation": "16",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=11933473488493708692&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=11933473488493708692&scipsc="
+            ]
+        },
+        {
+            "id": "4",
+            "title": "MathQA: Towards Interpretable Math Word Problem Solving with Operation-Based Formalisms",
+            "citation": "10",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=12775202809419667085&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "40",
+            "title": "Investigating Robustness and Interpretability of Link Prediction via Adversarial Modifications",
+            "citation": "5",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=9108232326446243036&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "26",
+            "title": "A Meaning-based English Math Word Problem Solver with Understanding, Reasoning and Explanation",
+            "citation": "9",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=6190919084553405187&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "67",
+            "title": "Explore, Propose, and Assemble: An Interpretable Model for Multi-Hop Reading Comprehension",
+            "citation": "8",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=8817223910810196565&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "2",
+            "title": "QUINT: Interpretable Question Answering over Knowledge Bases  ",
+            "citation": "16",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=2316279520795489803&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=2316279520795489803&scipsc="
+            ]
+        },
+        {
+            "id": "35",
+            "title": "Interpretable Joint Graphical Model for Fact-Checking From Crowds",
+            "citation": "20",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=8547638552670579499&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=8547638552670579499&scipsc="
+            ]
+        },
+        {
+            "id": "63",
+            "title": "OpenDialKG: Explainable Conversational Reasoning with Attention-based Walks over Knowledge Graphs",
+            "citation": "24",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=3938241528246985103&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=3938241528246985103&scipsc="
+            ]
+        },
+        {
+            "id": "64",
+            "title": "Explain Yourself! Leveraging Language Models for Commonsense Reasoning",
+            "citation": "39",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=11531482722533541793&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=11531482722533541793&scipsc="
+            ]
+        },
+        {
+            "id": "84",
+            "title": "Auditing Deep Learning processes through Kernel-based Explanatory Models",
+            "citation": "1",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=1206545680383127397&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "70",
+            "title": "Interpretable Question Answering on Knowledge Bases and Text",
+            "citation": "4",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=12517067109098471454&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "44",
+            "title": "Interpretable Neural Architectures for Attributing an Ad's Performance to its Writing Style",
+            "citation": "4",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=13136986871854783538&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        },
+        {
+            "id": "43",
+            "title": "Deconfounded Lexicon Induction for Interpretable Social Science",
+            "citation": "11",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=12922465431216418677&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=12922465431216418677&scipsc="
+            ]
+        },
+        {
+            "id": "30",
+            "title": "On Interpretation of Network Embedding via Taxonomy Induction",
+            "citation": "8",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=17836395273703604151&as_sdt=2005&sciodt=0,5&hl=en",
+                "https://scholar.google.com/scholar?start=10&hl=en&as_sdt=2005&sciodt=0,5&cites=17836395273703604151&scipsc="
+            ]
+        },
+        {
+            "id": "42",
+            "title": "Learning Interpretable Negation Rules via Weak Supervision at Document Level: A Reinforcement Learning Approach",
+            "citation": "4",
+            "citation_url": [
+                "https://scholar.google.com/scholar?cites=4497930176021734346&as_sdt=2005&sciodt=0,5&hl=en"
+            ]
+        }
+    ]
+}
