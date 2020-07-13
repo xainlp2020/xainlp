@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import citation_network from "../../assets/citation/network.json";
 import xaipapers from "../../assets/data/xaipapers.json";
+import links_by_years from "../../assets/citation/links_by_year.json";
 import { Options } from 'ng5-slider';
 import { P } from '@angular/cdk/keycodes';
 import {PaperDialogComponent} from "../paper-dialog/paper-dialog.component";
@@ -64,7 +65,7 @@ export class CitationGraphComponent implements OnInit {
   /**
    * year-based graphs
    */
-  symbolsize = 8;
+  symbolsize = 12;
   updateYear(event)
   {
     console.log("year update")
@@ -139,7 +140,7 @@ export class CitationGraphComponent implements OnInit {
         symbolSize: this.symbolsize,
         x: Math.random() * this.canvas_width,
         y: Math.random() * this.canvas_height,
-        info: paper_info
+        info: this.paper_lookup[paper_id]
       }
       var base_x ;
       var base_y ;
@@ -178,6 +179,19 @@ export class CitationGraphComponent implements OnInit {
       // this.graphs[year].nodes.push(new_node)
     }
     console.log("final graphs")
+    console.log(this.graphs)
+
+    // finally add links by years
+    console.log("startYear " + this.startYear)
+    console.log("endYear " + this.endYear)
+    for(var curr_y = this.startYear; curr_y <= this.endYear; curr_y++)
+    {
+      console.log("checking year " + curr_y)
+      if(links_by_years[curr_y] != undefined && links_by_years[curr_y].length > 0)
+      {
+        this.graphs[curr_y].links = links_by_years[curr_y]
+      }
+    }
     console.log(this.graphs)
   }
 
@@ -276,17 +290,17 @@ export class CitationGraphComponent implements OnInit {
 
   render_graph()
   {
-    this.network.nodes.forEach(function (node) {
-        node.itemStyle = {
-          color: "black"
-        };
-        node.value = node.symbolSize;
-        node.symbolSize /= 1.5;
-        node.label = {
-            show: node.symbolSize > 30
-        };
-        // node.category = node.attributes.modularity_class;
-    });
+    // this.network.nodes.forEach(function (node) {
+    //     node.itemStyle = {
+    //       color: "black"
+    //     };
+    //     node.value = node.symbolSize;
+    //     node.symbolSize /= 1.5;
+    //     node.label = {
+    //         show: node.symbolSize > 30
+    //     };
+    //     // node.category = node.attributes.modularity_class;
+    // });
     this.citation_net_options = {
         title: {
             text: 'Citation Graph',
@@ -312,7 +326,8 @@ export class CitationGraphComponent implements OnInit {
                 type: 'graph',
                 layout: 'none',
                 edgeSymbol: ["none", "arrow"],
-                edgeSymbolSize: 6,
+                edgeSymbolSize: 8,
+                symbolSize: 10,
                 data: this.graphs[this.year_value].nodes,
                 links: this.graphs[this.year_value].links,
                 categories: this.exp_categories,

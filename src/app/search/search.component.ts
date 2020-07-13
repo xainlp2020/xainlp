@@ -163,8 +163,8 @@ export class SearchComponent implements OnInit {
           user_query_over_attr = user_query_over_attr.trim()
           if(match_method == 'contains')
           {
-            console.log("(contains) comparing " + paper_attr_val + " vs. " + user_query_over_attr)
-            console.log("contains? " + paper_attr_val.includes(user_query_over_attr))
+            // console.log("(contains) comparing " + paper_attr_val + " vs. " + user_query_over_attr)
+            // console.log("contains? " + paper_attr_val.includes(user_query_over_attr))
             if(paper_attr_val.includes(user_query_over_attr))
             {
             }
@@ -447,12 +447,13 @@ export class SearchComponent implements OnInit {
   }
   viewPaper(selectedPaper) {
     // selectedPaper["xai_type"] = xai_type
+    var paper = this.id2paper[selectedPaper["id"]]
     var placement = selectedPaper["placement"]
-    selectedPaper["xai_type"] = this.placement2type[placement]
+    paper["xai_type"] = this.placement2type[placement]
     console.log("selected paper ");
-    console.log(selectedPaper)
+    console.log(paper)
     this.dialog.open(PaperDialogComponent, {
-      data: selectedPaper
+      data: paper
     });
   }
     
@@ -629,27 +630,33 @@ export class SearchComponent implements OnInit {
 
   all_papers = []
   all_papers_orig = []
+  id2paper = {}
   load_all_papers()
   {
     for(var i = 0; i < xaipapers['local-post-hoc'].length; i++)
     {
       this.all_papers.push(xaipapers["local-post-hoc"][i])
       this.all_papers_orig.push(xaipapers["local-post-hoc"][i])
+      this.id2paper[xaipapers["local-post-hoc"][i]['id']] = xaipapers["local-post-hoc"][i]
     }
     for(var i = 0; i < xaipapers['local-self'].length; i++)
     {
       this.all_papers.push(xaipapers["local-self"][i])
       this.all_papers_orig.push(xaipapers["local-self"][i])
+      this.id2paper[xaipapers["local-self"][i]['id']] = xaipapers["local-self"][i]
     }
     for(var i = 0; i < xaipapers['global-post-hoc'].length; i++)
     {
       this.all_papers.push(xaipapers["global-post-hoc"][i])
       this.all_papers_orig.push(xaipapers["global-post-hoc"][i])
+      this.id2paper[xaipapers["global-post-hoc"][i]['id']] = xaipapers["global-post-hoc"][i]
     }
     for(var i = 0; i < xaipapers['global-self'].length; i++)
     {
       this.all_papers.push(xaipapers["global-self"][i])
       this.all_papers_orig.push(xaipapers["global-self"][i])
+      this.id2paper[xaipapers["global-self"][i]['id']] = xaipapers["global-self"][i]
+
     }
     var tmp = JSON.stringify(this.all_papers).toLowerCase()
     this.all_papers = JSON.parse(tmp)

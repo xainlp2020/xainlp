@@ -74,7 +74,7 @@ export class DefinitionsComponent implements OnInit {
         var paper = this.all_papers[i]
         if(paper["visualization"].toLowerCase().includes(value.toLowerCase()))
         {
-          refined_results.push(paper)
+          refined_results.push(paper) 
         }
       }
     }

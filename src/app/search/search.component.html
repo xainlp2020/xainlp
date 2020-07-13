@@ -122,7 +122,7 @@
 
     <!-- facet results -->
     <div class="w3-margin">
-        <div *ngIf="search_type==='facet'" class="w3-col s8">
+        <div *ngIf="search_type==='facet'" class="w3-col s10">
             <div class="w3-margin d-flex w3-padding">
                 <ul ngbNav #nav="ngbNav" activeId={{active_tab}} class="nav-pills" orientation="vertical">
                     <li *ngFor="let result of final_facet_result; let attr_index=index" 
@@ -305,7 +305,7 @@
                                                 <span [innerHTML]="getHighlights(query, paper['abstract'])"></span>
                                             </td> 
                                         </tr>
-                                        <tr *ngIf="attr_natural_language[attr_index]==='nlp topic'">
+                                        <tr *ngIf="attr_natural_language[attr_index]==='nlp topic' || attr_natural_language[attr_index]==='All'">
                                             <td class="w3-right">NLP Topic:</td> 
                                             <td>&nbsp;</td>
                                             <td>
