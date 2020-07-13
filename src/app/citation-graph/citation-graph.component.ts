@@ -137,7 +137,7 @@ export class CitationGraphComponent implements OnInit {
         category: exp_type_id,
         id: paper_id,
         name: this.titleCase(paper['title']), // could be the name of the proposed approach or the last name of the first author, not in current json record (as of July 2020),
-        value: citation,
+        // value: citation,
         symbolSize: this.default_symbolsize,
         x: Math.random() * this.canvas_width,
         y: Math.random() * this.canvas_height,

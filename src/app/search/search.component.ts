@@ -537,7 +537,8 @@ export class SearchComponent implements OnInit {
       }
       if(score / this.main_attr_for_sim.length > this.similarity_threshold / this.main_attr_for_sim.length)
       {
-        var tmp = JSON.parse(JSON.stringify(candidate))
+        var candid = this.id2paper[candidate["id"]]
+        var tmp = JSON.parse(JSON.stringify(candid))
         tmp["similarity"] = score / this.main_attr_for_sim.length
         tmp["similarity_explanation"] = this.generateExplanation(similar_attrs, dissimilar_attrs);
         this.similarPapers.push(tmp)
