@@ -52,7 +52,8 @@ export class DefinitionsComponent implements OnInit {
         var paper = this.all_papers[i]
         if(paper["exp_type"].toLowerCase() == value.toLowerCase())
         {
-          refined_results.push(paper)
+          
+          refined_results.push(this.id2paper[paper["id"]])
         }
       }
     }
@@ -63,7 +64,7 @@ export class DefinitionsComponent implements OnInit {
         var paper = this.all_papers[i]
         if(paper["explainability"].toLowerCase().includes(value.toLowerCase()))
         {
-          refined_results.push(paper)
+          refined_results.push(this.id2paper[paper["id"]])
         }
       }
     }
@@ -74,7 +75,7 @@ export class DefinitionsComponent implements OnInit {
         var paper = this.all_papers[i]
         if(paper["visualization"].toLowerCase().includes(value.toLowerCase()))
         {
-          refined_results.push(paper) 
+          refined_results.push(this.id2paper[paper["id"]]) 
         }
       }
     }
@@ -85,7 +86,7 @@ export class DefinitionsComponent implements OnInit {
         var paper = this.all_papers[i]
         if(paper["evaluation_metrics"].toLowerCase().includes(value.toLowerCase()))
         {
-          refined_results.push(paper)
+          refined_results.push(this.id2paper[paper["id"]])
         }
       }
     }
@@ -100,23 +101,32 @@ export class DefinitionsComponent implements OnInit {
     "4": "Global Self-explaining"
   }
   all_papers = []
+  all_papers_original = []
+  id2paper = {}
   load_all_papers()
   {
     for(var i = 0; i < xaipapers['local-post-hoc'].length; i++)
     {
       this.all_papers.push(xaipapers["local-post-hoc"][i])
+      this.all_papers_original.push(xaipapers["local-post-hoc"][i])
     }
     for(var i = 0; i < xaipapers['local-self'].length; i++)
     {
       this.all_papers.push(xaipapers["local-self"][i])
+      this.all_papers_original.push(xaipapers["local-self"][i])
+
     }
     for(var i = 0; i < xaipapers['global-post-hoc'].length; i++)
     {
       this.all_papers.push(xaipapers["global-post-hoc"][i])
+      this.all_papers_original.push(xaipapers["global-post-hoc"][i])
+
     }
     for(var i = 0; i < xaipapers['global-self'].length; i++)
     {
       this.all_papers.push(xaipapers["global-self"][i])
+      this.all_papers_original.push(xaipapers["global-self"][i])
+
     }
     var tmp = JSON.stringify(this.all_papers).toLowerCase()
     this.all_papers = JSON.parse(tmp)
@@ -124,6 +134,8 @@ export class DefinitionsComponent implements OnInit {
     for(var i = 0; i < this.all_papers.length; i++)
     {
       this.all_papers[i]['exp_type'] = this.placement2type[this.all_papers[i]["placement"]]
+      this.all_papers_original[i]['exp_type'] = this.placement2type[this.all_papers_original[i]["placement"]]
+      this.id2paper[this.all_papers[i]["id"]] = this.all_papers_original[i]
     }
   }
 
