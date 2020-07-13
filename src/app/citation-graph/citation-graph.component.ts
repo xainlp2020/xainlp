@@ -65,7 +65,6 @@ export class CitationGraphComponent implements OnInit {
   /**
    * year-based graphs
    */
-  symbolsize = 12;
   updateYear(event)
   {
     console.log("year update")
@@ -92,6 +91,8 @@ export class CitationGraphComponent implements OnInit {
   canvas_width = 700
   canvas_height = 500
   gap_size = 300
+  default_symbolsize = 8;
+  max_symbolsize = 15;
   exp_categories = []
   prepareGraphs()
   {
@@ -137,7 +138,7 @@ export class CitationGraphComponent implements OnInit {
         id: paper_id,
         name: this.titleCase(paper['title']), // could be the name of the proposed approach or the last name of the first author, not in current json record (as of July 2020),
         value: citation,
-        symbolSize: this.symbolsize,
+        symbolSize: this.default_symbolsize,
         x: Math.random() * this.canvas_width,
         y: Math.random() * this.canvas_height,
         info: this.paper_lookup[paper_id]
