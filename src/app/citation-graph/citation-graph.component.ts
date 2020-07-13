@@ -92,7 +92,7 @@ export class CitationGraphComponent implements OnInit {
   canvas_height = 500
   gap_size = 300
   default_symbolsize = 8;
-  max_symbolsize = 15;
+  max_symbolsize = 10
   exp_categories = []
   prepareGraphs()
   {
