@@ -719,15 +719,15 @@ export class SearchComponent implements OnInit {
   active_tab = "All"
 
   query = "";
-  attr_order = ["any", "title", "abstract", "nlp_task_1",
+  attr_order = ["any", "title", "abstract", "nlp_task_1", "venue",
   "authors", "explainability", "visualization", 
   "operations", "evaluation_metrics"]
 
-  attr_natural_language = ["All", "title", "abstract", "nlp topic",
+  attr_natural_language = ["All", "title", "abstract", "nlp topic", "venue",
   "authors", "explainability", "visualization", 
   "operations", "evaluation metrics"]
 
-  core_attr = new Set(["title", "abstract", "nlp_task_1",
+  core_attr = new Set(["title", "abstract", "nlp_task_1", "venue",
   "authors", "explainability", "visualization", 
   "operations", "evaluation_metrics"]);
   
