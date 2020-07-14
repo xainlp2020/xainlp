@@ -1,53 +1,172 @@
-<div class="w3-margin-top w3-round w3-content w3-padding" style="background-color:#f5f5f5; width:90%">    
-    <div class="w3-margin-top  w3-margin-bottom w3-padding">
-        <span class="w3-margin-top w3-medium"><b>To add a new paper to the repository, please fill in the following form:</b>
+<div class="w3-margin-top w3-round w3-content w3-padding" style="background-color:#f5f5f5; width:90%">   
+    <div class="w3-margin-top w3-center">
+        <mat-radio-group [(ngModel)]="resource_type" aria-label="Select an option">
+            <mat-radio-button class="w3-margin-left" value="paper">XAI Paper in NLP</mat-radio-button>
+            <mat-radio-button class="w3-margin-left" value="survey_tutorial">Survey or Tutorial in XAI</mat-radio-button>
+            <mat-radio-button class="w3-margin-left" value="resource">Online Resource</mat-radio-button>
+
+        </mat-radio-group>
+        <hr>
+    </div> 
+
+    <!-- resource -->
+    <div *ngIf="resource_type==='resource'" class="w3-margin-top  w3-margin-bottom w3-padding">
+        <span class="w3-margin-top w3-medium">
+            <b>To add a new survey or tutorial to the repository, please fill in the following form:</b>
         </span>
-
-        <!-- <div class="w3-margin-top">&nbsp;</div> -->
-        
         <div class="w3-small">
-            <form>
-                <label class="w3-margin-top">Title</label>
-                <input class="w3-input" type='text'>
+            <label class="w3-margin-top">Title</label>
+            <input class="w3-input" [(ngModel)]="resource_title" type='text'>
 
-                <label class="w3-margin-top">Authors (separate author names with comma):</label>
-                <input class="w3-input" type='text'>
+            <label class="w3-margin-top">Authors (separate author names with comma):</label>
+            <input class="w3-input" [(ngModel)]="resource_authors" type='text'>
 
-                <label class="w3-margin-top">Url to paper:</label>
-                <input class="w3-input" type='text'>
+            <label class="w3-margin-top">Url to your online resource:</label>
+            <input class="w3-input" [(ngModel)]="resource_url" type='text'>
+        </div>
+        <div class="w3-margin-top">
+            <div class="w3-margin-top w3-card-2 w3-round w3-white">
+                <div class="w3-blue-grey w3-padding w3-medium" style="border-top-left-radius: 4px; border-top-right-radius: 4px;">
+                    Contact Info
+                </div>
+                <div class="w3-margin-top w3-padding">
+                    <table width="100%">
+                        <tr>
+                            <td width="50%">
+                                <label class="w3-margin-top">Your Name:</label>
+                                <input class="w3-input" [(ngModel)]="resource_submitter_name" type='text'>
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                <label class="w3-margin-top">Email:</label>
+                                <input class="w3-input" [(ngModel)]="resource_submitter_email" type='text'>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="w3-content w3-center example-button-row w3-margin w3-padding">
+            <button mat-raised-button 
+                    class="w3-margin-right" 
+                    color="primary"
+                    (click)="submitResourceForm()">Submit for Review</button>
+        </div>
+    </div>
 
-                <table width="100%">
-                    <tr>
-                        <td width="50%">
-                            <label class="w3-margin-top">Publication Year:</label>
-                            <input class="w3-input" type='text'>
-                        </td>
-                        <td>
-                            &nbsp;
-                        </td>
-                        <td>
-                            <label class="w3-margin-top">Publication Venue:</label>
-                            <input class="w3-input" type='text'>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="50%">
-                            <label class="w3-margin-top">NLP Topic</label>
-                            <select class="w3-select" name="option">
-                                <option value="" disabled selected>Choose your topic (from ACL call for papers)</option>
-                                <option *ngFor="let topic of nlp_topics" value="{{topic}}">{{topic}}</option>
-                            </select>
-                        </td>
-                        <td>
-                            &nbsp;
-                        </td>
-                        <td>
-                            <label class="w3-margin-top">Specific NLP task (Your own description of the topic of the paper, optional)</label>
-                            <input class="w3-input" type='text'>
-                        </td>
-                    </tr>
-                </table>
-            </form>
+
+    <!-- survey and tutorial -->
+    <div *ngIf="resource_type==='survey_tutorial'" class="w3-margin-top  w3-margin-bottom w3-padding">
+        <span class="w3-margin-top w3-medium">
+            <b>To add a new survey or tutorial to the repository, please fill in the following form:</b>
+        </span>
+        <div class="w3-small">
+            <label class="w3-margin-top">Title</label>
+            <input [(ngModel)]="survey_title" class="w3-input" type='text'>
+
+            <label class="w3-margin-top">Authors (separate author names with comma):</label>
+            <input [(ngModel)]="survey_authors" class="w3-input" type='text'>
+
+            <label class="w3-margin-top">Url to your survey paper or your tutorial website (slides):</label>
+            <input [(ngModel)]="survey_url" class="w3-input" type='text'>
+
+            <table width="100%">
+                <tr>
+                    <td width="50%">
+                        <label class="w3-margin-top">Year:</label>
+                        <input [(ngModel)]="survey_year" class="w3-input" type='text'>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        <label class="w3-margin-top">Venue:</label>
+                        <input [(ngModel)]="survey_venue" class="w3-input" type='text'>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="w3-margin-top" *ngIf="true">
+                <div class="w3-margin-top w3-card-2 w3-round w3-white">
+                    <div class="w3-blue-grey w3-padding w3-medium" style="border-top-left-radius: 4px; border-top-right-radius: 4px;">
+                        Contact Info
+                    </div>
+                    <div class="w3-margin-top w3-padding">
+                        <table width="100%">
+                            <tr>
+                                <td width="50%">
+                                    <label class="w3-margin-top">Your Name:</label>
+                                    <input [(ngModel)]="survey_submitter_name" class="w3-input" type='text'>
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    <label class="w3-margin-top">Email:</label>
+                                    <input [(ngModel)]="survey_submitter_email" class="w3-input" type='text'>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-content w3-center example-button-row w3-margin w3-padding">
+                <button mat-raised-button 
+                        class="w3-margin-right" 
+                        color="primary"
+                        (click)="submitSurveyForm()">Submit for Review</button>
+            </div>
+        </div>
+
+       
+    </div>
+
+    <div *ngIf="resource_type==='paper'" class="w3-margin-top  w3-margin-bottom w3-padding">
+        <span class="w3-margin-top w3-medium"><b>To add a new paper to the repository, please fill in the following form:</b>
+        </span>        
+        <div class="w3-small">
+            <label class="w3-margin-top">Title</label>
+            <input [(ngModel)]="paper_title" class="w3-input" type='text'>
+
+            <label class="w3-margin-top">Authors (separate author names with comma):</label>
+            <input [(ngModel)]="paper_authors" class="w3-input" type='text'>
+
+            <label class="w3-margin-top">Url to paper:</label>
+            <input [(ngModel)]="paper_url" class="w3-input" type='text'>
+
+            <table width="100%">
+                <tr>
+                    <td width="50%">
+                        <label class="w3-margin-top">Publication Year:</label>
+                        <input [(ngModel)]="paper_year" class="w3-input" type='text'>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        <label class="w3-margin-top">Publication Venue:</label>
+                        <input [(ngModel)]="paper_venue" class="w3-input" type='text'>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="50%">
+                        <label class="w3-margin-top">NLP Topic</label>
+                        <select class="w3-select" name="option">
+                            <option value="" disabled selected>Choose your topic (from ACL call for papers)</option>
+                            <option *ngFor="let topic of nlp_topics" value="{{topic}}">{{topic}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        <label class="w3-margin-top">Specific NLP task (Your own description of the topic of the paper, optional)</label>
+                        <input class="w3-input" type='text'>
+                    </td>
+                </tr>
+            </table>
 
             <div class="w3-margin-top">&nbsp;</div>
 
@@ -70,6 +189,7 @@
                         </div>
                     </div>
                     
+                    <!-- post-hoc or self-explaining -->
                     <mat-divider></mat-divider>
                     <div class="w3-margin-top w3-padding">
                         <div class="w3-medium">Self-explaining vs. Post-hoc processing</div>  
@@ -84,6 +204,7 @@
                         </div>
                     </div>
                     
+                    <!-- explainability -->
                     <mat-divider></mat-divider>
                     <div class="w3-margin-top w3-padding">
                         <div class="w3-medium">Explainability Techniques</div>  
@@ -124,7 +245,7 @@
                         </div>
                     </div>
 
-
+                    <!-- visualization -->
                     <mat-divider></mat-divider>
                     <div class="w3-margin-top w3-padding">
                         <div class="w3-medium">Visualization Techniques</div>  
@@ -138,32 +259,46 @@
                                 <tr>
                                     <td class="w3-padding w3-light-grey " width="50%">
                                         <span class="w3-margin-right">All Visualization techniques that apply:</span>
-                                        <mat-form-field>
-                                            <mat-select [(value)]="selected_viz" 
+                                        <mat-select [(value)]="selected_viz" 
                                                         (selectionChange)="update_viz($event)"
                                                         [formControl]="vizControl" multiple>
-                                                <mat-option *ngFor="let technique of viz_techniques" value="{{technique}}">{{technique}}</mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
+                                            <mat-option *ngFor="let technique of viz_techniques" value="{{technique}}">{{technique}}</mat-option>
+                                        </mat-select>
                                     </td>
                                     <td>
                                         &nbsp;
                                     </td>
                                     <td class="w3-padding w3-light-grey" >
                                         <span class="w3-margin-right">Main Visualization (only one):</span>
-                                        <mat-form-field>
-                                            <mat-select [(value)]="main_exp" 
-                                                        (selectionChange)="update_main_viz($event)"
-                                                        [formControl]="main_vizControl">
-                                                <mat-option *ngFor="let technique of viz_techniques" value="{{technique}}">{{technique}}</mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
+                                        <mat-select [(value)]="main_exp" 
+                                                    (selectionChange)="update_main_viz($event)"
+                                                    [formControl]="main_vizControl">
+                                            <mat-option *ngFor="let technique of viz_techniques" value="{{technique}}">{{technique}}</mat-option>
+                                        </mat-select>
                                     </td>
                                 </tr>
                             </table>
                             
                         </div>
                     </div>
+
+                    <mat-divider></mat-divider>
+                    <div class="w3-margin-top w3-padding">
+                        <div class="w3-medium">Evaluation Metric Used</div>  
+                        <p class="w3-text-indigo w3-small"><i>Explanation: What metirc used to evaluation the proposed XAI approach.</i>
+                        </p>
+                        <div  width="100%">
+                            <div class="w3-padding w3-light-grey" >
+                                <mat-select [(value)]="selected_eval_metrics" 
+                                            (selectionChange)="update_main_viz($event)"
+                                            [formControl]="metric_Control" multiple
+                                            style="width:100%">
+                                    <mat-option *ngFor="let metric of eval_metrics" value="{{metric}}">{{metric}}</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="w3-margin-top">&nbsp;</div> 
                 </div>
 
@@ -180,14 +315,14 @@
                                 <tr>
                                     <td width="50%">
                                         <label class="w3-margin-top">Your Name:</label>
-                                        <input class="w3-input" type='text'>
+                                        <input [(ngModel)]="paper_submitter_name" class="w3-input" type='text'>
                                     </td>
                                     <td>
                                         &nbsp;
                                     </td>
                                     <td>
                                         <label class="w3-margin-top">Email:</label>
-                                        <input class="w3-input" type='text'>
+                                        <input [(ngModel)]="paper_submitter_email" class="w3-input" type='text'>
                                     </td>
                                 </tr>
                             </table>
@@ -201,12 +336,7 @@
                 <button mat-raised-button 
                         class="w3-margin-right" 
                         color="primary"
-                        (click)="openSnackBar('Request submitted for review', 'OK')">Submit for Review</button>
-
-                <!-- <button mat-raised-button 
-                        color="warn"
-                        (click)="openSnackBar('Request submitted for review')"
-                        >Submit for Without Review</button> -->
+                        (click)="submitPaperForm()">Submit for Review</button>
             </div>
         <div>
     </div>

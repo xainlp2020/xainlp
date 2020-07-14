@@ -13,6 +13,93 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class AddNewPapersComponent implements OnInit {
 
+  /**
+   * resource variables
+   */
+  resource_title = "";
+  resource_authors = "";
+  resource_url = "";
+  resource_submitter_name  = "";
+  resource_submitter_email = "";
+  submitResourceForm()
+  {
+    this.clear_resource_form()
+    this.openSnackBar("Request submitted", "OK")
+  }
+  clear_resource_form()
+  {
+    this.resource_title = "";
+    this.resource_authors = "";
+    this.resource_url = "";
+    this.resource_submitter_name = "";
+    this.resource_submitter_email = "";
+  }
+
+  /**
+   * survey / tutorial variables
+   */
+  survey_title = "";
+  survey_authors = "";
+  survey_url = "";
+  survey_year = "";
+  survey_venue = "";
+  survey_submitter_name  = "";
+  survey_submitter_email = "";
+  submitSurveyForm()
+  {
+    this.clear_survey_form()
+    this.openSnackBar("Request submitted", "OK")
+  }
+  clear_survey_form()
+  {
+    this.survey_title = "";
+    this.survey_authors = "";
+    this.survey_url = "";
+    this.survey_year = "";
+    this.survey_venue = "";
+    this.survey_submitter_name  = "";
+    this.survey_submitter_email = "";
+  }
+
+  /**
+   * paper variables
+   */
+  
+  paper_title = "";
+  paper_authors = "";
+  paper_url = "";
+  paper_year = "";
+  paper_venue = "";
+  paper_submitter_name  = "";
+  paper_submitter_email = "";
+  selected_eval_metrics = []
+  selected_exp = [];
+  main_exp = "";
+  selected_viz = [];
+  main_viz = "";
+  submitPaperForm()
+  {
+    this.clear_paper_form()
+    this.openSnackBar("Request submitted", "OK")
+  }
+  clear_paper_form()
+  {
+    this.paper_title = "";
+    this.paper_authors = "";
+    this.paper_url = "";
+    this.paper_year = "";
+    this.paper_venue = "";
+    this.paper_submitter_name  = "";
+    this.paper_submitter_email = "";
+    this.selected_eval_metrics = []
+    this.selected_exp = [];
+    this.main_exp = "";
+    this.selected_viz = [];
+    this.main_viz = "";
+  }
+
+  resource_type = "paper"
+  eval_metrics = ["Informal Evaluation", "Comparison to Ground Truth", "Human Evaluation"]
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 2000,
@@ -50,11 +137,6 @@ export class AddNewPapersComponent implements OnInit {
     "Theme"
   ]
 
-  selected_exp = [];
-  main_exp = "";
-  selected_viz = [];
-  main_viz = "";
-
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   update_exp(selected) 
   {
@@ -74,6 +156,10 @@ export class AddNewPapersComponent implements OnInit {
   {
     this.main_viz = selected;
   }
+  update_eval_metrics(selected)
+  {
+    this.selected_eval_metrics = selected
+  }
   
   
 
@@ -87,8 +173,9 @@ export class AddNewPapersComponent implements OnInit {
   expControl = new FormControl();
   main_expControl = new FormControl();
 
-  vizControl = new FormControl();
+  vizControl      = new FormControl();
   main_vizControl = new FormControl();
+  metric_Control  = new FormControl();
 
   exp_techniques: string[] = ['Feature Importance', "Rule Induction", "Surrogate Models", "Program Induction", "Tree Induction",
                               "Provenance", "others"];
