@@ -8,6 +8,11 @@ import xaipapers from "../../assets/data/xaipapers.json";
 })
 export class HomeComponent implements OnInit {
 
+  survey_citation_title = "@article{danilevsky2020survey,"
+  survey_citation_authors = "title={A Survey of the State of Explainable AI for Natural Language Processing},"
+  survey_citation_journal = "journal={AACL-IJCNLP 2020},"
+  survey_citation_year = "year={2020}"
+
   total_num_papers = 0
   total_search = 109
 
