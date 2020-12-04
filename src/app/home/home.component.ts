@@ -8,10 +8,19 @@ import xaipapers from "../../assets/data/xaipapers.json";
 })
 export class HomeComponent implements OnInit {
 
-  survey_citation_title = "@article{danilevsky2020survey,"
-  survey_citation_authors = "title={A Survey of the State of Explainable AI for Natural Language Processing},"
+  survey_citation_id = "@article{danilevsky2020survey,"
+  survey_citation_title = "title={A Survey of the State of Explainable AI for Natural Language Processing},"
+  survey_citation_authors = "author= {Danilevsky, Marina and Qian, Kun and Aharonov, Ranit and Katasis, Yannis and Kawas, Ban and Sen, Prithviraj},"
   survey_citation_journal = "journal={AACL-IJCNLP 2020},"
   survey_citation_year = "year={2020}"
+
+
+  tutorial_citation_id = "@article{aacl2020xaitutorial,"
+  tutorial_citation_title = "title={Explainability for Natural Language Processing},"
+  tutorial_citation_authors = "author= {Dhanorkar, Shipi and Li, Yunyao and Popa, Lucian and Qian, Kun and Wolf, Christine T and Xu, Anbang},"
+  tutorial_citation_journal = "journal={AACL-IJCNLP 2020},"
+  tutorial_citation_year = "year={2020}"
+
 
   total_num_papers = 0
   total_search = 109
