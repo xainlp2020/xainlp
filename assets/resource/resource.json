@@ -27,6 +27,14 @@
                 "venue": "ACM Computing Surveys",
                 "link": "https://dl.acm.org/doi/10.1145/3236009",
                 "focus": "general"
+            },
+            {
+                "title":"Analysis Methods in Neural Language Processing: A Survey",
+                "authors": "Yonatan Belinkov and James Glass",
+                "year": 2019, 
+                "venue": "Transactions of the Association for Computational Linguistics",
+                "link": "https://www.mitpressjournals.org/doi/full/10.1162/tacl_a_00254",
+                "focus": "NLP"
             }            
         ]
     },
