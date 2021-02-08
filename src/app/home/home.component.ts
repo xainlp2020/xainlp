@@ -8,6 +8,14 @@ import xaipapers from "../../assets/data/xaipapers.json";
 })
 export class HomeComponent implements OnInit {
 
+  demo_citation_id = "@article{iui2021demo,"
+  demo_citation_title = "title={XNLP: A Living Survey for XAI Research in Natural Language Processing},"
+  demo_citation_authors = "author= {Qian, Kun and Danilevsky, Marina and Katsis, Yannis and Kawas, Ban and Oduor, Erick and Popa, Lucian and Li, Yunyao},"
+  demo_citation_journal = "journal={IUI 2021},"
+  demo_citation_year = "year={2021}"
+
+
+
   survey_citation_id = "@article{danilevsky2020survey,"
   survey_citation_title = "title={A Survey of the State of Explainable AI for Natural Language Processing},"
   survey_citation_authors = "author= {Danilevsky, Marina and Qian, Kun and Aharonov, Ranit and Katsis, Yannis and Kawas, Ban and Sen, Prithviraj},"
@@ -16,7 +24,7 @@ export class HomeComponent implements OnInit {
 
 
   tutorial_citation_id = "@article{aacl2020xaitutorial,"
-  tutorial_citation_title = "title={Explainability for Natural Language Processing},"
+  tutorial_citation_title = "title={Tutorial: Explainability for Natural Language Processing},"
   tutorial_citation_authors = "author= {Dhanorkar, Shipi and Li, Yunyao and Popa, Lucian and Qian, Kun and Wolf, Christine T and Xu, Anbang},"
   tutorial_citation_journal = "journal={AACL-IJCNLP 2020},"
   tutorial_citation_year = "year={2020}"
